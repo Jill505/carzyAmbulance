@@ -16,9 +16,12 @@ public class HeartBeat : MonoBehaviour
     public Text count;
     private float Count;
 
+    [Header("生成時間")]
+    public float DelayTime = 2f; 
 
     private bool InThePoint = false;
     private bool canSpace = true;
+    private bool Generating = false;
 
     [HideInInspector]
     public bool safe = false;
@@ -44,6 +47,7 @@ public class HeartBeat : MonoBehaviour
         {
             Debug.Log("你過關");
             safe = true;
+            ChangeColor("#56FF00");
         }
         else
         {
@@ -62,12 +66,20 @@ public class HeartBeat : MonoBehaviour
     void InstantiateLine()
     {
         GameObject CheckLineExist = GameObject.FindWithTag("Line");
-        if(CheckLineExist == null)
+        if(CheckLineExist == null && !Generating)
         {
-            Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
-            Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
-            safe = false;
+            StartCoroutine(InstantitateDelay());
         }
+    }
+    IEnumerator InstantitateDelay()
+    {
+        Generating = true;
+        yield return new WaitForSeconds(DelayTime);
+        ChangeColor("#FF0000");
+        Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
+        Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
+        safe = false;
+        Generating = false;
     }
 
     void ForCount()
@@ -92,7 +104,14 @@ public class HeartBeat : MonoBehaviour
         }
     }
 
-    
+    void ChangeColor(string hexColor)
+    {
+        Color color;
+        if (ColorUtility.TryParseHtmlString(hexColor, out color))
+        {
+            this.GetComponent<Renderer>().material.color = color;
+        }
+    }
 
     
 }
