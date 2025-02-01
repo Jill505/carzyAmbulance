@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -6,10 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class GameCore : MonoBehaviour
 {
-    public int thisGameSceneSort = 3;
     public MapGraph myMapGraph;
 
     public GameObject AmbulanceObject;
+    public GameObject GameStartPanel;
+    public GameObject GameEndPanel;
+
     public float ambulanceSpeed = 7f;
 
     public bool gameRunning = false;
@@ -85,16 +88,28 @@ public class GameCore : MonoBehaviour
 
     public void gameStart()
     {
-        gameRunning = true; 
+        gameRunning = true;
+        GameStartPanel.SetActive(false);
+    }
+    public void gameEnd()
+    {
+        GameEndPanel.SetActive(true);
     }
 
     public void LoadNextGame()
     {
-
+        if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        }
+        else
+        {
+            //沒有下一關了 禁止按鈕被按下 諤諤諤諤ˋ 我覺得這個判斷可以早一點執行 但算了啦現在先這樣寫就好我好懶惰喔
+        }
     }
     public void ReloadGame()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void resetAmbulancePosition()
