@@ -16,7 +16,7 @@ public class HeartBeat : MonoBehaviour
     public Text count;
     private float Count;
 
-    [Header("生成時間")]
+    [Header("生成拍子與節奏")]
     public int BPM = 120;            
     public float duration;   
     public float DelayTime = 2f;     //進入下一個小節的時間
