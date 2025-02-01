@@ -17,21 +17,34 @@ public class HeartBeat : MonoBehaviour
     private float Count;
 
     [Header("生成時間")]
-    public float DelayTime = 2f; 
+    public int BPM = 120;            
+    public float duration;   
+    public float DelayTime = 2f;     //進入下一個小節的時間
+    public float measureBeats = 4f;  //每小節的拍數
 
     private bool InThePoint = false;
     private bool canSpace = true;
     private bool Generating = false;
+    private float InstantiateCount = 0;
 
     [HideInInspector]
     public bool safe = false;
 
 
+    void Start()
+    {
+        BPMSet();
+    }
     void Update()
     {
         InputSpace();
         InstantiateLine();
         ForCount();
+    }
+
+    public void BPMSet()
+    {
+        duration = 60f/BPM;
     }
 
     void InputSpace()
@@ -74,12 +87,18 @@ public class HeartBeat : MonoBehaviour
     IEnumerator InstantitateDelay()
     {
         Generating = true;
-        yield return new WaitForSeconds(DelayTime);
+        if(InstantiateCount == measureBeats)
+        {
+            yield return new WaitForSeconds(DelayTime);
+            BPMSet();
+            InstantiateCount = 0;
+        }
         ChangeColor("#FF0000");
         Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
         Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
         safe = false;
         Generating = false;
+        InstantiateCount++; 
     }
 
     void ForCount()
