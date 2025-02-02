@@ -7,7 +7,7 @@ public class Line : MonoBehaviour
     public GameObject DecisionLine; 
 
     [Header("時間限制")]
-    public float duration = 10f;   
+    private float duration;
 
     private float distance;  
     private float speed;            
@@ -16,6 +16,8 @@ public class Line : MonoBehaviour
     void Start()
     {
         GameObject checkPoint = GameObject.FindWithTag("CheckPoint");
+        HeartBeat heartBeat = checkPoint.GetComponent<HeartBeat>();
+        duration = heartBeat.duration;
 
         distance = Vector3.Distance(checkPoint.transform.position, DecisionLine.transform.position);
 
