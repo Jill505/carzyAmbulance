@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-
 public class GameCore : MonoBehaviour
 {
     public MapGraph myMapGraph;
@@ -104,7 +103,7 @@ public class GameCore : MonoBehaviour
         }
         else
         {
-            //沒有下一關了 禁止按鈕被按下 諤諤諤諤ˋ 我覺得這個判斷可以早一點執行 但算了啦現在先這樣寫就好我好懶惰喔
+            //沒有下一關了 禁止按鈕被按下 諤諤諤諤 我覺得這個判斷可以早一點執行 但算了啦現在先這樣寫就好我好懶惰喔
         }
     }
     public void ReloadGame()

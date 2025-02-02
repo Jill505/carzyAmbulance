@@ -31,4 +31,9 @@ public class Lobby_Core : MonoBehaviour
         Debug.Log("¹CÀ¸°h¥X");
         Application.Quit();
     }
+
+    public void LoadGame(int sort)
+    {
+        SceneManager.LoadScene(sort);
+    }
 }
