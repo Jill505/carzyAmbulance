@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HeartBeat : MonoBehaviour
 {
+    public GameCore gameCore;
+
     [Header("預製體")]
     public GameObject DecisionLine;
 
@@ -19,8 +21,9 @@ public class HeartBeat : MonoBehaviour
     [Header("生成拍子與節奏")]
     public int BPM = 120;            
     public float duration;   
-    public float DelayTime = 2f;     //進入下一個小節的時間
+    public float DelayTime = 0f;     //進入下一個小節的延遲時間
     public float measureBeats = 4f;  //每小節的拍數
+    public bool fixedGenAllow = true;
 
     private bool InThePoint = false;
     private bool canSpace = true;
@@ -34,12 +37,22 @@ public class HeartBeat : MonoBehaviour
     void Start()
     {
         BPMSet();
+        fixedGenAllow = true;
     }
     void Update()
     {
-        InputSpace();
-        InstantiateLine();
-        ForCount();
+        if (gameCore.gameRunning)
+        {
+            InputSpace();
+            InstantiateLine();
+            ForCount();
+
+            //測試用功能 按下Enter手動生成一個note
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                testGenNote();
+            }
+        }
     }
 
     public void BPMSet()
@@ -78,11 +91,17 @@ public class HeartBeat : MonoBehaviour
 
     void InstantiateLine()
     {
-        GameObject CheckLineExist = GameObject.FindWithTag("Line");
+        /*GameObject CheckLineExist = GameObject.FindWithTag("Line");
         if(CheckLineExist == null && !Generating)
         {
             StartCoroutine(InstantitateDelay());
+        }*/
+
+        if (fixedGenAllow == true && !Generating)
+        {
+            StartCoroutine(InstantitateDelay());
         }
+
     }
     IEnumerator InstantitateDelay()
     {
@@ -94,8 +113,10 @@ public class HeartBeat : MonoBehaviour
             InstantiateCount = 0;
         }
         ChangeColor("#FF0000");
-        Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
-        Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
+        fixedGenAllow = false;
+        GameObject swapLine = Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
+        //Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
+        //swapLine.GetComponent<Line>().speed = 
         safe = false;
         Generating = false;
         InstantiateCount++; 
@@ -132,5 +153,8 @@ public class HeartBeat : MonoBehaviour
         }
     }
 
-    
+    public void testGenNote()
+    {
+        fixedGenAllow = true;
+    }
 }

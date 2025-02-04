@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameCore : MonoBehaviour
 {
@@ -15,6 +16,17 @@ public class GameCore : MonoBehaviour
     public float ambulanceSpeed = 7f;
 
     public bool gameRunning = false;
+
+    public float maxHp = 100f;
+    public float hp = 100f;//100~0 
+    public int hpStatement = 4;
+    public Sprite[] uiSprite = new Sprite[5];
+    public SpriteRenderer heartbeatChart;
+
+    public float bloodLooseRate = 1f;
+    public float bloodMax = 40f; //等同於秒數
+    public float bloodNow = 40f; //現在剩餘血量
+    public Image bloodPackImage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +41,14 @@ public class GameCore : MonoBehaviour
         if (gameRunning)
         {
             swapAmbulanceMoving();
+            HpStatementSync();
+
+            BloodLoose();
+
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                swapTestHpMinus5();
+            }
         }
     }
 
@@ -85,6 +105,22 @@ public class GameCore : MonoBehaviour
 
     }
 
+    public void BloodLoose()
+    {
+        bloodNow -= Time.deltaTime * bloodLooseRate;
+        bloodPackImage.fillAmount = bloodNow / bloodMax;
+    }
+
+    public void BloodLooseJudgement()
+    {
+        //判定失血與增加note
+    }
+
+    public void ChangeBloodPack()
+    {
+        bloodNow = bloodMax; //滿血持續一定時間，不要馬上就開始流血，算是一點小無敵效果
+    }
+
     public void gameStart()
     {
         gameRunning = true;
@@ -126,8 +162,42 @@ public class GameCore : MonoBehaviour
         {
             //Game End.
             gameRunning = false;
+            gameEnd();
             //Open the end canvas and else
         }
+    }
+
+    public void HpStatementSync()
+    {
+        float hpRate = hp / maxHp;
+        if (hpRate > 0.9f)
+        {
+            hpStatement = 4;
+        }
+        else if (hpRate > 0.75f)
+        {
+            hpStatement = 3;
+        }
+        else if (hpRate > 0.4f)
+        {
+            hpStatement = 2;
+        }
+        else if (hpRate > 0f)
+        {
+            hpStatement = 1;
+        }
+        else
+        {
+            hpStatement = 0;
+        }
+        heartbeatChart.sprite = uiSprite[hpStatement];
+
+        //增加視覺效果
+    }
+
+    public void swapTestHpMinus5()
+    {
+        hp -= 10f;
     }
 }
 

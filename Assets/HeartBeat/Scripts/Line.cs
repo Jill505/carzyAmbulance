@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Line : MonoBehaviour
@@ -10,12 +11,18 @@ public class Line : MonoBehaviour
     private float duration;
 
     private float distance;  
-    private float speed;            
-    private float elapsedTime = 0f; 
+    public float speed;            
+    private float elapsedTime = 0f;
+
+    [Header("邊界參考物")]
+    public GameObject borderCheckpoint;
+
+    bool callClug = false;
     
     void Start()
     {
         GameObject checkPoint = GameObject.FindWithTag("CheckPoint");
+        borderCheckpoint = GameObject.Find("Border");
         HeartBeat heartBeat = checkPoint.GetComponent<HeartBeat>();
         duration = heartBeat.duration;
 
@@ -29,20 +36,33 @@ public class Line : MonoBehaviour
     {
         GameObject checkPoint = GameObject.FindWithTag("CheckPoint");
         HeartBeat heartBeat = checkPoint.GetComponent<HeartBeat>();
+
+        gameObject.transform.localPosition = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+
         if (elapsedTime < duration)
         {
             float moveDistance = speed * Time.deltaTime; 
-            DecisionLine.transform.position = Vector3.MoveTowards(DecisionLine.transform.position, checkPoint.transform.position, moveDistance);
+            //DecisionLine.transform.position = Vector3.MoveTowards(DecisionLine.transform.position, checkPoint.transform.position, moveDistance);
+            //gameObject.transform.localPosition = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
             elapsedTime += Time.deltaTime;
         }
         else
         {
-            if(heartBeat.safe == false)
+            if (callClug == false)
             {
-                Debug.Log("一代一代");
+                if (heartBeat.safe == false)
+                {
+                    Debug.Log("一代一代");
+                }
+
+                heartBeat.fixedGenAllow = true;
+                callClug = true;
             }
+            //Destroy(gameObject);
+        }
+        if (gameObject.transform.position.x < borderCheckpoint.transform.position.x)
+        {
             Destroy(gameObject);
         }
     }
-    
 }
