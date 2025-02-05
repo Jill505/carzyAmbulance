@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class GameCore : MonoBehaviour
 
     public float maxHp = 100f;
     public float hp = 100f;//100~0 
-    public int hpStatement = 4;
+    public int hpStatement = 4; // 0=死亡，
     public Sprite[] uiSprite = new Sprite[5];
     public SpriteRenderer heartbeatChart;
 
@@ -27,6 +28,16 @@ public class GameCore : MonoBehaviour
     public float bloodMax = 40f; //等同於秒數
     public float bloodNow = 40f; //現在剩餘血量
     public Image bloodPackImage;
+
+    public Image[] starImages = new Image[3];
+    public Sprite emptyStar;
+    public Sprite star;
+    public int gameRate = 0; // -1~2, -1代表關卡失敗, 0~2代表1~3星
+    public int starNumber = 0;
+    // 1星-通過關卡 2星-50%以上時間病人安穩狀態 3星-85%以上時間病人安穩狀態
+    //安穩狀態 = 病人生命跡象狀態
+    public float[] gameStatementRate = new float[5];
+    public float finalGameRateResult = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +60,8 @@ public class GameCore : MonoBehaviour
             {
                 swapTestHpMinus5();
             }
+
+            gameStatementRate[hpStatement] += Time.deltaTime;
         }
     }
 
@@ -128,7 +141,10 @@ public class GameCore : MonoBehaviour
     }
     public void gameEnd()
     {
+        gameRunning = false;
         GameEndPanel.SetActive(true);
+        finalGameRateResultCal();
+        finalGameExecute();
     }
 
     public void LoadNextGame()
@@ -161,7 +177,6 @@ public class GameCore : MonoBehaviour
         if (AmbulanceObject.transform.position.x >= myMapGraph.getPointXY(1).x)
         {
             //Game End.
-            gameRunning = false;
             gameEnd();
             //Open the end canvas and else
         }
@@ -170,11 +185,11 @@ public class GameCore : MonoBehaviour
     public void HpStatementSync()
     {
         float hpRate = hp / maxHp;
-        if (hpRate > 0.9f)
+        if (hpRate > 0.85f)
         {
             hpStatement = 4;
         }
-        else if (hpRate > 0.75f)
+        else if (hpRate > 0.65f)
         {
             hpStatement = 3;
         }
@@ -198,6 +213,39 @@ public class GameCore : MonoBehaviour
     public void swapTestHpMinus5()
     {
         hp -= 10f;
+    }
+
+    public void finalGameRateResultCal()
+    {
+        float swapBaseNum =0;
+        for (int i = 0; i< gameStatementRate.Length; i++)
+        {
+            swapBaseNum += gameStatementRate[i];
+        }
+        float swapBaseNum2 = gameStatementRate[3] + gameStatementRate[4];
+
+        finalGameRateResult = swapBaseNum2 / swapBaseNum;
+    }
+    public void finalGameExecute()
+    {
+        
+        if (finalGameRateResult > 0.8f)
+        {
+            starNumber = 3;
+        }
+        else if (finalGameRateResult > 0.5f)
+        {
+            starNumber = 2;
+        }
+        else
+        {
+            starNumber = 1;
+        }
+
+        for (int i = 0; i < starNumber; i++)
+        {
+            starImages[i].sprite = star;
+        }
     }
 }
 
