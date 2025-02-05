@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CheckPoint
   - Line
+  - BulletBox
+  - Bullet
+  - Gun
   layers:
   - Default
   - TransparentFX
