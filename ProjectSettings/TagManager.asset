@@ -7,8 +7,8 @@ TagManager:
   - CheckPoint
   - Line
   - BulletBox
-  - Bullet
   - Gun
+  - ShootRange
   layers:
   - Default
   - TransparentFX
@@ -16,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
