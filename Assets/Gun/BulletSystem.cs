@@ -29,14 +29,23 @@ public class BulletSystem : MonoBehaviour
     private const float doubleClickTime = 0.3f; 
     private Vector2 mousePosition;
 
+    public GameCore gameCore;
+
+    void Start()
+    {
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();         
+    }
     void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        HandleCrosshair(); //鼠標
-        HoldBullet();     //拿子彈
-        LoadIn();         //上膛
-        HandleShooting(); //射擊       
+        if (gameCore.gameRunning)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            HandleCrosshair(); //鼠標
+            HoldBullet();     //拿子彈
+            LoadIn();         //上膛
+            HandleShooting(); //射擊   
+        }    
     }
 
     void HandleCrosshair()

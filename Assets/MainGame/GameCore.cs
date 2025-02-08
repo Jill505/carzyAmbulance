@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -39,6 +40,8 @@ public class GameCore : MonoBehaviour
     public float[] gameStatementRate = new float[5];
     public float finalGameRateResult = 0;
 
+    public TextMeshProUGUI O2TextMesh;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +58,10 @@ public class GameCore : MonoBehaviour
             HpStatementSync();
 
             BloodLoose();
+
+            //這邊優先優化掉
+            O2Sync();
+
 
             if (Input.GetKeyDown(KeyCode.U))
             {
@@ -162,6 +169,10 @@ public class GameCore : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void LoadLobby()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public void resetAmbulancePosition()
     {
@@ -246,6 +257,11 @@ public class GameCore : MonoBehaviour
         {
             starImages[i].sprite = star;
         }
+    }
+
+    public void O2Sync()
+    {
+        O2TextMesh.text = "O2: " + (int)hp;
     }
 }
 

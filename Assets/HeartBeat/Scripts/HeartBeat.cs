@@ -1,8 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class HeartBeat : MonoBehaviour
 {
     public GameCore gameCore;
@@ -30,6 +29,8 @@ public class HeartBeat : MonoBehaviour
     private bool Generating = false;
     private float InstantiateCount = 0;
 
+    public TextMeshProUGUI bpmTextMesh;
+
     [HideInInspector]
     public bool safe = false;
 
@@ -46,6 +47,9 @@ public class HeartBeat : MonoBehaviour
             InputSpace();
             InstantiateLine();
             ForCount();
+
+            //這邊優先優化掉
+            BPMsync();
 
             //測試用功能 按下Enter手動生成一個note
             if (Input.GetKeyDown(KeyCode.O))
@@ -151,6 +155,11 @@ public class HeartBeat : MonoBehaviour
         {
             this.GetComponent<Renderer>().material.color = color;
         }
+    }
+
+    public void BPMsync()
+    {
+        bpmTextMesh.text = "BPM: "+(int)BPM;
     }
 
     public void testGenNote()
