@@ -52,7 +52,7 @@ public class Line : MonoBehaviour
             {
                 if (heartBeat.safe == false)
                 {
-                    Debug.Log("一代一代");
+                    Debug.Log("未在範圍內按下space");
                 }
 
                 heartBeat.fixedGenAllow = true;

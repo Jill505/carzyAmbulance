@@ -76,7 +76,7 @@ public class GameCore : MonoBehaviour
     {
         if (myMapGraph == null || myMapGraph.points.Count == 0)
         {
-            Debug.LogWarning("MapGraph 沒有點可以渲染！");
+            Debug.LogWarning("AkWarning - MapGraph 沒有點可以渲染！");
             return;
         }
 
@@ -93,7 +93,7 @@ public class GameCore : MonoBehaviour
             {
                 if (linkedIndex < 0 || linkedIndex >= myMapGraph.points.Count)
                 {
-                    Debug.LogWarning($"索引 {linkedIndex} 超出範圍，無法連接！");
+                    Debug.LogWarning($"AkWarning - 索引 {linkedIndex} 超出範圍，無法連接！");
                     continue;
                 }
 

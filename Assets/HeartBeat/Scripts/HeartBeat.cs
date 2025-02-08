@@ -75,7 +75,7 @@ public class HeartBeat : MonoBehaviour
     {
         if(InThePoint)
         {
-            Debug.Log("你過關");
+            Debug.Log("在範圍內成功檢定");
             safe = true;
             ChangeColor("#56FF00");
         }
