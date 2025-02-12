@@ -9,6 +9,7 @@ TagManager:
   - BulletBox
   - Gun
   - ShootRange
+  - Wall
   layers:
   - Default
   - TransparentFX

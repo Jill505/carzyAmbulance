@@ -11,11 +11,6 @@ public class HeartBeat : MonoBehaviour
 
     [Header("生成位置")]
     public Transform RightInstantiatePoint; 
-    public Transform LeftInstantiatePoint; 
-
-    [Header("數秒數")]
-    public Text count;
-    private float Count;
 
     [Header("生成拍子與節奏")]
     public int BPM = 120;            
@@ -46,7 +41,6 @@ public class HeartBeat : MonoBehaviour
         {
             InputSpace();
             InstantiateLine();
-            ForCount();
 
             //這邊優先優化掉
             BPMsync();
@@ -61,7 +55,7 @@ public class HeartBeat : MonoBehaviour
 
     public void BPMSet()
     {
-        duration = 60f/BPM;
+        duration = 60f/(BPM*4f);
     }
 
     void InputSpace()
@@ -77,7 +71,6 @@ public class HeartBeat : MonoBehaviour
         {
             Debug.Log("在範圍內成功檢定");
             safe = true;
-            ChangeColor("#56FF00");
         }
         else
         {
@@ -110,28 +103,23 @@ public class HeartBeat : MonoBehaviour
     IEnumerator InstantitateDelay()
     {
         Generating = true;
-        if(InstantiateCount == measureBeats)
+        if (InstantiateCount == measureBeats)
         {
             yield return new WaitForSeconds(DelayTime);
             BPMSet();
             InstantiateCount = 0;
         }
-        ChangeColor("#FF0000");
         fixedGenAllow = false;
-        GameObject swapLine = Instantiate(DecisionLine,RightInstantiatePoint.position,RightInstantiatePoint.rotation);
-        //Instantiate(DecisionLine,LeftInstantiatePoint.position,LeftInstantiatePoint.rotation);
-        //swapLine.GetComponent<Line>().speed = 
+
+        float sixteenthNoteDuration = 60f / (BPM * 4);
+        yield return new WaitForSeconds(sixteenthNoteDuration * 4); 
+
+        GameObject swapLine = Instantiate(DecisionLine, RightInstantiatePoint.position, RightInstantiatePoint.rotation);
         safe = false;
         Generating = false;
         InstantiateCount++; 
     }
 
-    void ForCount()
-    {
-        Count += Time.deltaTime;
-        string countText = Count.ToString("F2"); // 保留兩位小數
-        count.text =  countText;
-    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -148,15 +136,6 @@ public class HeartBeat : MonoBehaviour
         }
     }
 
-    void ChangeColor(string hexColor)
-    {
-        Color color;
-        if (ColorUtility.TryParseHtmlString(hexColor, out color))
-        {
-            this.GetComponent<Renderer>().material.color = color;
-        }
-    }
-
     public void BPMsync()
     {
         bpmTextMesh.text = "BPM: "+(int)BPM;
@@ -167,3 +146,4 @@ public class HeartBeat : MonoBehaviour
         fixedGenAllow = true;
     }
 }
+

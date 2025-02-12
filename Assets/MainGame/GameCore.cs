@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -21,26 +22,28 @@ public class GameCore : MonoBehaviour
 
     public float maxHp = 100f;
     public float hp = 100f;//100~0 
-    public int hpStatement = 4; // 0=¦º¤`¡A
+    public int hpStatement = 4; // 0=ï¿½ï¿½ï¿½`ï¿½A
     public Sprite[] uiSprite = new Sprite[5];
     public SpriteRenderer heartbeatChart;
 
     public float bloodLooseRate = 1f;
-    public float bloodMax = 40f; //µ¥¦P©ó¬í¼Æ
-    public float bloodNow = 40f; //²{¦b³Ñ¾l¦å¶q
+    public float bloodMax = 40f; //ï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½
+    public float bloodNow = 40f; //ï¿½{ï¿½bï¿½Ñ¾lï¿½ï¿½q
     public Image bloodPackImage;
+
 
     public Image[] starImages = new Image[3];
     public Sprite emptyStar;
     public Sprite star;
-    public int gameRate = 0; // -1~2, -1¥NªíÃö¥d¥¢±Ñ, 0~2¥Nªí1~3¬P
+    public int gameRate = 0; // -1~2, -1ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½ï¿½ï¿½, 0~2ï¿½Nï¿½ï¿½1~3ï¿½P
     public int starNumber = 0;
-    // 1¬P-³q¹LÃö¥d 2¬P-50%¥H¤W®É¶¡¯f¤H¦wÃ­ª¬ºA 3¬P-85%¥H¤W®É¶¡¯f¤H¦wÃ­ª¬ºA
-    //¦wÃ­ª¬ºA = ¯f¤H¥Í©R¸ñ¶Hª¬ºA
+    // 1ï¿½P-ï¿½qï¿½Lï¿½ï¿½ï¿½d 2ï¿½P-50%ï¿½Hï¿½Wï¿½É¶ï¿½ï¿½fï¿½Hï¿½wÃ­ï¿½ï¿½ï¿½A 3ï¿½P-85%ï¿½Hï¿½Wï¿½É¶ï¿½ï¿½fï¿½Hï¿½wÃ­ï¿½ï¿½ï¿½A
+    //ï¿½wÃ­ï¿½ï¿½ï¿½A = ï¿½fï¿½Hï¿½Í©Rï¿½ï¿½Hï¿½ï¿½ï¿½A
     public float[] gameStatementRate = new float[5];
     public float finalGameRateResult = 0;
 
     public TextMeshProUGUI O2TextMesh;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,7 +62,7 @@ public class GameCore : MonoBehaviour
 
             BloodLoose();
 
-            //³oÃäÀu¥ýÀu¤Æ±¼
+            //ï¿½oï¿½ï¿½ï¿½uï¿½ï¿½ï¿½uï¿½Æ±ï¿½
             O2Sync();
 
 
@@ -76,45 +79,45 @@ public class GameCore : MonoBehaviour
     {
         if (myMapGraph == null || myMapGraph.points.Count == 0)
         {
-            Debug.LogWarning("AkWarning - MapGraph ¨S¦³ÂI¥i¥H´è¬V¡I");
+            Debug.LogWarning("AkWarning - MapGraph ï¿½Sï¿½ï¿½ï¿½Iï¿½iï¿½Hï¿½ï¿½Vï¿½I");
             return;
         }
 
-        // ³Ð«Ø¤@­ÓªÅª«¥ó¨Ó¦s©ñ©Ò¦³ LineRenderer
+        // ï¿½Ð«Ø¤@ï¿½ÓªÅªï¿½ï¿½ï¿½Ó¦sï¿½ï¿½Ò¦ï¿½ LineRenderer
         GameObject lineParent = new GameObject("LineRenderers");
 
-        // ¹M¾ú MapGraph ¸Ìªº©Ò¦³ÂI
+        // ï¿½Mï¿½ï¿½ MapGraph ï¿½Ìªï¿½ï¿½Ò¦ï¿½ï¿½I
         for (int i = 0; i < myMapGraph.points.Count; i++)
         {
             Point currentPoint = myMapGraph.points[i];
 
-            // ¹M¾ú·í«eÂIªº³s±µÂI
+            // ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Iï¿½ï¿½ï¿½sï¿½ï¿½ï¿½I
             foreach (int linkedIndex in currentPoint.linkingPointSort)
             {
                 if (linkedIndex < 0 || linkedIndex >= myMapGraph.points.Count)
                 {
-                    Debug.LogWarning($"AkWarning - ¯Á¤Þ {linkedIndex} ¶W¥X½d³ò¡AµLªk³s±µ¡I");
+                    Debug.LogWarning($"AkWarning - ï¿½ï¿½ï¿½ï¿½ {linkedIndex} ï¿½Wï¿½Xï¿½dï¿½ï¿½Aï¿½Lï¿½kï¿½sï¿½ï¿½ï¿½I");
                     continue;
                 }
 
                 Point linkedPoint = myMapGraph.points[linkedIndex];
 
-                // °ÊºA³Ð«Ø LineRenderer ª«¥ó
+                // ï¿½ÊºAï¿½Ð«ï¿½ LineRenderer ï¿½ï¿½ï¿½ï¿½
                 GameObject lineObject = new GameObject($"Line_{i}_to_{linkedIndex}");
-                lineObject.transform.parent = lineParent.transform; // ³]¸m¤÷ª«¥ó
+                lineObject.transform.parent = lineParent.transform; // ï¿½]ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
                 LineRenderer lineRenderer = lineObject.AddComponent<LineRenderer>();
 
-                // ³]©w LineRenderer ÄÝ©Ê
+                // ï¿½]ï¿½w LineRenderer ï¿½Ý©ï¿½
                 lineRenderer.startWidth = 0.1f;
                 lineRenderer.endWidth = 0.1f;
                 lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
                 lineRenderer.startColor = Color.black;
                 lineRenderer.endColor = Color.black;
                 lineRenderer.useWorldSpace = true;
-                lineRenderer.positionCount = 2; // ¨â­ÓÂI
+                lineRenderer.positionCount = 2; // ï¿½ï¿½ï¿½ï¿½I
 
-                // ³]¸m½u±øªº¨â­ÓÂI
+                // ï¿½]ï¿½mï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I
                 Vector3 startPos = new Vector3(currentPoint.x, currentPoint.y, 0);
                 Vector3 endPos = new Vector3(linkedPoint.x, linkedPoint.y, 0);
 
@@ -125,21 +128,25 @@ public class GameCore : MonoBehaviour
 
     }
 
+    
     public void BloodLoose()
     {
+        
         bloodNow -= Time.deltaTime * bloodLooseRate;
         bloodPackImage.fillAmount = bloodNow / bloodMax;
     }
 
     public void BloodLooseJudgement()
     {
-        //§P©w¥¢¦å»P¼W¥[note
+        //ï¿½Pï¿½wï¿½ï¿½ï¿½ï¿½Pï¿½Wï¿½[note
     }
 
     public void ChangeBloodPack()
     {
-        bloodNow = bloodMax; //º¡¦å«ùÄò¤@©w®É¶¡¡A¤£­n°¨¤W´N¶}©l¬y¦å¡Aºâ¬O¤@ÂI¤pµL¼Ä®ÄªG
+        bloodNow = bloodMax; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½wï¿½É¶ï¿½ï¿½Aï¿½ï¿½ï¿½nï¿½ï¿½ï¿½Wï¿½Nï¿½}ï¿½lï¿½yï¿½ï¿½Aï¿½ï¿½Oï¿½@ï¿½Iï¿½pï¿½Lï¿½Ä®ÄªG
     }
+
+    
 
     public void gameStart()
     {
@@ -162,7 +169,7 @@ public class GameCore : MonoBehaviour
         }
         else
         {
-            //¨S¦³¤U¤@Ãö¤F ¸T¤î«ö¶s³Q«ö¤U ë§ë§ë§ë§ §ÚÄ±±o³o­Ó§PÂ_¥i¥H¦­¤@ÂI°õ¦æ ¦ýºâ¤F°Õ²{¦b¥ý³o¼Ë¼g´N¦n§Ú¦nÃi´k³á
+            //ï¿½Sï¿½ï¿½ï¿½Uï¿½@ï¿½ï¿½ï¿½F ï¿½Tï¿½ï¿½ï¿½ï¿½sï¿½Qï¿½ï¿½ï¿½U ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä±ï¿½oï¿½oï¿½Ó§Pï¿½_ï¿½iï¿½Hï¿½ï¿½ï¿½@ï¿½Iï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Fï¿½Õ²{ï¿½bï¿½ï¿½ï¿½oï¿½Ë¼gï¿½Nï¿½nï¿½Ú¦nï¿½iï¿½kï¿½ï¿½
         }
     }
     public void ReloadGame()
@@ -218,7 +225,7 @@ public class GameCore : MonoBehaviour
         }
         heartbeatChart.sprite = uiSprite[hpStatement];
 
-        //¼W¥[µøÄ±®ÄªG
+        //ï¿½Wï¿½[ï¿½ï¿½Ä±ï¿½ÄªG
     }
 
     public void swapTestHpMinus5()
@@ -281,9 +288,9 @@ public class Point
 {
     /// <summary>
     /// pointType
-    /// 0=°_ÂI
-    /// 1=²×ÂI
-    /// 2=¸`ÂI
+    /// 0=ï¿½_ï¿½I
+    /// 1=ï¿½ï¿½ï¿½I
+    /// 2=ï¿½`ï¿½I
     /// </summary>
     public int pointType;
     public List<int> linkingPointSort = new List<int>();
