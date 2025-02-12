@@ -31,6 +31,7 @@ public class GameCore : MonoBehaviour
     public float bloodNow = 40f; //�{�b�Ѿl��q
     public Image bloodPackImage;
 
+    public Animator damagedTipAnimator;
 
     public Image[] starImages = new Image[3];
     public Sprite emptyStar;
@@ -69,6 +70,10 @@ public class GameCore : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.U))
             {
                 swapTestHpMinus5();
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                damagedFunc();  
             }
 
             gameStatementRate[hpStatement] += Time.deltaTime;
@@ -269,6 +274,12 @@ public class GameCore : MonoBehaviour
     public void O2Sync()
     {
         O2TextMesh.text = "O2: " + (int)hp;
+    }
+
+    public void damagedFunc()
+    {
+        damagedTipAnimator.SetTrigger("damaged");
+        Debug.Log("damaged");
     }
 }
 
