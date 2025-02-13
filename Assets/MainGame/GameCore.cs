@@ -60,9 +60,8 @@ public class GameCore : MonoBehaviour
         {
             swapAmbulanceMoving();
             HpStatementSync();
-
             BloodLoose();
-
+            
             //�o���u���u�Ʊ�
             O2Sync();
 
@@ -136,11 +135,11 @@ public class GameCore : MonoBehaviour
     
     public void BloodLoose()
     {
-        
         bloodNow -= Time.deltaTime * bloodLooseRate;
         bloodPackImage.fillAmount = bloodNow / bloodMax;
     }
 
+    
     public void BloodLooseJudgement()
     {
         //�P�w����P�W�[note
@@ -148,8 +147,12 @@ public class GameCore : MonoBehaviour
 
     public void ChangeBloodPack()
     {
-        bloodNow = bloodMax; //�������@�w�ɶ��A���n���W�N�}�l�y��A��O�@�I�p�L�ĮĪG
+        bloodNow = bloodMax; 
+        bloodPackImage.fillAmount = 1f;
     }
+
+    
+    
 
     
 
