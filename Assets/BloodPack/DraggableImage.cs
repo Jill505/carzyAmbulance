@@ -33,8 +33,14 @@ public class DraggableBloodPack : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         if (!isDragging) return; 
 
-        RectTransform slotRect = activeSlot.GetComponent<RectTransform>();
+        ChangeBloodPack();
+        isDragging = false; 
+    }
 
+    public void ChangeBloodPack()
+    {
+        RectTransform slotRect = activeSlot.GetComponent<RectTransform>();
+        
         if (RectTransformUtility.RectangleContainsScreenPoint(slotRect, Input.mousePosition))
         {
             transform.position = startPosition;
@@ -45,7 +51,5 @@ public class DraggableBloodPack : MonoBehaviour, IBeginDragHandler, IDragHandler
         {
             transform.position = startPosition;
         }
-
-        isDragging = false; 
     }
 }
