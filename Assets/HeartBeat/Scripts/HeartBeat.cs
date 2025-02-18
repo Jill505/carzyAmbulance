@@ -71,11 +71,13 @@ public class HeartBeat : MonoBehaviour
         {
             Debug.Log("在範圍內成功檢定");
             safe = true;
+            gameCore.heartbeatHit();
         }
         else
         {
             Debug.Log("不在範圍喔");
             StartCoroutine(PunishTime());
+            gameCore.heartbeatMiss();
         }
     }
 

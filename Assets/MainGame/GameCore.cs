@@ -38,6 +38,11 @@ public class GameCore : MonoBehaviour
     public Sprite star;
     public int gameRate = 0; // -1~2, -1�N�����d����, 0~2�N��1~3�P
     public int starNumber = 0;
+
+    public bool fail = false;
+
+    public int comboCount = 0;
+
     // 1�P-�q�L���d 2�P-50%�H�W�ɶ��f�H�wí���A 3�P-85%�H�W�ɶ��f�H�wí���A
     //�wí���A = �f�H�ͩR��H���A
     public float[] gameStatementRate = new float[5];
@@ -254,18 +259,26 @@ public class GameCore : MonoBehaviour
     }
     public void finalGameExecute()
     {
-        
-        if (finalGameRateResult > 0.8f)
+        if (fail)
         {
-            starNumber = 3;
-        }
-        else if (finalGameRateResult > 0.5f)
-        {
-            starNumber = 2;
+            starNumber = 0;
+
         }
         else
         {
-            starNumber = 1;
+            if (finalGameRateResult > 0.8f)
+            {
+                starNumber = 3;
+            }
+            else if (finalGameRateResult > 0.5f)
+            {
+                starNumber = 2;
+            }
+            else
+            {
+                starNumber = 1;
+            }
+
         }
 
         for (int i = 0; i < starNumber; i++)
@@ -283,6 +296,34 @@ public class GameCore : MonoBehaviour
     {
         damagedTipAnimator.SetTrigger("damaged");
         Debug.Log("damaged");
+    }
+
+    public void heartbeatMiss()
+    {
+        hp -= 15f;
+        comboCount = 0;
+
+        if (hp < 0)
+        {
+            fail = true;
+            gameEnd();
+        }
+    }
+
+    public void heartbeatHit()
+    {
+        comboCount++;
+        if (comboCount > 5)
+        {
+            if (hp < 100)
+            {
+                hp += 5;
+            }
+            else
+            {
+                hp = 100;
+            }
+        }
     }
 }
 

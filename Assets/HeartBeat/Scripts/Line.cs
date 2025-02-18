@@ -17,26 +17,29 @@ public class Line : MonoBehaviour
     [Header("邊界參考物")]
     public GameObject borderCheckpoint;
 
+
+
+    public GameObject checkPoint;
+    public HeartBeat heartBeat;
+
     bool callClug = false;
     
     void Start()
     {
-        GameObject checkPoint = GameObject.FindWithTag("CheckPoint");
+        checkPoint = GameObject.FindWithTag("CheckPoint");
         borderCheckpoint = GameObject.Find("Border");
-        HeartBeat heartBeat = checkPoint.GetComponent<HeartBeat>();
+        heartBeat = checkPoint.GetComponent<HeartBeat>();
         duration = heartBeat.duration;
 
         distance = Vector3.Distance(checkPoint.transform.position, DecisionLine.transform.position);
 
         speed = distance / duration;
+        //speed = 30;
     }
 
 
     void FixedUpdate()
     {
-        GameObject checkPoint = GameObject.FindWithTag("CheckPoint");
-        HeartBeat heartBeat = checkPoint.GetComponent<HeartBeat>();
-
         gameObject.transform.localPosition = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
 
         if (elapsedTime < duration)
@@ -53,6 +56,7 @@ public class Line : MonoBehaviour
                 if (heartBeat.safe == false)
                 {
                     Debug.Log("未在範圍內按下space");
+                    GameObject.Find("GameCore").GetComponent<GameCore>().heartbeatMiss();
                 }
 
                 heartBeat.fixedGenAllow = true;

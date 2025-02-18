@@ -1002,7 +1002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &333684829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2010,7 +2010,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2273047, y: 0}
+  m_Offset: {x: -0.20832253, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2020,7 +2020,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.625173, y: 1}
+  m_Size: {x: 33.074986, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &647385434
 MonoBehaviour:
@@ -2037,7 +2037,7 @@ MonoBehaviour:
   gameCore: {fileID: 1193066365}
   DecisionLine: {fileID: 5218828289121578795, guid: c6104dde916addd41ade5efbaa5e0d57, type: 3}
   RightInstantiatePoint: {fileID: 739340318}
-  BPM: 120
+  BPM: 70
   duration: 0
   DelayTime: 0
   measureBeats: 4
@@ -2580,10 +2580,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.7
+  m_fontSize: 22
   m_fontSizeBase: 22
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -2776,8 +2776,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 22.1, y: -8.5}
+  m_SizeDelta: {x: 159.4004, y: 125.5784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049122401
 MonoBehaviour:
@@ -2855,8 +2855,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -2058635361, guid: 6efc433ae9c09ff488e211f10759a360, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3304,7 +3304,7 @@ MonoBehaviour:
   AmbulanceObject: {fileID: 1516332697}
   GameStartPanel: {fileID: 891999843}
   GameEndPanel: {fileID: 1710798946}
-  ambulanceSpeed: 70
+  ambulanceSpeed: 10
   gameRunning: 0
   maxHp: 100
   hp: 100
@@ -3329,6 +3329,8 @@ MonoBehaviour:
   star: {fileID: -6327802699407930267, guid: 7ee34d2ba1d05c54ab82d41ac0f2afd0, type: 3}
   gameRate: 0
   starNumber: 0
+  fail: 0
+  comboCount: 0
   gameStatementRate:
   - 0
   - 0
