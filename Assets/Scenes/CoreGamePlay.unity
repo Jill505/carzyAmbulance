@@ -3320,6 +3320,7 @@ MonoBehaviour:
   bloodMax: 40
   bloodNow: 40
   bloodPackImage: {fileID: 1415246678}
+  bloodLooseingCount: 0
   damagedTipAnimator: {fileID: 499961684}
   starImages:
   - {fileID: 15813761}
@@ -3339,6 +3340,7 @@ MonoBehaviour:
   - 0
   finalGameRateResult: 0
   O2TextMesh: {fileID: 1251035635}
+  gameEndText: {fileID: 26203297}
 --- !u!4 &1193066366
 Transform:
   m_ObjectHideFlags: 0

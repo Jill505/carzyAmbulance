@@ -28,8 +28,9 @@ public class GameCore : MonoBehaviour
 
     public float bloodLooseRate = 1f;
     public float bloodMax = 40f; //���P�����
-    public float bloodNow = 40f; //�{�b�Ѿl��q
+    public float bloodNow = 40f; //�{�b�Ѿl��q 
     public Image bloodPackImage;
+    public float bloodLooseingCount;
 
     public Animator damagedTipAnimator;
 
@@ -49,6 +50,7 @@ public class GameCore : MonoBehaviour
     public float finalGameRateResult = 0;
 
     public TextMeshProUGUI O2TextMesh;
+    public TextMeshProUGUI gameEndText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -142,12 +144,33 @@ public class GameCore : MonoBehaviour
     {
         bloodNow -= Time.deltaTime * bloodLooseRate;
         bloodPackImage.fillAmount = bloodNow / bloodMax;
+
+        if (bloodPackImage.fillAmount == 0)
+        {
+            bloodLooseingCount += Time.deltaTime;
+
+            if (bloodLooseingCount - (bloodLooseingCount % 1) > bloodClug)
+            {
+                bloodClug++;
+                BloodInjury();
+            }
+        }
+        else
+        {
+            bloodLooseingCount = 0;
+            bloodClug = 2;
+        }
     }
 
-    
+
+    int bloodClug = 0;
     public void BloodLooseJudgement()
     {
         //�P�w����P�W�[note
+        if (bloodLooseingCount - (bloodLooseingCount % 1) > bloodClug)
+        {
+            bloodClug++;
+        }
     }
 
     public void ChangeBloodPack()
@@ -156,7 +179,11 @@ public class GameCore : MonoBehaviour
         bloodPackImage.fillAmount = 1f;
     }
 
-    
+    public void BloodInjury()
+    {
+        Debug.Log("Loose Blood test message");
+        hp -= 10;
+    }
     
 
     
@@ -262,7 +289,7 @@ public class GameCore : MonoBehaviour
         if (fail)
         {
             starNumber = 0;
-
+            gameEndText.text = "病人半路中道崩殂";
         }
         else
         {
