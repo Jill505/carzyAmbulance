@@ -4,69 +4,80 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-     [Header("預製體")]
-    public GameObject DecisionLine; 
+    private Heartbeat Heartbeat;
+    public float speed = 5f; 
+    private float liveTime = 0f;
+    private bool InThePerfectPoint = false;
+    private bool InTheGoodPoint = false;
+    private bool getPoint = false;
 
-    [Header("時間限制")]
-    private float duration;
-
-    private float distance;  
-    public float speed;            
-    private float elapsedTime = 0f;
-
-    [Header("邊界參考物")]
-    public GameObject borderCheckpoint;
-
-
-
-    public GameObject checkPoint;
-    public HeartBeat heartBeat;
-
-    bool callClug = false;
-    
     void Start()
     {
-        checkPoint = GameObject.FindWithTag("CheckPoint");
-        borderCheckpoint = GameObject.Find("Border");
-        heartBeat = checkPoint.GetComponent<HeartBeat>();
-        duration = heartBeat.duration;
-
-        distance = Vector3.Distance(checkPoint.transform.position, DecisionLine.transform.position);
-
-        speed = distance / duration;
-        //speed = 30;
+        Heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
     }
 
-
-    void FixedUpdate()
+    void Update()
     {
-        gameObject.transform.localPosition = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        InputSpace();
 
-        if (elapsedTime < duration)
+        liveTime += Time.deltaTime;
+        if (liveTime >= 1.5f)
         {
-            float moveDistance = speed * Time.deltaTime; 
-            //DecisionLine.transform.position = Vector3.MoveTowards(DecisionLine.transform.position, checkPoint.transform.position, moveDistance);
-            //gameObject.transform.localPosition = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
-            elapsedTime += Time.deltaTime;
-        }
-        else
-        {
-            if (callClug == false)
+            if(getPoint != true)
             {
-                if (heartBeat.safe == false)
-                {
-                    Debug.Log("未在範圍內按下space");
-                    GameObject.Find("GameCore").GetComponent<GameCore>().heartbeatMiss();
-                }
-
-                heartBeat.fixedGenAllow = true;
-                callClug = true;
+               Heartbeat.InjuryAndSpawnANote();
             }
-            //Destroy(gameObject);
-        }
-        if (gameObject.transform.position.x < borderCheckpoint.transform.position.x)
-        {
             Destroy(gameObject);
         }
+    }        
+
+    void InputSpace()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CheckInput();
+        }
     }
+    void CheckInput()
+    {
+        if(InThePerfectPoint)
+        {
+            Debug.Log("完美");
+            getPoint = true;
+        }
+        else if(InTheGoodPoint && !InThePerfectPoint)
+        {
+            Debug.Log("很好");
+            getPoint = true;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Good")
+        {
+            InTheGoodPoint = true;
+        }
+
+        if (collision.gameObject.tag == "Perfect")
+        {
+            InThePerfectPoint = true;
+        }
+        
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Good")
+        {
+            InTheGoodPoint = false;
+        }
+
+        if (collision.gameObject.tag == "Perfect")
+        {
+            InThePerfectPoint = false;
+        }
+    }
+            
+
+        
 }

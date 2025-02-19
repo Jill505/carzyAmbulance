@@ -18,7 +18,7 @@ public class GameCore : MonoBehaviour
 
     public float ambulanceSpeed = 7f;
 
-    public bool gameRunning = false;
+    public bool gameRunning = true;
 
     public float maxHp = 100f;
     public float hp = 100f;//100~0 
