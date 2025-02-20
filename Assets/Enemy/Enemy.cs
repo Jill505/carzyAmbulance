@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private GameCore gameCore;
     [Header("基本數值")]
     public float health = 3;
     public float attackFrequency = 5f;
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();      
         InitializeScale();
         StartCoroutine(AttackCycle());
     }
@@ -161,7 +163,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("正面偷襲!!");
+        gameCore.BloodInjury(10);
     }
 
     public void TakeDamage(float damage)

@@ -43,7 +43,7 @@ public class BulletSystem : MonoBehaviour
 
             HandleCrosshair(); //鼠標
             HoldBullet();     //拿子彈
-            LoadIn();         //上膛
+            //LoadIn();         //上膛
             HandleShooting(); //射擊   
         }    
     }
@@ -88,6 +88,7 @@ public class BulletSystem : MonoBehaviour
                     hasBullet = true;
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
+                    loadIn = true;
                 }
                 else
                 {
@@ -99,7 +100,7 @@ public class BulletSystem : MonoBehaviour
         }
     }
 
-    void LoadIn()
+    /*void LoadIn()
     {
         if (hasBullet && Input.GetMouseButtonDown(0) && IsMouseOver(gunCollider, mousePosition))
         {
@@ -112,7 +113,7 @@ public class BulletSystem : MonoBehaviour
             }
             lastClickTime = Time.time;
         }
-    }
+    }*/
 
         
     void HandleShooting()

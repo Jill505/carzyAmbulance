@@ -79,6 +79,11 @@ public class GameCore : MonoBehaviour
             //�o���u���u�Ʊ�
             O2Sync();
 
+            int randomShit = Random.Range(1,11451);
+            if(randomShit == 50)
+            {
+                InsEnemy();
+            }
 
             if (Input.GetKeyDown(KeyCode.U))
             {
@@ -191,7 +196,10 @@ public class GameCore : MonoBehaviour
         Debug.Log("Loose Blood test message");
         hp -= 10;
     }
-    
+      public void BloodInjury(int hpHurt)
+    {
+        hp -= hpHurt;
+    }
 
     
 
