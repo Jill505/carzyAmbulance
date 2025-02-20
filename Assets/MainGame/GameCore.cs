@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.SceneManagement;
@@ -31,6 +33,10 @@ public class GameCore : MonoBehaviour
     public float bloodNow = 40f; //�{�b�Ѿl��q 
     public Image bloodPackImage;
     public float bloodLooseingCount;
+
+    public GameObject enemy;
+    public GameObject referencePointMobMovingRangeA;
+    public GameObject referencePointMobMovingRangeB;
 
     public Animator damagedTipAnimator;
 
@@ -353,6 +359,11 @@ public class GameCore : MonoBehaviour
                 hp = 100;
             }
         }
+    }
+
+    public void InsEnemy()
+    {
+        Instantiate(enemy,new Vector3(Random.Range(referencePointMobMovingRangeA.transform.position.x,referencePointMobMovingRangeB.transform.position.x),Random.Range(referencePointMobMovingRangeA.transform.position.y,referencePointMobMovingRangeB.transform.position.y)),Quaternion.identity);
     }
 }
 
