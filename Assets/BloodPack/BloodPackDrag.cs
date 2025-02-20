@@ -23,6 +23,11 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         originalPosition = rectTransform.position;             
     }
 
+    void Update()
+    {
+        SetActiveF();
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
@@ -83,5 +88,13 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
          rectTransform.position = originalPosition;
          bloodPackImage.color = new Color(1, 0, 0, 1);
          gameObject.SetActive(false);
+    }
+
+    private void SetActiveF()
+    {
+        if(bloodPackImage.fillAmount == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
