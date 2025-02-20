@@ -18,7 +18,7 @@ public class GameCore : MonoBehaviour
 
     public float ambulanceSpeed = 7f;
 
-    public bool gameRunning = true;
+    public bool gameRunning = false;
 
     public float maxHp = 100f;
     public float hp = 100f;//100~0 
@@ -68,6 +68,7 @@ public class GameCore : MonoBehaviour
             swapAmbulanceMoving();
             HpStatementSync();
             BloodLoose();
+            
             
             //�o���u���u�Ʊ�
             O2Sync();
@@ -327,6 +328,7 @@ public class GameCore : MonoBehaviour
 
     public void heartbeatMiss()
     {
+        //Debug.Log("from GameCore.cs, the message called");
         hp -= 15f;
         comboCount = 0;
 

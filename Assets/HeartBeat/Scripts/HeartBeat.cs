@@ -6,7 +6,7 @@ using TMPro;
 
 public class Heartbeat : MonoBehaviour
 {
-    //public GameCore gameCore;
+    private GameCore gameCore;
 
     [Header("預製體")]
     public GameObject DecisionLine;
@@ -24,26 +24,12 @@ public class Heartbeat : MonoBehaviour
 
     void Start()
     {
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();   
         BPMSet();
         BPMsync();
-        StartCoroutine(InstantitateLine());
-        /*
-        if(gameCore.gameRunning)
-        {
-            BPMSet();
-            //BPMsync();
-            StartCoroutine(InstantitateLine());
-            InputSpace();
-        }*/
+        StartCoroutine(InstantitateLine());   
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))  //受傷增加節拍(用Q代替
-        {
-            InjuryAndSpawnANote();
-        }
-    }
     public void BPMSet()
     {
         duration = 60f/(BPM*4f);
@@ -87,7 +73,8 @@ public class Heartbeat : MonoBehaviour
 */
     IEnumerator InstantitateLine()
     {
-        while(true)
+        yield return new WaitUntil(() => gameCore.gameRunning);
+        while(gameCore.gameRunning)
         {
             yield return new WaitForSeconds(duration);
             currentCount++;
@@ -105,13 +92,14 @@ public class Heartbeat : MonoBehaviour
             }
         }
     }
-
     
     
 
     public void InjuryAndSpawnANote()
     {
+        //Debug.Log("from Heartbeat.cs. the message called currectly");
         pendingNote ++;
+        gameCore.heartbeatMiss();
     }
 
 }

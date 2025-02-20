@@ -42,13 +42,15 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 float factor = Mathf.Lerp(0f, 1f, dragTime / dragDelayTime); // 
                 targetPosition = Vector3.Lerp(originalPosition, targetPosition, factor * dragResistance);
+                rectTransform.position = targetPosition;
             }
             else
             {
-                targetPosition = eventData.position;
+                rectTransform.position = Vector3.Lerp(rectTransform.position, eventData.position, Time.deltaTime * 100f);
+                return;
             }
 
-            rectTransform.position = targetPosition;
+            
         }
     }
 
