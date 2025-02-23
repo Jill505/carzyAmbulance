@@ -18,23 +18,38 @@ public class Heartbeat : MonoBehaviour
     public int BPM = 120;            
     public float duration;   
     private int currentCount = 0;
-    private int pendingNote = 0;
+    public int pendingNote = 0;
+
+    public float preSpawnSoundEffectTime = 0.2f;
+    public GameObject heartbeatSoundEffect_normal;
+    public GameObject heartbeatSoundEffect_inDanger;
+    public GameObject heartbeatSoundEffect_moreDanger;
 
     public TextMeshProUGUI bpmTextMesh;
 
     void Start()
     {
-        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();   
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();
+        syncBPMFromGameCore();
         BPMSet();
-        BPMsync();
+        BPMsyncToText();
         StartCoroutine(InstantitateLine());   
     }
+
+    public void BPMChnage(int newBPM)
+    {
+        BPM = newBPM;
+        syncBPMFromGameCore();
+        BPMSet();
+        BPMsyncToText();
+    }
+
 
     public void BPMSet()
     {
         duration = 60f/(BPM*4f);
     }
-    public void BPMsync()
+    public void BPMsyncToText()
     {
         bpmTextMesh.text = "BPM: "+(int)BPM;
     }
@@ -88,6 +103,7 @@ public class Heartbeat : MonoBehaviour
             if(pendingNote > 0)
             {
                 Instantiate(DecisionLine, InstantiatePoint.position, InstantiatePoint.rotation);
+                insSoundEffect();
                 pendingNote--;
             }
         }
@@ -102,4 +118,24 @@ public class Heartbeat : MonoBehaviour
         gameCore.heartbeatMiss();
     }
 
+    public void insSoundEffect()
+    {
+        if (gameCore.hp < 10)
+        {
+            Instantiate(heartbeatSoundEffect_moreDanger);
+        }
+        else if(gameCore.hp < 50)
+        {
+            Instantiate(heartbeatSoundEffect_inDanger);
+        }
+        else
+        {
+            Instantiate(heartbeatSoundEffect_normal);
+        }
+    }
+
+    public void syncBPMFromGameCore()
+    {
+        BPM = gameCore.theBPM;
+    }
 }

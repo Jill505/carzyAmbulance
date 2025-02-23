@@ -86,7 +86,7 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             yield return null;
         }
          rectTransform.position = originalPosition;
-         bloodPackImage.color = new Color(1, 0, 0, 1);
+         bloodPackImage.color = new Color(1, 1, 1, 1);
          gameObject.SetActive(false);
     }
 

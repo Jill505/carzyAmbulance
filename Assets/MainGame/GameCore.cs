@@ -1,14 +1,21 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization;
 using TMPro;
+using Unity.Android.Gradle;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Build.Content;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class GameCore : MonoBehaviour
 {
@@ -19,6 +26,9 @@ public class GameCore : MonoBehaviour
     public GameObject GameEndPanel;
 
     public float ambulanceSpeed = 7f;
+    public int ambulanceMovingFromPoint;
+    public int ambulanceMovingToPoint;
+    public Vector2 theAmbulanceDirectionVector;
 
     public bool gameRunning = false;
 
@@ -38,7 +48,13 @@ public class GameCore : MonoBehaviour
     public GameObject referencePointMobMovingRangeA;
     public GameObject referencePointMobMovingRangeB;
 
+    public Heartbeat heartbeat;
+
     public Animator damagedTipAnimator;
+    public Animator bloodPackTipAnimator;
+
+    public Sprite eventSprite_enemySpawn;
+    public Sprite eventSprite_roadRock;
 
     public Image[] starImages = new Image[3];
     public Sprite emptyStar;
@@ -58,12 +74,22 @@ public class GameCore : MonoBehaviour
     public TextMeshProUGUI O2TextMesh;
     public TextMeshProUGUI gameEndText;
 
-
+    public int bpm = 120;
+    
+    public int theBPM
+    {
+        get { return bpm; }
+        set { bpm = value; heartbeat.BPMChnage(bpm); }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         RanderPoint();
         resetAmbulancePosition();
+        ambulanceMovingFromPoint = 0;// set the start point
+
+        //Swap
+        ambulanceMovingToPoint = 1;
     }
 
     // Update is called once per frame
@@ -71,7 +97,8 @@ public class GameCore : MonoBehaviour
     {
         if (gameRunning)
         {
-            swapAmbulanceMoving();
+            AmbulanceMoving();
+            //swapAmbulanceMoving();
             HpStatementSync();
             BloodLoose();
             
@@ -79,11 +106,12 @@ public class GameCore : MonoBehaviour
             //�o���u���u�Ʊ�
             O2Sync();
 
+            /*
             int randomShit = Random.Range(1,11451);
             if(randomShit == 50)
             {
                 InsEnemy();
-            }
+            }*/
 
             if (Input.GetKeyDown(KeyCode.U))
             {
@@ -147,6 +175,32 @@ public class GameCore : MonoBehaviour
                 lineRenderer.SetPosition(0, startPos);
                 lineRenderer.SetPosition(1, endPos);
             }
+            int j = 0;
+            //Render the liner event
+            foreach (EventPoint eventPoint in currentPoint.theEventPoints)
+            {
+                Vector2 vec = new Vector2(myMapGraph.points[myMapGraph.points[i].linkingPointSort[0]].x - myMapGraph.points[i].x, myMapGraph.points[myMapGraph.points[i].linkingPointSort[0]].y - myMapGraph.points[i].y);
+                vec = vec * eventPoint.atPos;
+                GameObject gObj = new GameObject("Pointer Object From Point" + i + eventPoint.myEventType);
+                gObj.transform.position = new Vector2( myMapGraph.points[i].x + vec.x, myMapGraph.points[i].y + vec.y);
+                SpriteRenderer sr =  gObj.AddComponent<SpriteRenderer>();
+                sr.sortingOrder = 10;
+
+                Debug.Log(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[j].myEventType + "載入");
+                switch (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[j].myEventType)
+                {
+                    case (EventPoint.eventType.enemySpawn):
+                        sr.sprite = eventSprite_enemySpawn;
+                        break;
+                    case (EventPoint.eventType.roadRock):
+                        sr.sprite = eventSprite_roadRock;
+                        break;
+                    default:
+                        Debug.Log("未知事件");
+                        break;
+                }
+                j++;
+            }
         }
 
     }
@@ -172,8 +226,16 @@ public class GameCore : MonoBehaviour
             bloodLooseingCount = 0;
             bloodClug = 2;
         }
-    }
 
+        if (bloodNow / bloodMax < 0.2f)
+        {
+            bloodPackTipAnimator.SetBool("Warning", true);
+        }
+        else
+        {
+            bloodPackTipAnimator.SetBool("Warning",false);
+        }
+    }
 
     int bloodClug = 0;
     public void BloodLooseJudgement()
@@ -240,11 +302,114 @@ public class GameCore : MonoBehaviour
     {
         AmbulanceObject.transform.localPosition = myMapGraph.getPointXY(0);
     }
+    public void AmbulanceMoving()
+    {
+        theAmbulanceDirectionVector = new Vector2(myMapGraph.points[ambulanceMovingToPoint].x - myMapGraph.points[ambulanceMovingFromPoint].x, myMapGraph.points[ambulanceMovingToPoint].y- myMapGraph.points[ambulanceMovingFromPoint].y).normalized;
+        float vectorX = theAmbulanceDirectionVector.x/10f;
+        float vectorY = theAmbulanceDirectionVector.y/10f;
+        //Debug.Log("dirX:" + vectorX + " DirY:" + vectorY);
+        AmbulanceObject.transform.localPosition = (AmbulanceObject.transform.localPosition + new Vector3(vectorX * ambulanceSpeed * Time.deltaTime, vectorY * ambulanceSpeed * Time.deltaTime, 0));
+        
+        AmbulanceReachPointJudge();
+        AmbulancePointEventJudge();
+    }
     public void swapAmbulanceMoving()
     {
         AmbulanceObject.transform.localPosition = (AmbulanceObject.transform.localPosition + new Vector3(0.01f * ambulanceSpeed * Time.deltaTime,0,0));
         swapAmbulanceJudgement();
     }
+    public void AmbulancePointEventJudge()
+    {
+        if (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints.Length != 0)
+        {
+            Vector2 journey = new Vector2(myMapGraph.points[ambulanceMovingToPoint].x - myMapGraph.points[ambulanceMovingFromPoint].x, myMapGraph.points[ambulanceMovingToPoint].y - myMapGraph.points[ambulanceMovingFromPoint].y);
+            float journeyLength = journey.magnitude; // 旅程的總長度
+            Vector2 ambulanceAtPos = new Vector2(AmbulanceObject.transform.position.x, AmbulanceObject.transform.position.y);
+            float distanceTravelled = (ambulanceAtPos - new Vector2(myMapGraph.points[ambulanceMovingFromPoint].x, myMapGraph.points[ambulanceMovingFromPoint].y)).magnitude; // 已移動距離
+            float percent = distanceTravelled / journeyLength; // 計算進度百分比
+            //float percent = Mathf.Sqrt(Mathf.Pow((journey.x - ambulanceAtPos.x),2) - Mathf.Pow((journey.y - ambulanceAtPos.y),2))
+
+            for (int i = 0, times = myMapGraph.points[ambulanceMovingFromPoint].theEventPoints.Length; i< times; i++)
+            {
+                //check if reachPoint
+                if (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].atPos < percent && myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].triggered == false)
+                {
+                    myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].triggered = true;
+                    switch (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].myEventType)
+                    {
+                        case (EventPoint.eventType.enemySpawn):
+                            Event_enemySpawn();
+                            break;
+                        case (EventPoint.eventType.roadRock):
+                            Event_roadRock();
+                            break;
+                        default:
+                            Debug.Log("未知事件");
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    public void AmbulanceReachPointJudge()
+    {
+        //設定方向性
+        bool reachX = false;
+        bool reachY = false;
+        if (myMapGraph.points[ambulanceMovingFromPoint].x < myMapGraph.points[ambulanceMovingToPoint].x)
+        {
+            if (AmbulanceObject.transform.position.x > myMapGraph.points[ambulanceMovingToPoint].x)
+            {
+                reachX = true;
+            }
+        }
+        else
+        {
+            if (AmbulanceObject.transform.position.x <= myMapGraph.points[ambulanceMovingToPoint].x)
+            {
+                reachX = true;
+            }
+        }
+
+        if (myMapGraph.points[ambulanceMovingFromPoint].y < myMapGraph.points[ambulanceMovingToPoint].y)
+        {
+            if (AmbulanceObject.transform.position.y > myMapGraph.points[ambulanceMovingToPoint].y)
+            {
+                reachY = true;
+            }
+        }
+        else
+        {
+            if (AmbulanceObject.transform.position.y <= myMapGraph.points[ambulanceMovingToPoint].y)
+            {
+                reachY = true;
+            }
+        }
+
+        if (reachX == true && reachY == true)
+        {
+            //ReachPoint, trigger point funciotn
+            switch (myMapGraph.points[ambulanceMovingToPoint].pointType)
+            {
+                case 0:
+                    Debug.LogWarning("AK_error : You shouldn't do this, the start point can't be the reach point bro, fix your game.");
+                    break;
+                case (1):// the end;
+                    gameEnd();
+                    break;
+            }
+        }
+        else
+        {
+            //Debug.Log("X reach:" +reachX +" Y reach:" + reachY);
+        }
+    }
+    public void AmbulanceSetInitialization()
+    {
+        ambulanceMovingFromPoint = 0;
+        ambulanceMovingToPoint = 1;
+    }
+
     public void swapAmbulanceJudgement()
     {
         if (AmbulanceObject.transform.position.x >= myMapGraph.getPointXY(1).x)
@@ -373,6 +538,19 @@ public class GameCore : MonoBehaviour
     {
         Instantiate(enemy,new Vector3(Random.Range(referencePointMobMovingRangeA.transform.position.x,referencePointMobMovingRangeB.transform.position.x),Random.Range(referencePointMobMovingRangeA.transform.position.y,referencePointMobMovingRangeB.transform.position.y)),Quaternion.identity);
     }
+    public void Event_enemySpawn()
+    {
+        int enemyNumberRandom = Random.Range(1,3);
+        for (int i = 0; i < enemyNumberRandom; i++)
+        {
+            InsEnemy();
+        }
+    }
+    public void Event_roadRock()
+    {
+        int roadRockRandom = Random.Range(3,6);
+        heartbeat.pendingNote += roadRockRandom;
+    }
 }
 
 [System.Serializable]
@@ -391,12 +569,32 @@ public class Point
 {
     /// <summary>
     /// pointType
-    /// 0=�_�I
-    /// 1=���I
-    /// 2=�`�I
+    /// 0= start point
+    /// 1= end point
+    /// 2= the node point
     /// </summary>
     public int pointType;
     public List<int> linkingPointSort = new List<int>();
     public float x;
     public float y;
+
+    public EventPoint[] theEventPoints;
+    public bool[] alreadyReachTheEventPoints;
+    public void AutoSet()
+    {
+        if (theEventPoints.Length != alreadyReachTheEventPoints.Length)
+        {
+            bool[] theSwapBoolArray = new bool[theEventPoints.Length];
+            alreadyReachTheEventPoints = theSwapBoolArray;
+        }
+    }
+}
+
+[System.Serializable]
+public class EventPoint
+{
+    public enum eventType { enemySpawn, roadRock}
+    public eventType myEventType;
+    [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
+    public bool triggered = false;
 }
