@@ -10,7 +10,6 @@ public class BulletSystem : MonoBehaviour
 
 
     [Header ("圖標")]
-    public Texture2D crosshairNormal;  
     public Texture2D crosshairShoot;    
     public Texture2D crosshairNoBullet; 
 
@@ -20,20 +19,21 @@ public class BulletSystem : MonoBehaviour
 
     [Header ("攻擊力")]
     public float Firepower = 1f; 
+
     
     private bool isInShootRange = false; 
     private bool isHoldingBullet = false; 
-    private bool hasBullet = false; 
     private bool loadIn = false;
-    private float lastClickTime = 0f;
-    private const float doubleClickTime = 0.3f; 
     private Vector2 mousePosition;
+    private Vector2 originalPos;
 
+    public GameObject bulletbox;
     public GameCore gameCore;
 
     void Start()
     {
-        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();         
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();     
+        originalPos = bulletbox.transform.position;    
     }
     void Update()
     {
@@ -72,10 +72,19 @@ public class BulletSystem : MonoBehaviour
 
     void HoldBullet()
     {
-        if (Input.GetMouseButtonDown(0) && IsMouseOver(bulletBoxCollider, mousePosition) && !hasBullet)
+        if (Input.GetMouseButtonDown(0) && IsMouseOver(bulletBoxCollider, mousePosition) && !loadIn)
         {
             isHoldingBullet = true;
             Debug.Log("取得子彈數據");
+        }
+
+        if (isHoldingBullet)
+        {
+            bulletbox.transform.position = mousePosition; 
+        }
+        else if(!isHoldingBullet)
+        {
+            bulletbox.transform.position = originalPos;
         }
 
         // 放開時判斷是否進入槍枝範圍
@@ -85,7 +94,6 @@ public class BulletSystem : MonoBehaviour
             {
                 if (IsMouseOver(gunCollider, mousePosition))
                 {
-                    hasBullet = true;
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
                     loadIn = true;
@@ -98,6 +106,7 @@ public class BulletSystem : MonoBehaviour
                 isHoldingBullet = false;
             }
         }
+        
     }
 
     /*void LoadIn()

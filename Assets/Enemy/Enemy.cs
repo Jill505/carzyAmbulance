@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private GameCore gameCore;
+    public Heartbeat heartbeat;
     [Header("基本數值")]
     public float health = 3;
     public float attackFrequency = 5f;
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();      
+        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();      
         InitializeScale();
         StartCoroutine(AttackCycle());
     }
@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        gameCore.BloodInjury(10);
+        heartbeat.InjuryAndSpawnANote();
     }
 
     public void TakeDamage(float damage)
