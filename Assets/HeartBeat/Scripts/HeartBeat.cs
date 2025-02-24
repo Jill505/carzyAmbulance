@@ -94,17 +94,17 @@ public class Heartbeat : MonoBehaviour
             yield return new WaitForSeconds(duration);
             currentCount++;
 
-            if(currentCount > 3)
-            {
-                currentCount = 0;
-                pendingNote++;
-            }
-
-            if(pendingNote > 0)
+            if (pendingNote > 0)
             {
                 Instantiate(DecisionLine, InstantiatePoint.position, InstantiatePoint.rotation);
                 insSoundEffect();
                 pendingNote--;
+            }
+
+            if (currentCount > 3)
+            {
+                currentCount = 0;
+                pendingNote++;
             }
         }
     }
@@ -137,5 +137,10 @@ public class Heartbeat : MonoBehaviour
     public void syncBPMFromGameCore()
     {
         BPM = gameCore.theBPM;
+    }
+
+    public void AssistSystem()
+    {
+
     }
 }
