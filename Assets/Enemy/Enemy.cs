@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Heartbeat heartbeat;
+    private Heartbeat heartbeat;
+    
     [Header("基本數值")]
     public float health = 3;
     public float attackFrequency = 5f;
 
     [Header("大小變化")]  //做出遠近效果
-    public float duration = 15f;  //敵人變大時間
-    private Vector3 startScale = Vector3.one * 0.02f;  //初始大小（0.02 倍）
     private Vector3 targetScale = Vector3.one * 0.2f;  //目標大小（0.2 倍）
-    private float elapsedTime = 0f;  //記錄經過的時間
-    private bool scalingComplete = false;
+    
 
     [Header("左右移動")]
     public float moveSpeed = 5f;  //速度
@@ -26,6 +24,7 @@ public class Enemy : MonoBehaviour
 
 
     private bool canMove = true;
+    private bool shootRange; 
 
     private float attackDuration = 1.2f;  //攻擊過程的持續時間
     private bool isAttacking = false;
@@ -38,8 +37,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();      
-        InitializeScale();
+        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();     
         StartCoroutine(AttackCycle());
     }
 
@@ -50,29 +48,12 @@ public class Enemy : MonoBehaviour
         HandleTilting();
     }
 
-    //初始化敵人的大小
-    void InitializeScale()
-    {
-        transform.localScale = startScale;
-    }
+    
 
     //敵人變大的過程
     void HandleScaling()
     {
-        if (!scalingComplete)  //只在變大過程中處理
-        {
-            elapsedTime += Time.deltaTime;
-            float progress = Mathf.Pow(elapsedTime / duration, 2);
-            transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
-
-            // 當敵人變大完成後，設置 scalingComplete 為 true
-            if (elapsedTime >= duration)
-            {
-                scalingComplete = true;
-            }
-        }
-        else
-        {
+        
             if (isAttacking)
             {
                 attackTimer += Time.deltaTime;
@@ -86,8 +67,8 @@ public class Enemy : MonoBehaviour
                 float progressReturn = Mathf.Clamp01(returnTimer / returnDuration);
                 transform.localScale = Vector3.Lerp(Vector3.one * 0.3f, targetScale, progressReturn);
             }
-        }
     }
+    
 
     //敵人左右移動
     void HandleMovement()
@@ -127,6 +108,19 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(WaitAndChangeDirection(0.5f)); 
         }
+
+        if (other.CompareTag("ShootRange"))
+        {
+            shootRange = true; 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("ShootRange"))
+        {
+            shootRange = false; 
+        }
     }
 
     IEnumerator WaitAndChangeDirection(float waitTime)
@@ -139,15 +133,16 @@ public class Enemy : MonoBehaviour
 
     IEnumerator AttackCycle()
     {
-        yield return new WaitForSeconds(duration);  
-
         while (true)
         {
             yield return new WaitForSeconds(attackFrequency);  
 
-            isAttacking = true; 
-            attackTimer = 0f;  
-            Attack();  
+            if(shootRange)
+            {
+                isAttacking = true; 
+                attackTimer = 0f;  
+                Attack();  
+            }
 
             yield return new WaitForSeconds(1.2f); 
 
@@ -160,6 +155,9 @@ public class Enemy : MonoBehaviour
             isReturningToTargetScale = false;
         }
     }
+
+
+    
 
     public void Attack()
     {
