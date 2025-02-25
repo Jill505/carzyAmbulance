@@ -46,6 +46,11 @@ public class BulletSystem : MonoBehaviour
             //LoadIn();         //上膛
             HandleShooting(); //射擊   
         }    
+        else
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            //changebackthemouse
+        }
     }
 
     void HandleCrosshair()
