@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
 using TMPro;
-using Unity.Android.Gradle;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Build.Content;
@@ -536,9 +535,19 @@ public class GameCore : MonoBehaviour
 
     public void InsEnemy()
     {
-        Instantiate(enemy,new Vector3(Random.Range(referencePointMobMovingRangeA.transform.position.x,referencePointMobMovingRangeB.transform.position.x),Random.Range(referencePointMobMovingRangeA.transform.position.y,referencePointMobMovingRangeB.transform.position.y)),Quaternion.identity);
+        Vector2 spawnPosition;
+
+        if (Random.Range(0, 2) == 0)
+        {
+            spawnPosition = referencePointMobMovingRangeA.transform.position;
+        }
+        else
+        {
+            spawnPosition = referencePointMobMovingRangeB.transform.position;
+        }
+        Instantiate(enemy, spawnPosition, Quaternion.identity);
     }
-    public void Event_enemySpawn()
+        public void Event_enemySpawn()
     {
         int enemyNumberRandom = Random.Range(1,3);
         for (int i = 0; i < enemyNumberRandom; i++)
