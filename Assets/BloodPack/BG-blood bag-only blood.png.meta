@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: dcf60abf6e4234c43996ede1125aba30
+guid: ecf9c63ff7e17a6469f8d04322cc7e01
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5879229001868888675
-    second: GUN_0
+      213: -4396352746745674505
+    second: BG-blood bag-only blood_0
+  - first:
+      213: 3041100338476834134
+    second: BG-blood bag-only blood_1
+  - first:
+      213: -902426914165513444
+    second: BG-blood bag-only blood_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GUN_0
+      name: BG-blood bag-only blood_0
       rect:
         serializedVersion: 2
-        x: 642
-        y: 871
-        width: 3164
-        height: 1368
+        x: 443
+        y: 428
+        width: 429
+        height: 746
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d953e6e4f58c86ea0800000000000000
-      internalID: -5879229001868888675
+      spriteID: 7f449ee38740df2c0800000000000000
+      internalID: -4396352746745674505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG-blood bag-only blood_1
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 19
+        width: 17
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65d5b3935a8243a20800000000000000
+      internalID: 3041100338476834134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG-blood bag-only blood_2
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 0
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13a969b08fe973f0800000000000000
+      internalID: -902426914165513444
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9e3cb46d48f1b7c428145a701788350d
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GUN_0: -5879229001868888675
+      BG-blood bag-only blood_0: -4396352746745674505
+      BG-blood bag-only blood_1: 3041100338476834134
+      BG-blood bag-only blood_2: -902426914165513444
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

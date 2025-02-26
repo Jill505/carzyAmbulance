@@ -17,6 +17,8 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public float dragDelayTime = 2f;    
     public float dragResistance = 0.5f; 
 
+    
+
     void Start()
     {
         rectTransform = bloodPackImage.GetComponent<RectTransform>();
@@ -92,7 +94,7 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void SetActiveF()
     {
-        if(bloodPackImage.fillAmount == 0)
+        if(bloodPackImage.fillAmount <= 0)
         {
             gameObject.SetActive(false);
         }

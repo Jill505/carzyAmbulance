@@ -244,7 +244,7 @@ public class GameCore : MonoBehaviour
         bloodNow -= Time.deltaTime * bloodLooseRate;
         bloodPackImage.fillAmount = bloodNow / bloodMax;
 
-        if (bloodPackImage.fillAmount == 0)
+        if (bloodPackImage.fillAmount <= 0.2)
         {
             bloodLooseingCount += Time.deltaTime;
 
