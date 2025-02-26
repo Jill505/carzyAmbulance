@@ -22,7 +22,8 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     void Start()
     {
         rectTransform = bloodPackImage.GetComponent<RectTransform>();
-        originalPosition = rectTransform.position;             
+        originalPosition = rectTransform.position;       
+              
     }
 
     void Update()
@@ -80,15 +81,20 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private IEnumerator FadeOutBloodPack()
     {
         float alpha = bloodPackImage.color.a;
+        Transform child = transform.GetChild(0);
+        Image childImage = child.GetComponent<Image>();
 
         while (alpha > 0)
         {
             alpha -= Time.deltaTime * 2f; 
             bloodPackImage.color = new Color(1, 1, 1, alpha); 
+            childImage.color = new Color(1, 1, 1, alpha);
             yield return null;
         }
          rectTransform.position = originalPosition;
          bloodPackImage.color = new Color(1, 1, 1, 1);
+         childImage.color = new Color(1, 1, 1, 1);
+         
          gameObject.SetActive(false);
     }
 
