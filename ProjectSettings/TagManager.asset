@@ -11,6 +11,7 @@ TagManager:
   - Perfect
   - Good
   - Line
+  - heartbeat
   layers:
   - Default
   - TransparentFX
