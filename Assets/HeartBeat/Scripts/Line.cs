@@ -7,15 +7,16 @@ public class Line : MonoBehaviour
     private Heartbeat Heartbeat;
     private GameCore gameCore;
     public float speed = 5f; 
-    private float liveTime = 0f;
     private bool InThePerfectPoint = false;
     private bool InTheGoodPoint = false;
     private bool getPoint = false;
+    private bool hasExecuted = false;
 
     void Start()
     {
         Heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();   
+       
     }
 
     void Update()
@@ -23,28 +24,31 @@ public class Line : MonoBehaviour
         transform.Translate(Vector3.left * speed * Time.deltaTime);
         InputSpace();
 
+        if (transform.position.x < Heartbeat.checkIfShouldChangeColor.transform.position.x)
+        {
+            if (getPoint != true && hasExecuted == false)
+            {
+                //Debug.Log("a hint from Line.cs, the function triggered currecrt");
+                gameCore.damagedHintFunc();
+                Heartbeat.InjuryAndSpawnANote();
+                SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+                if (childSpriteRenderer != null)
+                {
+                    childSpriteRenderer.color = Color.red;
+                }
+                hasExecuted = true;
+            }
+        }
+
         if (transform.position.x < Heartbeat.border.transform.position.x)
         {
             if (getPoint != true)
             {
-                //Debug.Log("a hint from Line.cs, the function triggered currecrt");
-                Heartbeat.InjuryAndSpawnANote();
-                gameCore.damagedHintFunc();
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            
         }
 
-        /*
-        liveTime += Time.deltaTime;
-        if (liveTime >= 1.5f)
-        {
-            if(getPoint != true)
-            {
-                //Debug.Log("a hint from Line.cs, the function triggered currecrt");
-               Heartbeat.InjuryAndSpawnANote();
-            }
-            Destroy(gameObject);
-        }*/
     }        
 
     void InputSpace()

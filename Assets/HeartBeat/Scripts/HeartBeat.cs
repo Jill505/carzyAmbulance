@@ -45,6 +45,7 @@ public class Heartbeat : MonoBehaviour
         }
     }
     public GameObject border;
+    public GameObject checkIfShouldChangeColor;
 
     void Start()
     {
@@ -161,7 +162,7 @@ public class Heartbeat : MonoBehaviour
     
     public IEnumerator AssistHint()
     {
-        float alpha = 1;
+        //float alpha = 1;
         yield return new WaitUntil(() => true);
         yield return null;
     }
