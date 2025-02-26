@@ -11,6 +11,7 @@ using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,61 +19,83 @@ using UnityEngine.VFX;
 
 public class GameCore : MonoBehaviour
 {
+    [Header("遊玩模式")]
+    public int GAME_MODE = 0;//0= note模式, 1= 加速模式
+
+    [Header("地圖，修改在這裡")]
     public MapGraph myMapGraph;
 
+    [Header("基本的GameObject Declare, 別碰")]
     public GameObject AmbulanceObject;
     public GameObject GameStartPanel;
     public GameObject GameEndPanel;
 
+    [Header("救護車相關")]
     public float ambulanceSpeed = 7f;
     public int ambulanceMovingFromPoint;
     public int ambulanceMovingToPoint;
     public Vector2 theAmbulanceDirectionVector;
 
+    [Header("遊戲進行相關")]
     public bool gameRunning = false;
 
+    [Header("hp/O2系統")]
     public float maxHp = 100f;
     public float hp = 100f;//100~0 
     public int hpStatement = 4; // 0=���`�A
     public Sprite[] uiSprite = new Sprite[5];
     public SpriteRenderer heartbeatChart;
 
+    [Header("血包相關")]
     public float bloodLooseRate = 1f;
     public float bloodMax = 40f; //���P�����
     public float bloodNow = 40f; //�{�b�Ѿl��q 
     public Image bloodPackImage;
     public float bloodLooseingCount;
 
+    [Header("Enemy系統")]
     public GameObject enemy;
     public GameObject referencePointMobMovingRangeA;
     public GameObject referencePointMobMovingRangeB;
+    public GameObject CthulhuObject;
 
+    [Header("我也不知道為什麼Heartbeat會宣告在這")]
     public Heartbeat heartbeat;
 
+    [Header("Animator們")]
     public Animator damagedTipAnimator;
     public Animator bloodPackTipAnimator;
 
+    [Header("這些是Sprite和Image大家庭")]
     public Sprite eventSprite_enemySpawn;
     public Sprite eventSprite_roadRock;
+    public Sprite eventSprite_cthulhu;
+    public Sprite eventSprite_empty;
 
     public Image[] starImages = new Image[3];
     public Sprite emptyStar;
     public Sprite star;
+
+    [Header("莫名其妙的參數 我也忘記幹嘛用了")]
     public int gameRate = 0; // -1~2, -1�N�����d����, 0~2�N��1~3�P
     public int starNumber = 0;
 
     public bool fail = false;
 
+    [Header("Combo計數器 超過5會開始回生命值")]
     public int comboCount = 0;
 
     // 1�P-�q�L���d 2�P-50%�H�W�ɶ��f�H�wí���A 3�P-85%�H�W�ɶ��f�H�wí���A
     //�wí���A = �f�H�ͩR��H���A
+    [Header("和關卡星數有關")]
     public float[] gameStatementRate = new float[5];
     public float finalGameRateResult = 0;
 
+    [Header("TextMesh的東西")]
     public TextMeshProUGUI O2TextMesh;
     public TextMeshProUGUI gameEndText;
 
+    [Header("BPM, 對")]
     public int bpm = 120;
     
     public int theBPM
@@ -89,6 +112,15 @@ public class GameCore : MonoBehaviour
 
         //Swap
         ambulanceMovingToPoint = 1;
+
+        if (GAME_MODE == 0)
+        {
+            
+        }
+        else if (GAME_MODE == 1)
+        {
+            //
+        }
     }
 
     // Update is called once per frame
@@ -100,8 +132,9 @@ public class GameCore : MonoBehaviour
             //swapAmbulanceMoving();
             HpStatementSync();
             BloodLoose();
-            
-            
+
+            hintTextAutoFade();
+
             //�o���u���u�Ʊ�
             O2Sync();
 
@@ -118,7 +151,7 @@ public class GameCore : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.I))
             {
-                damagedFunc();  
+                damagedHintFunc();  
             }
 
             gameStatementRate[hpStatement] += Time.deltaTime;
@@ -194,6 +227,16 @@ public class GameCore : MonoBehaviour
                     case (EventPoint.eventType.roadRock):
                         sr.sprite = eventSprite_roadRock;
                         break;
+                    case (EventPoint.eventType.enemySpawnHint):
+                        sr.sprite = eventSprite_empty;
+                        break;
+                    case (EventPoint.eventType.roadRockHint):
+                        sr.sprite = eventSprite_empty;
+                        break;
+                    case (EventPoint.eventType.cthulhu):
+                        sr.sprite = eventSprite_empty;
+                        break;
+                        
                     default:
                         Debug.Log("未知事件");
                         break;
@@ -268,6 +311,7 @@ public class GameCore : MonoBehaviour
     {
         gameRunning = true;
         GameStartPanel.SetActive(false);
+        swapMusicPlayer();
     }
     public void gameEnd()
     {
@@ -275,6 +319,7 @@ public class GameCore : MonoBehaviour
         GameEndPanel.SetActive(true);
         finalGameRateResultCal();
         finalGameExecute();
+        stopSwapMusicPLayer();
     }
 
     public void LoadNextGame()
@@ -341,6 +386,9 @@ public class GameCore : MonoBehaviour
                             break;
                         case (EventPoint.eventType.roadRock):
                             Event_roadRock();
+                            break;
+                        case (EventPoint.eventType.cthulhu):
+                            Event_cthulhu();
                             break;
                         default:
                             Debug.Log("未知事件");
@@ -498,8 +546,16 @@ public class GameCore : MonoBehaviour
         O2TextMesh.text = "O2: " + (int)hp;
     }
 
-    public void damagedFunc()
+    public void perfectHintFunc()
     {
+        //damagedTipAnimator.gameObject.GetComponent<Image>().color = Color.green;
+        //damagedTipAnimator.SetTrigger("damaged");
+        GameObject textGameObect = new GameObject("niceHint");
+        
+    }
+    public void damagedHintFunc()
+    {
+        damagedTipAnimator.gameObject.GetComponent<Image>().color = Color.red;
         damagedTipAnimator.SetTrigger("damaged");
         Debug.Log("damaged");
     }
@@ -531,6 +587,7 @@ public class GameCore : MonoBehaviour
                 hp = 100;
             }
         }
+        heartbeat.hitJudgeReaction(1);
     }
 
     public void InsEnemy()
@@ -548,17 +605,93 @@ public class GameCore : MonoBehaviour
         Instantiate(enemy, spawnPosition, Quaternion.identity);
     }
         public void Event_enemySpawn()
-    {
+        {
+        /*
         int enemyNumberRandom = Random.Range(1,3);
         for (int i = 0; i < enemyNumberRandom; i++)
         {
             InsEnemy();
-        }
+        }*/
+        InsEnemy();
     }
     public void Event_roadRock()
     {
-        int roadRockRandom = Random.Range(3,6);
-        heartbeat.pendingNote += roadRockRandom;
+        PlaySoundEffect(SoundEffects[0]);
+        heartbeat.pendingNote += 3;
+    }
+    public void InsCthulhu()
+    {
+        float RanX = Random.Range(-6.66f, 7.06f);
+        float RanY = Random.Range(-3.68f, 3.36f);
+        Instantiate(CthulhuObject, new Vector3(RanX, RanY), Quaternion.identity);
+
+    }
+    public void Event_cthulhu()
+    {
+        InsCthulhu();
+    }
+
+    [Header("BGM and SoundEffects")]
+    public AudioClip bgmClip;
+    GameObject theBgmPlayer;
+    public AudioClip[] SoundEffects;
+    public void swapMusicPlayer()
+    {
+        theBgmPlayer = new GameObject("BgmPlayer");
+        AudioSource AS =  theBgmPlayer.AddComponent<AudioSource>();
+        AS.volume = 0.2f;
+        AS.clip = bgmClip;
+        AS.loop = true;
+        AS.Play();
+    }
+    public void stopSwapMusicPLayer()
+    {
+        Destroy(theBgmPlayer);
+    }
+
+    public void PlaySoundEffect(AudioClip AC)
+    {
+        GameObject newSoundEffect = new GameObject("soundEffect");
+        AK_SoundObject AKS =  newSoundEffect.AddComponent<AK_SoundObject>();
+        AudioSource AS = newSoundEffect.AddComponent<AudioSource>();
+        AS.clip = AC;
+        AS.Play();
+        Destroy(newSoundEffect, AKS.playTime);
+    }
+
+    [Header("輔助顯示字體")]
+    public TextMeshProUGUI theHintTxt;
+    public float hintTextAlpha = 1;
+    public float countingRemain = 0f;
+    public void showHintText(int res)
+    {
+        countingRemain = 1;
+        hintTextAlpha = 1;
+        if (res == 1)
+        {
+            //means plater hit perfect
+            theHintTxt.text = "Perfect";
+            theHintTxt.color = Color.green;
+        }
+        else if (res == 2)
+        {
+            theHintTxt.text = "Good";
+            theHintTxt.color = new Color(0.3f,0.75f,0, hintTextAlpha);
+        }
+        else
+        {
+            theHintTxt.text = "Wrong";
+            theHintTxt.color = Color.red;
+        }
+    }
+    public void hintTextAutoFade()
+    {
+        countingRemain += Time.deltaTime;
+        if (countingRemain > 0.2)
+        {
+            hintTextAlpha = hintTextAlpha - Time.deltaTime*1.2f;
+            theHintTxt.color = new Color(theHintTxt.color.r, theHintTxt.color.g, theHintTxt.color.b,hintTextAlpha);
+        }
     }
 }
 
@@ -602,7 +735,7 @@ public class Point
 [System.Serializable]
 public class EventPoint
 {
-    public enum eventType { enemySpawn, roadRock}
+    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu}
     public eventType myEventType;
     [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
     public bool triggered = false;

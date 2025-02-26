@@ -27,6 +27,26 @@ public class Heartbeat : MonoBehaviour
 
     public TextMeshProUGUI bpmTextMesh;
 
+    public SpriteRenderer hintSpriteRenderer;
+    public SpriteRenderer hintSpriteRenderer2;
+
+    public float alphaRate = 1;
+    public float alphaFadeRate = 1;
+    public Coroutine AssistCoroutine;
+    public bool tapTrigger;
+    public bool TapTrigger { get { return TapTrigger; }
+        set { 
+            if (value == true)
+            {
+                if (tapTrigger == true)
+                {
+                    //輔助回歸A
+                }
+            }
+        }
+    }
+    public GameObject border;
+
     void Start()
     {
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();
@@ -34,6 +54,19 @@ public class Heartbeat : MonoBehaviour
         BPMSet();
         BPMsyncToText();
         StartCoroutine(InstantitateLine());   
+    }
+    void Update()
+    {
+        BPMSet();
+        if (gameCore.GAME_MODE == 0)
+        {
+            if (alphaRate > 0.05f)
+            {
+                alphaRate -= Time.deltaTime * alphaFadeRate;
+            }
+            hintSpriteRenderer.color = new Color(hintSpriteRenderer.color.r, hintSpriteRenderer.color.g, hintSpriteRenderer.color.b, alphaRate);
+            hintSpriteRenderer2.color = new Color(hintSpriteRenderer.color.r, hintSpriteRenderer.color.g, hintSpriteRenderer.color.b, alphaRate);
+        }
     }
 
     public void BPMChnage(int newBPM)
@@ -88,28 +121,51 @@ public class Heartbeat : MonoBehaviour
 */
     IEnumerator InstantitateLine()
     {
-        yield return new WaitUntil(() => gameCore.gameRunning);
-        while(gameCore.gameRunning)
+
+        if (gameCore.GAME_MODE == 0)
         {
-            yield return new WaitForSeconds(duration);
-            currentCount++;
-
-            if (pendingNote > 0)
+            yield return new WaitUntil(() => gameCore.gameRunning);
+            while (gameCore.gameRunning)
             {
-                Instantiate(DecisionLine, InstantiatePoint.position, InstantiatePoint.rotation);
-                insSoundEffect();
-                pendingNote--;
-            }
+                yield return new WaitForSeconds(duration);
+                currentCount++;
 
-            if (currentCount > 3)
-            {
-                currentCount = 0;
-                pendingNote++;
+                if (pendingNote > 0)
+                {
+                    Instantiate(DecisionLine, InstantiatePoint.position, InstantiatePoint.rotation);
+                    insSoundEffect();
+                    pendingNote--;
+                }
+
+                if (currentCount > 3)
+                {
+                    currentCount = 0;
+                    pendingNote++;
+                }
+
+                if (pendingNote > 0)
+                {
+                    //執行生成提示
+                    if (AssistCoroutine != null)
+                    {
+                        StopCoroutine(AssistCoroutine);
+                    }
+                    AssistCoroutine = StartCoroutine(AssistHint());
+                }
+                else
+                {
+
+                }
             }
         }
     }
     
-    
+    public IEnumerator AssistHint()
+    {
+        float alpha = 1;
+        yield return new WaitUntil(() => true);
+        yield return null;
+    }
 
     public void InjuryAndSpawnANote()
     {
@@ -120,11 +176,11 @@ public class Heartbeat : MonoBehaviour
 
     public void insSoundEffect()
     {
-        if (gameCore.hp < 10)
+        if (gameCore.hp < 35)
         {
             Instantiate(heartbeatSoundEffect_moreDanger);
         }
-        else if(gameCore.hp < 50)
+        else if(gameCore.hp < 80)
         {
             Instantiate(heartbeatSoundEffect_inDanger);
         }
@@ -139,8 +195,15 @@ public class Heartbeat : MonoBehaviour
         BPM = gameCore.theBPM;
     }
 
-    public void AssistSystem()
+    public void hitJudgeReaction(int state)
     {
-
+        if (state == 0)//perfect
+        {
+            alphaRate = 1;
+        }
+        else
+        {
+            alphaRate = 1;
+        }
     }
 }

@@ -156,9 +156,17 @@ public class BulletSystem : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
         if (hitCollider != null)
         {
-            Enemy enemy = hitCollider.GetComponent<Enemy>();
-            enemy.TakeDamage(Firepower); 
-            Debug.Log("ㄚㄚ好痛");
+            if (hitCollider.gameObject.TryGetComponent<Enemy>(out Enemy theEnemy) == true)
+            {
+                //theEnemy = hitCollider.GetComponent<Enemy>();
+                theEnemy.TakeDamage(Firepower);
+                Debug.Log("Hit Enemy");
+            }
+            else if (hitCollider.gameObject.TryGetComponent<Cthulhu>(out Cthulhu cthulhu) == true)
+            {
+                cthulhu.TakeDamage();
+                Debug.Log("Hit Cthulhu");
+            }
         }
         else
         {

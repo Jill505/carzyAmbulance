@@ -23,6 +23,18 @@ public class Line : MonoBehaviour
         transform.Translate(Vector3.left * speed * Time.deltaTime);
         InputSpace();
 
+        if (transform.position.x < Heartbeat.border.transform.position.x)
+        {
+            if (getPoint != true)
+            {
+                //Debug.Log("a hint from Line.cs, the function triggered currecrt");
+                Heartbeat.InjuryAndSpawnANote();
+                gameCore.damagedHintFunc();
+            }
+            Destroy(gameObject);
+        }
+
+        /*
         liveTime += Time.deltaTime;
         if (liveTime >= 1.5f)
         {
@@ -32,7 +44,7 @@ public class Line : MonoBehaviour
                Heartbeat.InjuryAndSpawnANote();
             }
             Destroy(gameObject);
-        }
+        }*/
     }        
 
     void InputSpace()
@@ -49,12 +61,16 @@ public class Line : MonoBehaviour
             Debug.Log("完美");
             getPoint = true;
             gameCore.heartbeatHit();
+            gameCore.perfectHintFunc();
+            gameCore.showHintText(1);
         }
         else if(InTheGoodPoint && !InThePerfectPoint)
         {
             Debug.Log("很好");
             getPoint = true;
             gameCore.heartbeatHit();
+            gameCore.perfectHintFunc();
+            gameCore.showHintText(2);
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -62,11 +78,13 @@ public class Line : MonoBehaviour
         if (collision.gameObject.tag == "Good")
         {
             InTheGoodPoint = true;
+            //gameCore.perfectHintFunc();
         }
 
         if (collision.gameObject.tag == "Perfect")
         {
             InThePerfectPoint = true;
+            //gameCore.perfectHintFunc();
         }
         
     }
