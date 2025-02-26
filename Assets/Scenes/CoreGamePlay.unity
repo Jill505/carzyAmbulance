@@ -5201,9 +5201,10 @@ MonoBehaviour:
   bulletBoxCollider: {fileID: 26322209}
   gunCollider: {fileID: 131574669}
   shootRange: {fileID: 1185947681}
+  cthulhu: {fileID: 0}
   crosshairShoot: {fileID: 2800000, guid: 2fefb790f7468cc429d6a12fd0e41532, type: 3}
   crosshairNoBullet: {fileID: 2800000, guid: e6af4f44912b517499f5fd0c14eb8f9e, type: 3}
-  maxAmmo: 5
+  maxAmmo: 1
   Firepower: 1
   bulletbox: {fileID: 26322208}
   gameCore: {fileID: 1193066365}

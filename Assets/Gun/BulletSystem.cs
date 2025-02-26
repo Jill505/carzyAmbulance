@@ -7,6 +7,7 @@ public class BulletSystem : MonoBehaviour
     public BoxCollider2D bulletBoxCollider; 
     public BoxCollider2D gunCollider;   
     public BoxCollider2D shootRange; 
+    public BoxCollider2D cthulhu; 
 
 
     [Header ("圖標")]
@@ -55,7 +56,9 @@ public class BulletSystem : MonoBehaviour
 
     void HandleCrosshair()
     {
-        if(IsMouseOver(shootRange, mousePosition))
+        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
+        bool isMouseOverCthulhu = hitCollider != null && hitCollider.TryGetComponent<Cthulhu>(out _); // 確保 hitCollider 不是 null 才檢查 Cthulhu
+        if(IsMouseOver(shootRange, mousePosition) || isMouseOverCthulhu)
         {
             if (loadIn && currentAmmo > 0)
             {
@@ -195,4 +198,6 @@ public class BulletSystem : MonoBehaviour
     {
         return collider.OverlapPoint(point);
     }
+
+    
 }
