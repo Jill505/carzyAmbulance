@@ -437,7 +437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5207370246644008404, guid: c497bc6094ff51549a7e3d186d6d362a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -869,7 +869,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5879229001868888675, guid: dcf60abf6e4234c43996ede1125aba30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4194,7 +4194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5607,10 +5607,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cthulhu_0
       objectReference: {fileID: 0}
-    - target: {fileID: 5857647544396062270, guid: 5e8ef200e4051864e943a45668c881cc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5622,8 +5618,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 463418437}
   - {fileID: 1193066366}
-  - {fileID: 1215380700}
   - {fileID: 351560942}
+  - {fileID: 1215380700}
   - {fileID: 909143468}
   - {fileID: 1784427913}
   - {fileID: 502385390}
