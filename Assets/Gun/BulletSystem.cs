@@ -30,6 +30,7 @@ public class BulletSystem : MonoBehaviour
 
     public GameObject bulletbox;
     public GameCore gameCore;
+    public SoundEffect soundEffect;
 
     void Start()
     {
@@ -151,6 +152,7 @@ public class BulletSystem : MonoBehaviour
     void Shoot()
     {
         currentAmmo--;
+        soundEffect.ShotGunSound();
         if (currentAmmo <= 0)
         {
             loadIn = false;
