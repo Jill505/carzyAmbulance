@@ -86,7 +86,7 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         while (alpha > 0)
         {
-            alpha -= Time.deltaTime * 2f; 
+            alpha -= Time.deltaTime * 5f; 
             bloodPackImage.color = new Color(1, 1, 1, alpha); 
             childImage.color = new Color(1, 1, 1, alpha);
             yield return null;
