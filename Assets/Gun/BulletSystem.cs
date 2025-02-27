@@ -103,6 +103,7 @@ public class BulletSystem : MonoBehaviour
             {
                 if (IsMouseOver(gunCollider, mousePosition))
                 {
+                    soundEffect.ReloadSound();
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
                     loadIn = true;

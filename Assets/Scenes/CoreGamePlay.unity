@@ -437,7 +437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -5207370246644008404, guid: c497bc6094ff51549a7e3d186d6d362a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -735,7 +735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 822504558703882474, guid: a067753895681b74088d892ad6ce3099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.12156863}
   m_FlipX: 0
@@ -869,7 +869,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -5879229001868888675, guid: dcf60abf6e4234c43996ede1125aba30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2046,6 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotgunTest: {fileID: 8300000, guid: f14003900f16e7545a6c6615c926f04c, type: 3}
+  reloadTest: {fileID: 8300000, guid: fa65c2de91e6a4e4a8c395c415c8155d, type: 3}
 --- !u!4 &801324057
 Transform:
   m_ObjectHideFlags: 0
@@ -4337,7 +4338,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5687,7 +5688,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6695950386315148514, guid: bb1a2dd6a8659e542a1256ed13ed6391, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.12156863}
   m_FlipX: 0

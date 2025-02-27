@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: a067753895681b74088d892ad6ce3099
+guid: 462f774e9197e854d963c8bb231b1180
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 822504558703882474
-    second: UI 1_0
+      213: -7443528388560730505
+    second: oioi_0
+  - first:
+      213: 641161792410166759
+    second: oioi_1
+  - first:
+      213: 1270765970975765217
+    second: oioi_2
+  - first:
+      213: -3036011993882522915
+    second: oioi_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI 1_0
+      name: oioi_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 1
+        y: 205
+        width: 4016
+        height: 2552
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae03fafc98f1a6b00800000000000000
-      internalID: 822504558703882474
+      spriteID: 7764d4c3e5643b890800000000000000
+      internalID: -7443528388560730505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oioi_1
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 2567
+        width: 258
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e52920d04dd5e800800000000000000
+      internalID: 641161792410166759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oioi_2
+      rect:
+        serializedVersion: 2
+        x: 2594
+        y: 2541
+        width: 168
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e23aa4faeaa2a110800000000000000
+      internalID: 1270765970975765217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oioi_3
+      rect:
+        serializedVersion: 2
+        x: 3481
+        y: 146
+        width: 205
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dda8ec25d2bedd5d0800000000000000
+      internalID: -3036011993882522915
       vertices: []
       indices: 
       edges: []
@@ -147,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      oioi_0: -7443528388560730505
+      oioi_1: 641161792410166759
+      oioi_2: 1270765970975765217
+      oioi_3: -3036011993882522915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
