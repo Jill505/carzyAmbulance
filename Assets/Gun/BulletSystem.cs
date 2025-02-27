@@ -63,12 +63,12 @@ public class BulletSystem : MonoBehaviour
         {
             if (loadIn && currentAmmo > 0)
             {
-                Cursor.SetCursor(crosshairShoot, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(crosshairShoot, new Vector2(64, 64), CursorMode.Auto);
                 isInShootRange = true;
             }
             else
             {
-                Cursor.SetCursor(crosshairNoBullet, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(crosshairNoBullet, new Vector2(64, 64), CursorMode.Auto);
                 isInShootRange = true;
             }
         }
