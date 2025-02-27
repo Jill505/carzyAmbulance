@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -88,6 +89,8 @@ public class GameCore : MonoBehaviour
 
     [Header("BPM, 對")]
     public int bpm = 120;
+
+    public float NoteDistancetimer = 0f;
     
     public int theBPM
     {
@@ -146,6 +149,7 @@ public class GameCore : MonoBehaviour
             }
 
             gameStatementRate[hpStatement] += Time.deltaTime;
+            NoteDistancetimer += Time.deltaTime;
         }
     }
 
@@ -244,7 +248,7 @@ public class GameCore : MonoBehaviour
         bloodNow -= Time.deltaTime * bloodLooseRate;
         bloodPackImage.fillAmount = bloodNow / bloodMax;
 
-        if (bloodPackImage.fillAmount <= 0.2)
+        if (bloodPackImage.fillAmount == 0)
         {
             bloodLooseingCount += Time.deltaTime;
 
@@ -606,9 +610,17 @@ public class GameCore : MonoBehaviour
         InsEnemy();
     }
     public void Event_roadRock()
-    {
-        PlaySoundEffect(SoundEffects[0]);
-        heartbeat.pendingNote += 3;
+    {    
+        for(int note = 0;note < 3;note++)
+        {
+            while(NoteDistancetimer >= 0.3f)
+            {
+                heartbeat.pendingNote ++;
+                PlaySoundEffect(SoundEffects[0]);
+                NoteDistancetimer = 0;
+            }
+        }
+        
     }
     public void InsCthulhu()
     {

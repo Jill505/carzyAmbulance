@@ -5,19 +5,21 @@ public class Cthulhu : MonoBehaviour
     public float counting;
     public SpriteRenderer sr;
     public int hp = 1;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameCore gameCore;
+    private Heartbeat heartbeat;
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();
+        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         counting += Time.deltaTime;
         if (counting >= 8)
         {
-            //¦ÛÃz
+            //ï¿½ï¿½ï¿½z
             kys();
         }
     }
@@ -38,7 +40,17 @@ public class Cthulhu : MonoBehaviour
     }
     public void kys()
     {
-        GameObject.Find("Chart").GetComponent<Heartbeat>().pendingNote += 5;
+        //GameObject.Find("Chart").GetComponent<Heartbeat>().pendingNote += 5;
+
+        for(int note = 0;note < 5;note++)
+        {
+            while(gameCore.NoteDistancetimer >= 0.3f)
+            {
+                heartbeat.pendingNote ++;
+                gameCore.PlaySoundEffect(gameCore.SoundEffects[0]);
+                gameCore.NoteDistancetimer = 0;
+            }
+        }
         
         //GameObject.Find("GameCore").GetComponent<GameCore>().PlaySoundEffect();
         Destroy(gameObject);

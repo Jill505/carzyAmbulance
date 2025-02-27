@@ -8,10 +8,9 @@ TagManager:
   - Gun
   - ShootRange
   - Wall
-  - Perfect
-  - Good
   - Line
   - heartbeat
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

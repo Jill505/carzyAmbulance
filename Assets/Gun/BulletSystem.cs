@@ -7,7 +7,6 @@ public class BulletSystem : MonoBehaviour
     public BoxCollider2D bulletBoxCollider; 
     public BoxCollider2D gunCollider;   
     public BoxCollider2D shootRange; 
-    public BoxCollider2D cthulhu; 
 
 
     [Header ("圖標")]

@@ -7,16 +7,15 @@ public class Line : MonoBehaviour
     private Heartbeat Heartbeat;
     private GameCore gameCore;
     public float speed = 5f; 
-    private bool InThePerfectPoint = false;
-    private bool InTheGoodPoint = false;
+    private bool CheckTime = false;
     private bool getPoint = false;
     private bool hasExecuted = false;
+    private float spacetime;
 
     void Start()
     {
         Heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();   
-       
     }
 
     void Update()
@@ -31,6 +30,7 @@ public class Line : MonoBehaviour
                 //Debug.Log("a hint from Line.cs, the function triggered currecrt");
                 gameCore.damagedHintFunc();
                 Heartbeat.InjuryAndSpawnANote();
+
                 SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
                 if (childSpriteRenderer != null)
                 {
@@ -42,66 +42,70 @@ public class Line : MonoBehaviour
 
         if (transform.position.x < Heartbeat.border.transform.position.x)
         {
-            if (getPoint != true)
-            {
                 Destroy(gameObject);
-            }
-            
         }
 
     }        
 
     void InputSpace()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // 當按下 Space
         {
-            CheckInput();
-        }
-    }
-    void CheckInput()
-    {
-        if(InThePerfectPoint)
-        {
-            Debug.Log("完美");
-            getPoint = true;
-            gameCore.heartbeatHit();
-            gameCore.perfectHintFunc();
-            gameCore.showHintText(1);
-        }
-        else if(InTheGoodPoint && !InThePerfectPoint)
-        {
-            Debug.Log("很好");
-            getPoint = true;
-            gameCore.heartbeatHit();
-            gameCore.perfectHintFunc();
-            gameCore.showHintText(2);
-        }
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Good")
-        {
-            InTheGoodPoint = true;
-            //gameCore.perfectHintFunc();
+            spacetime = 0f; // 重置時間
         }
 
-        if (collision.gameObject.tag == "Perfect")
+        if (Input.GetKey(KeyCode.Space)) // 當持續按住 Space
+        {   
+            spacetime += Time.deltaTime; // 記錄長按的時間
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space)) // 當放開 Space
+        {   
+            Debug.Log("Space 按住時間：" + spacetime + " 秒");
+            CheckInput(); 
+        }
+    }
+
+    void CheckInput()
+    {
+        if(CheckTime)
         {
-            InThePerfectPoint = true;
+            if(spacetime >= 0.1f && spacetime < 0.2f)
+            {
+                Debug.Log("完美");
+                getPoint = true;
+                gameCore.heartbeatHit();
+                gameCore.perfectHintFunc();
+                gameCore.showHintText(1);
+            }
+            else if(spacetime >= 0.05f && spacetime < 0.1f || spacetime >= 0.2f && spacetime < 0.3f)
+            {
+                Debug.Log("很好");
+                getPoint = true;
+                gameCore.heartbeatHit();
+                gameCore.perfectHintFunc();
+                gameCore.showHintText(2);
+            }
+            
+        }
+        
+        
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {    
+        if (collision.gameObject.tag == "CheckPoint")
+        {
+            CheckTime = true;
             //gameCore.perfectHintFunc();
         }
         
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Good")
-        {
-            InTheGoodPoint = false;
-        }
 
-        if (collision.gameObject.tag == "Perfect")
+        if (collision.gameObject.tag == "CheckPoint")
         {
-            InThePerfectPoint = false;
+            CheckTime = false;
         }
     }
             
