@@ -185,8 +185,8 @@ public class BulletSystem : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            float offsetX = Random.Range(-3f, 3f);
-            float offsetY = Random.Range(-3f, 3f);
+            float offsetX = Random.Range(-1f, 3f);
+            float offsetY = Random.Range(-1f, 3f);
             Cursor.SetCursor(crosshairNoBullet, new Vector2(offsetX, offsetY), CursorMode.Auto);
 
             elapsed += Time.deltaTime;

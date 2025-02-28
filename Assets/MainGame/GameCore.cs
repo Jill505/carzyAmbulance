@@ -558,7 +558,7 @@ public class GameCore : MonoBehaviour
     public void heartbeatMiss()
     {
         //Debug.Log("from GameCore.cs, the message called");
-        hp -= 15f;
+        hp -= 5f;
         comboCount = 0;
 
         if (hp < 0)
