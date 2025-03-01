@@ -12,10 +12,17 @@ public class Line : MonoBehaviour
     private bool hasExecuted = false;
     private float spacetime;
 
+    public SpriteRenderer childSpriteRenderer;
+    public Animator myAnimator;
+
     void Start()
     {
         Heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
-        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();   
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();
+
+        myAnimator = gameObject.GetComponent<Animator>();
+
+        childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -31,10 +38,16 @@ public class Line : MonoBehaviour
                 gameCore.damagedHintFunc();
                 Heartbeat.InjuryAndSpawnANote();
 
-                SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+                //SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
                 if (childSpriteRenderer != null)
                 {
                     childSpriteRenderer.color = Color.red;
+                }
+                else
+                {
+                    childSpriteRenderer.color = new Color(0,1,0,1);
+                    //Play Animation
+                    myAnimator.SetTrigger("makeItClear");
                 }
                 hasExecuted = true;
             }
@@ -66,6 +79,7 @@ public class Line : MonoBehaviour
         }
     }
 
+    bool ckptClog = false;
     void CheckInput()
     {
         if(CheckTime)
@@ -77,6 +91,12 @@ public class Line : MonoBehaviour
                 gameCore.heartbeatHit();
                 gameCore.perfectHintFunc();
                 gameCore.showHintText(1);
+
+
+                childSpriteRenderer.color = new Color(0, 1, 0, 1);
+                //Play Animation
+                myAnimator.SetTrigger("makeItClear");
+                Debug.Log("CClear");
             }
             else if(spacetime >= 0.05f && spacetime < 0.1f || spacetime >= 0.2f && spacetime < 0.3f)
             {
@@ -85,6 +105,13 @@ public class Line : MonoBehaviour
                 gameCore.heartbeatHit();
                 gameCore.perfectHintFunc();
                 gameCore.showHintText(2);
+
+
+                childSpriteRenderer.color = new Color(0, 1, 0, 1);
+                //Play Animation
+                
+                myAnimator.SetTrigger("makeItClear");
+                Debug.Log("CClear");
             }
             
         }

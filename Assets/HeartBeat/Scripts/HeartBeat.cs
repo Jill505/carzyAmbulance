@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-
+using UnityEngineInternal;
+using UnityEngine.UIElements;
 
 public class Heartbeat : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class Heartbeat : MonoBehaviour
 
     public SpriteRenderer hintSpriteRenderer;
     public SpriteRenderer hintSpriteRenderer2;
+
+    public GameObject heartbeatAssistObject;
+    public float extendRate = 0.08f;
 
     public float alphaRate = 1;
     public float alphaFadeRate = 1;
@@ -66,6 +70,13 @@ public class Heartbeat : MonoBehaviour
             }
             hintSpriteRenderer.color = new Color(hintSpriteRenderer.color.r, hintSpriteRenderer.color.g, hintSpriteRenderer.color.b, alphaRate);
             hintSpriteRenderer2.color = new Color(hintSpriteRenderer.color.r, hintSpriteRenderer.color.g, hintSpriteRenderer.color.b, alphaRate);
+
+
+            if (extendRate > 0.08f)
+            {
+                extendRate -= Time.deltaTime * extendRate; 
+            }
+            heartbeatAssistObject.transform.localScale = new Vector3(heartbeatAssistObject.transform.localScale.x, extendRate, heartbeatAssistObject.transform.localScale.z);
         }
     }
 
@@ -199,11 +210,13 @@ public class Heartbeat : MonoBehaviour
     {
         if (state == 0)//perfect
         {
-            alphaRate = 1;
+            alphaRate = 0.5f;
+            extendRate = 0.1f;
         }
         else
         {
-            alphaRate = 1;
+            alphaRate = 0.5f;
+            extendRate = 0.1f;
         }
     }
 }
