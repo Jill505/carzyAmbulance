@@ -91,7 +91,6 @@ public class GameCore : MonoBehaviour
     public int bpm = 120;
 
     public float NoteDistancetimer = 0f;
-    
     public int theBPM
     {
         get { return bpm; }

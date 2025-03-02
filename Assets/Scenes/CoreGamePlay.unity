@@ -3564,6 +3564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DecisionLine: {fileID: 5218828289121578795, guid: c6104dde916addd41ade5efbaa5e0d57, type: 3}
+  Line: {fileID: 6610195748412419793, guid: c6104dde916addd41ade5efbaa5e0d57, type: 3}
   InstantiatePoint: {fileID: 739340318}
   BPM: 120
   duration: 0
@@ -3582,6 +3583,7 @@ MonoBehaviour:
   tapTrigger: 0
   border: {fileID: 1381915565}
   checkIfShouldChangeColor: {fileID: 1296301063}
+  nextLineToCheck: 1
 --- !u!1 &1114001594
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,7 +4465,7 @@ Transform:
   m_GameObject: {fileID: 1296301063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.509, y: 1.179, z: 0}
+  m_LocalPosition: {x: -0.772, y: 1.179, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngineInternal;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class Heartbeat : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Heartbeat : MonoBehaviour
 
     [Header("預製體")]
     public GameObject DecisionLine;
+    public Line Line;
 
     [Header("生成位置")]
     public Transform InstantiatePoint; 
@@ -50,6 +52,10 @@ public class Heartbeat : MonoBehaviour
     }
     public GameObject border;
     public GameObject checkIfShouldChangeColor;
+    private Dictionary<int, Line> activeLines = new Dictionary<int, Line>();
+    public int nextLineToCheck = 1; // 目前該判定的Line編號
+    private int currentLineNumber = 1;
+
 
     void Start()
     {
@@ -64,6 +70,10 @@ public class Heartbeat : MonoBehaviour
         BPMSet();
         if (gameCore.GAME_MODE == 0)
         {
+            if (Input.GetKeyDown(KeyCode.Space)) 
+            {
+                ProcessInput();
+            }
             if (alphaRate > 0.05f)
             {
                 alphaRate -= Time.deltaTime * alphaFadeRate;
@@ -219,4 +229,45 @@ public class Heartbeat : MonoBehaviour
             extendRate = 0.1f;
         }
     }
+
+    public void RegisterLine(Line line, int lineNumber)
+    {
+        if (!activeLines.ContainsKey(lineNumber))
+        {
+            activeLines.Add(lineNumber, line);
+        }
+    }
+
+    private void ProcessInput()
+    {
+
+        if (activeLines.ContainsKey(nextLineToCheck))
+        {
+            Line line = activeLines[nextLineToCheck];
+            if (line.InTheGoodPoint || line.InThePerfectPoint)
+            {
+                if(line != null && !line.IsChecked())
+                {
+                    line.CheckInput(); // 執行按鍵判定
+                    nextLineToCheck++; // 確保下次只能檢查下一條 Line
+                }
+            }
+        }
+    }
+
+    public void RemoveLine(int lineNumber)
+    {
+        if (activeLines.ContainsKey(lineNumber))
+        {
+            activeLines.Remove(lineNumber);
+        }
+    }
+    public int GetNextLineNumber()
+    {
+        return currentLineNumber++;
+    }
 }
+
+
+
+

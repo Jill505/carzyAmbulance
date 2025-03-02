@@ -9,11 +9,15 @@ public class Line : MonoBehaviour
     public float speed = 5f; 
     private bool getPoint = false;
     private bool hasExecuted = false;
-    private bool InThePerfectPoint = false;
-    private bool InTheGoodPoint = false;
+    public bool InThePerfectPoint = false;
+    public bool InTheGoodPoint = false;
 
     public SpriteRenderer childSpriteRenderer;
     public Animator myAnimator;
+    private int thisLineNumber;
+    private bool isChecked = false;
+    
+
 
     void Start()
     {
@@ -23,12 +27,13 @@ public class Line : MonoBehaviour
         myAnimator = gameObject.GetComponent<Animator>();
 
         childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        thisLineNumber = Heartbeat.GetNextLineNumber();
+        Heartbeat.RegisterLine(this, thisLineNumber);
     }
 
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
-        InputSpace();
 
         if (transform.position.x < Heartbeat.checkIfShouldChangeColor.transform.position.x)
         {
@@ -37,6 +42,9 @@ public class Line : MonoBehaviour
                 //Debug.Log("a hint from Line.cs, the function triggered currecrt");
                 gameCore.damagedHintFunc();
                 Heartbeat.InjuryAndSpawnANote();
+                isChecked = true;
+                Heartbeat.nextLineToCheck++;
+                Heartbeat.RemoveLine(thisLineNumber); // 從GameCore移除該Line
 
                 //SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
                 if (childSpriteRenderer != null)
@@ -50,58 +58,62 @@ public class Line : MonoBehaviour
                     myAnimator.SetTrigger("makeItClear");
                 }
                 hasExecuted = true;
+                isChecked = true; // Mark this line as checked
             }
         }
 
         if (transform.position.x < Heartbeat.border.transform.position.x)
         {
-                Destroy(gameObject);
+            Heartbeat.RemoveLine(thisLineNumber);
+            Destroy(gameObject);
         }
 
     }        
 
-    void InputSpace()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) // 當按下 Space
-        {
-            CheckInput(); 
-        }
-    }
 
     bool ckptClog = false;
-    void CheckInput()
+    public void CheckInput()
     {
-            if(InThePerfectPoint)
-            {
-                Debug.Log("完美");
-                getPoint = true;
-                gameCore.heartbeatHit();
-                gameCore.perfectHintFunc();
-                gameCore.showHintText(1);
+        if (isChecked) return;
+        if(InThePerfectPoint)
+        {
+            Debug.Log("完美");
+            getPoint = true;
+            gameCore.heartbeatHit();
+            gameCore.perfectHintFunc();
+            gameCore.showHintText(1);
 
 
-                childSpriteRenderer.color = new Color(0, 1, 0, 1);
-                //Play Animation
-                myAnimator.SetTrigger("makeItClear");
-                Debug.Log("CClear");
-            }
-            else if(InTheGoodPoint)
-            {
-                Debug.Log("很好");
-                getPoint = true;
-                gameCore.heartbeatHit();
-                gameCore.perfectHintFunc();
-                gameCore.showHintText(2);
+            childSpriteRenderer.color = new Color(0, 1, 0, 1);
+            //Play Animation
+            myAnimator.SetTrigger("makeItClear");
+            Debug.Log("CClear");
+
+        }
+        else if(InTheGoodPoint)
+        {
+            Debug.Log("很好");
+            getPoint = true;
+            gameCore.heartbeatHit();
+            gameCore.perfectHintFunc();
+            gameCore.showHintText(2);
 
 
-                childSpriteRenderer.color = new Color(0, 1, 0, 1);
-                //Play Animation
+            childSpriteRenderer.color = new Color(0, 1, 0, 1);
+            //Play Animation
                 
-                myAnimator.SetTrigger("makeItClear");
-                Debug.Log("CClear");
-            }
+            myAnimator.SetTrigger("makeItClear");
+            Debug.Log("CClear");
             
         }
+        isChecked = true;
+        Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
+            
+    }
+    public bool IsChecked()
+    {
+        return isChecked;
+    }
         
         
     
