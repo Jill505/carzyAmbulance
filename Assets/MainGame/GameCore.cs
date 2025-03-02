@@ -57,6 +57,8 @@ public class GameCore : MonoBehaviour
     [Header("Animator們")]
     public Animator damagedTipAnimator;
     public Animator bloodPackTipAnimator;
+    public Animator UIAnimator;
+
 
     [Header("這些是Sprite和Image大家庭")]
     public Sprite eventSprite_enemySpawn;
@@ -333,7 +335,13 @@ public class GameCore : MonoBehaviour
     }
     public void LoadLobby()
     {
-        SceneManager.LoadScene(0);
+        StartCoroutine(LoadAnimation(0));
+    }
+    public IEnumerator LoadAnimation(int LoadScene)
+    {
+        UIAnimator.SetTrigger("LoadOut");
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene(LoadScene);
     }
 
     public void resetAmbulancePosition()

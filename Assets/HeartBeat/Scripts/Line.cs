@@ -47,7 +47,6 @@ public class Line : MonoBehaviour
                 Heartbeat.InjuryAndSpawnANote();
                 Heartbeat.nextLineToCheck++;
                 Heartbeat.RemoveLine(thisLineNumber); 
-                //SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
                 if (childSpriteRenderer != null)
                 {
                     childSpriteRenderer.color = Color.red;
