@@ -12,6 +12,7 @@ TagManager:
   - heartbeat
   - Perfect
   - Good
+  - PunishPoint
   layers:
   - Default
   - TransparentFX

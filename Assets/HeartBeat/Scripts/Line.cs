@@ -7,10 +7,13 @@ public class Line : MonoBehaviour
     private Heartbeat Heartbeat;
     private GameCore gameCore;
     public float speed = 5f; 
+    public float punishTime = 0.2f;
+    public bool punish = false;
     private bool getPoint = false;
     private bool hasExecuted = false;
     public bool InThePerfectPoint = false;
     public bool InTheGoodPoint = false;
+    public bool InThePunishPoint = false;
 
     public SpriteRenderer childSpriteRenderer;
     public Animator myAnimator;
@@ -42,10 +45,8 @@ public class Line : MonoBehaviour
                 //Debug.Log("a hint from Line.cs, the function triggered currecrt");
                 gameCore.damagedHintFunc();
                 Heartbeat.InjuryAndSpawnANote();
-                isChecked = true;
                 Heartbeat.nextLineToCheck++;
-                Heartbeat.RemoveLine(thisLineNumber); // 從GameCore移除該Line
-
+                Heartbeat.RemoveLine(thisLineNumber); 
                 //SpriteRenderer childSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
                 if (childSpriteRenderer != null)
                 {
@@ -58,23 +59,27 @@ public class Line : MonoBehaviour
                     myAnimator.SetTrigger("makeItClear");
                 }
                 hasExecuted = true;
-                isChecked = true; // Mark this line as checked
+                isChecked = true; 
             }
         }
 
         if (transform.position.x < Heartbeat.border.transform.position.x)
         {
-            Heartbeat.RemoveLine(thisLineNumber);
             Destroy(gameObject);
         }
 
     }        
 
 
-    bool ckptClog = false;
+    //bool ckptClog = false;
     public void CheckInput()
     {
         if (isChecked) return;
+        if(InThePunishPoint == true)
+        {
+            Debug.Log("懲罰");
+            StartCoroutine(PunishTime());
+        }
         if(InThePerfectPoint)
         {
             Debug.Log("完美");
@@ -88,6 +93,8 @@ public class Line : MonoBehaviour
             //Play Animation
             myAnimator.SetTrigger("makeItClear");
             Debug.Log("CClear");
+            isChecked = true;
+            Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
 
         }
         else if(InTheGoodPoint)
@@ -104,10 +111,10 @@ public class Line : MonoBehaviour
                 
             myAnimator.SetTrigger("makeItClear");
             Debug.Log("CClear");
-            
+            isChecked = true;
+            Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
         }
-        isChecked = true;
-        Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
+        
             
     }
     public bool IsChecked()
@@ -129,6 +136,10 @@ public class Line : MonoBehaviour
             InThePerfectPoint = true;
             //gameCore.perfectHintFunc();
         }
+        if (collision.gameObject.tag == "PunishPoint")
+        {
+            InThePunishPoint = true;
+        }
 
         
     }
@@ -143,6 +154,16 @@ public class Line : MonoBehaviour
         {
             InThePerfectPoint = false;
         }
+        if (collision.gameObject.tag == "PunishPoint")
+        {
+            InThePunishPoint = false;
+        }
+    }
+    IEnumerator PunishTime()
+    {
+        punish = true;
+        yield return new WaitForSeconds(punishTime);
+        punish = false;
     }
             
 

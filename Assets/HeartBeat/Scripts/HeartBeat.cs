@@ -11,7 +11,6 @@ public class Heartbeat : MonoBehaviour
 
     [Header("預製體")]
     public GameObject DecisionLine;
-    public Line Line;
 
     [Header("生成位置")]
     public Transform InstantiatePoint; 
@@ -52,6 +51,8 @@ public class Heartbeat : MonoBehaviour
     }
     public GameObject border;
     public GameObject checkIfShouldChangeColor;
+
+    [Header("判定順序")]
     private Dictionary<int, Line> activeLines = new Dictionary<int, Line>();
     public int nextLineToCheck = 1; // 目前該判定的Line編號
     private int currentLineNumber = 1;
@@ -107,39 +108,7 @@ public class Heartbeat : MonoBehaviour
     {
         bpmTextMesh.text = "BPM: "+(int)BPM;
     }
-/*
-    IEnumerator gameGoing()
-    {
-        while(isGamePlaying == true)
-        {
-            //yield return null;// update in coroutine
-            yield return new WaitForSeconds(duration);
-            Debug.Log("gameGoing count");
-            //judge if the position can spawn
-            currentCount ++;
 
-            if(currentCount > 3)
-            {
-                currentCount = 0;
-                //spawn a note;
-                spawnDuritionCount ++;
-                spawnDuritionCount ++;
-            }
-
-            //judge and spawn
-            if(spawnDuritionCount >0)
-            {
-                spawnDuritionCount --;
-                //spawn a note
-                InstantitateLine();
-                Debug.Log("Ins line");
-            }
-
-
-        }
-        yield return null;
-    }
-*/
     IEnumerator InstantitateLine()
     {
 
@@ -240,13 +209,19 @@ public class Heartbeat : MonoBehaviour
 
     private void ProcessInput()
     {
-
         if (activeLines.ContainsKey(nextLineToCheck))
         {
             Line line = activeLines[nextLineToCheck];
+            if (line.InThePunishPoint)
+            {
+                if(line != null && !line.IsChecked() )
+                {
+                    line.CheckInput(); // 執行按鍵判定
+                }
+            }
             if (line.InTheGoodPoint || line.InThePerfectPoint)
             {
-                if(line != null && !line.IsChecked())
+                if(line != null && !line.IsChecked() && !line.punish)
                 {
                     line.CheckInput(); // 執行按鍵判定
                     nextLineToCheck++; // 確保下次只能檢查下一條 Line
