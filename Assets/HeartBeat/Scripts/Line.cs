@@ -7,10 +7,10 @@ public class Line : MonoBehaviour
     private Heartbeat Heartbeat;
     private GameCore gameCore;
     public float speed = 5f; 
-    private bool CheckTime = false;
     private bool getPoint = false;
     private bool hasExecuted = false;
-    private float spacetime;
+    private bool InThePerfectPoint = false;
+    private bool InTheGoodPoint = false;
 
     public SpriteRenderer childSpriteRenderer;
     public Animator myAnimator;
@@ -64,17 +64,6 @@ public class Line : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) // 當按下 Space
         {
-            spacetime = 0f; // 重置時間
-        }
-
-        if (Input.GetKey(KeyCode.Space)) // 當持續按住 Space
-        {   
-            spacetime += Time.deltaTime; // 記錄長按的時間
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) // 當放開 Space
-        {   
-            Debug.Log("Space 按住時間：" + spacetime + " 秒");
             CheckInput(); 
         }
     }
@@ -82,9 +71,7 @@ public class Line : MonoBehaviour
     bool ckptClog = false;
     void CheckInput()
     {
-        if(CheckTime)
-        {
-            if(spacetime >= 0.1f && spacetime < 0.2f)
+            if(InThePerfectPoint)
             {
                 Debug.Log("完美");
                 getPoint = true;
@@ -98,7 +85,7 @@ public class Line : MonoBehaviour
                 myAnimator.SetTrigger("makeItClear");
                 Debug.Log("CClear");
             }
-            else if(spacetime >= 0.05f && spacetime < 0.1f || spacetime >= 0.2f && spacetime < 0.3f)
+            else if(InTheGoodPoint)
             {
                 Debug.Log("很好");
                 getPoint = true;
@@ -117,22 +104,32 @@ public class Line : MonoBehaviour
         }
         
         
-    }
+    
     void OnTriggerEnter2D(Collider2D collision)
     {    
-        if (collision.gameObject.tag == "CheckPoint")
+        
+        if (collision.gameObject.tag == "Good")
         {
-            CheckTime = true;
+            InTheGoodPoint = true;
+        }
+        if (collision.gameObject.tag == "Perfect")
+        {
+            InThePerfectPoint = true;
             //gameCore.perfectHintFunc();
         }
+
         
     }
     void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "CheckPoint")
+        if (collision.gameObject.tag == "Good")
         {
-            CheckTime = false;
+            InTheGoodPoint = false;
+        }
+        if (collision.gameObject.tag == "Perfect")
+        {
+            InThePerfectPoint = false;
         }
     }
             

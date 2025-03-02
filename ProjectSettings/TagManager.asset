@@ -10,7 +10,8 @@ TagManager:
   - Wall
   - Line
   - heartbeat
-  - CheckPoint
+  - Perfect
+  - Good
   layers:
   - Default
   - TransparentFX
