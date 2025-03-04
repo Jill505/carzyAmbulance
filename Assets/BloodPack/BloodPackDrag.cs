@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 
-public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class BloodPackDrag : MonoBehaviour //, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Image bloodPackImage;       
+    /*public Image bloodPackImage;       
     private RectTransform rectTransform; 
     private Vector3 originalPosition;    
     private bool isDragging = false;    
@@ -15,23 +15,23 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("拖曳設定")]
     public float dragOutOfBoundsDistance = 100f;
     public float dragDelayTime = 2f;    
-    public float dragResistance = 0.5f; 
+    public float dragResistance = 0.5f; */
 
     
 
     void Start()
     {
-        rectTransform = bloodPackImage.GetComponent<RectTransform>();
-        originalPosition = rectTransform.position;       
+        //rectTransform = bloodPackImage.GetComponent<RectTransform>();
+        //originalPosition = rectTransform.position;       
               
     }
 
     void Update()
     {
-        SetActiveF();
+        //SetActiveF();
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    /*public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
         dragStartTime = Time.time; 
@@ -104,5 +104,5 @@ public class BloodPackDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             gameObject.SetActive(false);
         }
-    }
+    }*/
 }

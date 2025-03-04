@@ -2,17 +2,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableBloodPack : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableBloodPack : MonoBehaviour, IPointerClickHandler //, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
+    //private Vector3 startPosition;
     public Image activeSlot; 
     public BloodPackDrag bloodPackDrag;
     public GameCore gameCore;
 
-    private bool isDragging = false; 
+    //private bool isDragging = false; 
 
 
-    public void OnBeginDrag(PointerEventData eventData)
+    /*public void OnBeginDrag(PointerEventData eventData)
     {
         if (bloodPackDrag.gameObject.activeSelf)
         {
@@ -35,11 +35,16 @@ public class DraggableBloodPack : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         ChangeBloodPack();
         isDragging = false; 
+    }*/
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        ChangeBloodPack();
     }
 
     public void ChangeBloodPack()
     {
-        RectTransform slotRect = activeSlot.GetComponent<RectTransform>();
+        /*RectTransform slotRect = activeSlot.GetComponent<RectTransform>();
         
         if (RectTransformUtility.RectangleContainsScreenPoint(slotRect, Input.mousePosition))
         {
@@ -50,6 +55,7 @@ public class DraggableBloodPack : MonoBehaviour, IBeginDragHandler, IDragHandler
         else
         {
             transform.position = startPosition;
-        }
+        }*/
+            gameCore.ChangeBloodPack();
     }
 }

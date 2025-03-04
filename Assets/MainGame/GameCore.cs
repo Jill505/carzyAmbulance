@@ -100,7 +100,6 @@ public class GameCore : MonoBehaviour
     Coroutine theShakeCoroutine;
 
     [Header("who'd fuck are you?")]
-    public float NoteDistancetimer = 0f;
     public int theBPM
     {
         get { return bpm; }
@@ -156,7 +155,6 @@ public class GameCore : MonoBehaviour
             }
 
             gameStatementRate[hpStatement] += Time.deltaTime;
-            NoteDistancetimer += Time.deltaTime;
         }
     }
 
@@ -626,17 +624,9 @@ public class GameCore : MonoBehaviour
         InsEnemy();
     }
     public void Event_roadRock()
-    {    
-        for(int note = 0;note < 3;note++)
-        {
-            while(NoteDistancetimer >= 0.3f)
-            {
-                heartbeat.pendingNote ++;
-                PlaySoundEffect(SoundEffects[0]);
-                NoteDistancetimer = 0;
-            }
-        }
-        
+    {       
+        heartbeat.pendingNote ++;
+        PlaySoundEffect(SoundEffects[0]);           
     }
     public void InsCthulhu()
     {
