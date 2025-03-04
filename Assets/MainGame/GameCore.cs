@@ -58,6 +58,7 @@ public class GameCore : MonoBehaviour
     public Animator damagedTipAnimator;
     public Animator bloodPackTipAnimator;
     public Animator UIAnimator;
+    public Animator gameEndPenalAnimator;
 
 
     [Header("這些是Sprite和Image大家庭")]
@@ -92,6 +93,13 @@ public class GameCore : MonoBehaviour
     [Header("BPM, 對")]
     public int bpm = 120;
 
+    [Header("shake 系統")]
+    public GameObject allObjectFather;
+    public float shakeStrength = 5f;
+    public float shakeInterval = 0.1f;
+    Coroutine theShakeCoroutine;
+
+    [Header("who'd fuck are you?")]
     public float NoteDistancetimer = 0f;
     public int theBPM
     {
@@ -101,6 +109,8 @@ public class GameCore : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        allObjectFather = GameObject.Find("AllCarObject");
+
         RanderPoint();
         resetAmbulancePosition();
         ambulanceMovingFromPoint = 0;// set the start point
@@ -140,13 +150,9 @@ public class GameCore : MonoBehaviour
                 InsEnemy();
             }*/
 
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                swapTestHpMinus5();
-            }
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                damagedHintFunc();  
+                carShake(10f, 3f, 0.2f,false);
             }
 
             gameStatementRate[hpStatement] += Time.deltaTime;
@@ -313,6 +319,9 @@ public class GameCore : MonoBehaviour
     {
         gameRunning = false;
         GameEndPanel.SetActive(true);
+
+        gameEndPenalAnimator.SetBool("active",true);
+
         finalGameRateResultCal();
         finalGameExecute();
         stopSwapMusicPLayer();
@@ -702,6 +711,93 @@ public class GameCore : MonoBehaviour
             hintTextAlpha = hintTextAlpha - Time.deltaTime*1.2f;
             theHintTxt.color = new Color(theHintTxt.color.r, theHintTxt.color.g, theHintTxt.color.b,hintTextAlpha);
         }
+    }
+
+    public void carShake()
+    {
+        if (theShakeCoroutine != null)
+        {
+            StopCoroutine(theShakeCoroutine);
+        }
+        theShakeCoroutine = StartCoroutine(shakeCoroutine());
+    }
+
+    IEnumerator shakeCoroutine()
+    {
+        float swapX = 0;
+        float swapY = 0;
+
+        //float defultVelocity = 1f;
+        float defultTime = 1f;
+
+        float timePast =0;
+
+        WaitForSeconds sec = new WaitForSeconds(shakeInterval);
+
+        while (defultTime >0)
+        {
+            timePast += Time.deltaTime;
+
+            swapX = Mathf.Sin(timePast) * Random.Range(-1f, 1f) * shakeStrength;
+            swapY = Mathf.Cos(timePast) * Random.Range(-1f, 1f) * shakeStrength;
+
+            allObjectFather.transform.position = new Vector3(swapX, swapY, 0);
+
+            defultTime -= Time.deltaTime;
+            yield return sec;
+        }
+
+        yield return null;
+        allObjectFather.transform.position = new Vector3(0,0,0);
+    }
+
+
+    public void carShake(float dur, float str, float interval, bool isFadeOut)
+    {
+        if (theShakeCoroutine != null)
+        {
+            StopCoroutine(theShakeCoroutine);
+        }
+        theShakeCoroutine = StartCoroutine(shakeCoroutine(dur, str, interval, isFadeOut));
+    }
+
+    IEnumerator shakeCoroutine(float dur, float str, float interval, bool isFadeOut)
+    {
+        float swapX = 0;
+        float swapY = 0;
+
+        float oriStr = str;
+
+        //float defultVelocity = 1f;
+        float defultTime = dur;
+
+        float timePast = 0;
+        int count = 0;
+        int maxCount = (int)(dur / interval);
+
+        WaitForSeconds sec = new WaitForSeconds(interval);
+
+        while (defultTime > 0)
+        {
+            timePast += Time.deltaTime;
+
+            swapX = Mathf.Sin(timePast) * Random.Range(-1f, 1f) * str;
+            swapY = Mathf.Cos(timePast) * Random.Range(-1f, 1f) * str;
+
+            allObjectFather.transform.position = new Vector3(swapX, swapY, 0);
+
+            if (isFadeOut)
+            {
+                str = oriStr * ((maxCount - count) / maxCount);
+            }
+
+            defultTime -= interval;
+            count++;
+            yield return interval;
+        }
+
+        yield return null;
+        allObjectFather.transform.position = new Vector3(0, 0, 0);
     }
 }
 
