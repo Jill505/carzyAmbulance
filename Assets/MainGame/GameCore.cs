@@ -236,7 +236,10 @@ public class GameCore : MonoBehaviour
                     case (EventPoint.eventType.cthulhu):
                         sr.sprite = eventSprite_empty;
                         break;
-                        
+                    case (EventPoint.eventType.goatScream):
+                        sr.sprite = eventSprite_empty;
+                        break;
+
                     default:
                         Debug.Log("未知事件");
                         break;
@@ -398,6 +401,9 @@ public class GameCore : MonoBehaviour
                             break;
                         case (EventPoint.eventType.cthulhu):
                             Event_cthulhu();
+                            break;
+                        case (EventPoint.eventType.goatScream):
+                            Event_goatScream();
                             break;
                         default:
                             Debug.Log("未知事件");
@@ -639,6 +645,14 @@ public class GameCore : MonoBehaviour
     {
         InsCthulhu();
     }
+    public void Event_goatScream()
+    {
+        goatScream();
+    }
+    public void goatScream()
+    {
+
+    }
 
     [Header("BGM and SoundEffects")]
     public AudioClip bgmClip;
@@ -831,7 +845,7 @@ public class Point
 [System.Serializable]
 public class EventPoint
 {
-    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu}
+    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream}
     public eventType myEventType;
     [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
     public bool triggered = false;
