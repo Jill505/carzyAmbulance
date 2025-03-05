@@ -22,7 +22,7 @@ public class BulletSystem : MonoBehaviour
 
     
     private bool isInShootRange = false; 
-    //private bool isHoldingBullet = false; 
+    private bool isHoldingBullet = false; 
     private bool loadIn = false;
     private Vector2 mousePosition;
     private Vector2 originalPos;
@@ -82,7 +82,7 @@ public class BulletSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && IsMouseOver(bulletBoxCollider, mousePosition) && !loadIn)
         {
-            //isHoldingBullet = true;
+            isHoldingBullet = true;
             //Debug.Log("取得子彈數據");
             soundEffect.ReloadSound();
             currentAmmo = maxAmmo;
@@ -90,7 +90,6 @@ public class BulletSystem : MonoBehaviour
             loadIn = true;
         }
 
-        /*  pullBulletFuncition
         if (isHoldingBullet)
         {
             bulletbox.transform.position = mousePosition; 
@@ -105,22 +104,26 @@ public class BulletSystem : MonoBehaviour
         {
             if (isHoldingBullet)
             {
+                /*
                 if (IsMouseOver(gunCollider, mousePosition))
                 {
+                */
                     soundEffect.ReloadSound();
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
                     loadIn = true;
+                /*
                 }
                 else
                 {
                     Debug.Log("子彈數據消失");
                 }
+                */
 
                 isHoldingBullet = false;
             }
         }
-        */
+        
         
     }
 

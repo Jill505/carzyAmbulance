@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 326616448906362304}
   - component: {fileID: 152565502582087422}
   - component: {fileID: 7841615168856445396}
+  - component: {fileID: 6279818403489068925}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1747789411997560041, guid: a1ff67f4558df8f44bf361965d904a9f, type: 3}
+  m_Sprite: {fileID: -9007825056619670696, guid: 26647dd232d5cca4bad0dbad524dcbfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,10 +104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  attackFrequency: 5
+  attackFrequency: 6
   moveSpeed: 5
   tiltAngle: 15
   tiltSpeed: 5
+  animator: {fileID: 6279818403489068925}
 --- !u!61 &152565502582087422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.18, y: 12.8}
+    oldSize: {x: 8.55, y: 15.742817}
     newSize: {x: 6.18, y: 12.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -180,3 +182,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &6279818403489068925
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560063084557481125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: afc5cf6274b1e2f4c93218bd696aa60c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

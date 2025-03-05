@@ -12,6 +12,7 @@ public class Cthulhu : MonoBehaviour
     public GameObject magicChild;
     public Animator magicAnimator;
     public SpriteRenderer mySr;
+    public Sprite deadSprite;
 
     public bool onDieWay = false;
 
@@ -25,6 +26,7 @@ public class Cthulhu : MonoBehaviour
 
         edgeTL = GameObject.Find("edgeTL").GetComponent<Transform>().position;
         edgeBR = GameObject.Find("edgeRB").GetComponent<Transform>().position;
+        
 
         //just in case, check.
         if (magicChild == null || magicAnimator == null)
@@ -130,6 +132,7 @@ public class Cthulhu : MonoBehaviour
     IEnumerator onDie()
     {
         onDieWay = true;
+        mySr.sprite = deadSprite;
         yield return null;
         //make die animation
 

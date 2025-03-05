@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float attackFrequency = 5f;
 
     [Header("大小變化")]  //做出遠近效果
-    private Vector3 targetScale = Vector3.one * 0.2f;  //目標大小（0.2 倍）
+    //private Vector3 targetScale = Vector3.one * 0.2f;  //目標大小（0.2 倍）
     
 
     [Header("左右移動")]
@@ -24,15 +24,9 @@ public class Enemy : MonoBehaviour
 
 
     private bool canMove = true;
-    private bool shootRange; 
+    private bool shootRange;     
 
-    private float attackDuration = 1.2f;  //攻擊過程的持續時間
-    private bool isAttacking = false;
-    private float attackTimer = 0f;  
-
-    private float returnDuration = 1.2f; //攻擊結束的過渡時間
-    private bool isReturningToTargetScale = false;
-    private float returnTimer = 0f;
+    public Animator animator;
     
 
     void Start()
@@ -43,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        HandleScaling();
+        //HandleScaling();
         HandleMovement();
         HandleTilting();
     }
@@ -51,7 +45,7 @@ public class Enemy : MonoBehaviour
     
 
     //敵人變大的過程
-    void HandleScaling()
+    /*void HandleScaling()
     {
         
             if (isAttacking)
@@ -67,13 +61,13 @@ public class Enemy : MonoBehaviour
                 float progressReturn = Mathf.Clamp01(returnTimer / returnDuration);
                 transform.localScale = Vector3.Lerp(Vector3.one * 0.3f, targetScale, progressReturn);
             }
-    }
+    }*/
     
 
     //敵人左右移動
     void HandleMovement()
     {
-        if (canMove && !isAttacking && !isReturningToTargetScale)
+        if (canMove )
         {
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
         }
@@ -81,9 +75,8 @@ public class Enemy : MonoBehaviour
 
     //敵人的傾斜
    void HandleTilting()
-{
-    if (!isAttacking && !isReturningToTargetScale)  
-    {
+   {
+    
         float targetTilt;
 
         if (moveDirection.x > 0)
@@ -99,7 +92,7 @@ public class Enemy : MonoBehaviour
         currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTilt, tiltSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(0f, 0f, currentTiltAngle);
     }
-}
+
 
     // 當敵人碰到牆壁時，會進行方向反轉並等幾秒
     void OnTriggerEnter2D(Collider2D other)
@@ -139,20 +132,9 @@ public class Enemy : MonoBehaviour
 
             if(shootRange)
             {
-                isAttacking = true; 
-                attackTimer = 0f;  
+                animator.SetTrigger("AttackCycle");  
                 Attack();  
             }
-
-            yield return new WaitForSeconds(1.2f); 
-
-            isAttacking = false;  
-
-            returnTimer = 0f;
-            isReturningToTargetScale = true;  
-
-            yield return new WaitForSeconds(1.2f);
-            isReturningToTargetScale = false;
         }
     }
 

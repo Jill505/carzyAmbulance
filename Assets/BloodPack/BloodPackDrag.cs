@@ -15,14 +15,14 @@ public class BloodPackDrag : MonoBehaviour //, IBeginDragHandler, IDragHandler, 
     [Header("拖曳設定")]
     public float dragOutOfBoundsDistance = 100f;
     public float dragDelayTime = 2f;    
-    public float dragResistance = 0.5f; */
+    public float dragResistance = 0.5f; 
 
     
 
     void Start()
     {
-        //rectTransform = bloodPackImage.GetComponent<RectTransform>();
-        //originalPosition = rectTransform.position;       
+        rectTransform = bloodPackImage.GetComponent<RectTransform>();
+        originalPosition = rectTransform.position;       
               
     }
 
@@ -31,7 +31,7 @@ public class BloodPackDrag : MonoBehaviour //, IBeginDragHandler, IDragHandler, 
         //SetActiveF();
     }
 
-    /*public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
         dragStartTime = Time.time; 
@@ -65,17 +65,7 @@ public class BloodPackDrag : MonoBehaviour //, IBeginDragHandler, IDragHandler, 
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
-
-        float distanceFromOriginalPosition = Vector3.Distance(rectTransform.position, originalPosition);
-
-        if (distanceFromOriginalPosition > dragOutOfBoundsDistance) 
-        {
-            StartCoroutine(FadeOutBloodPack());
-        }
-        else
-        {
-            rectTransform.position = originalPosition;
-        }
+        StartCoroutine(FadeOutBloodPack());
     }
 
     private IEnumerator FadeOutBloodPack()
@@ -95,10 +85,10 @@ public class BloodPackDrag : MonoBehaviour //, IBeginDragHandler, IDragHandler, 
          bloodPackImage.color = new Color(1, 1, 1, 1);
          childImage.color = new Color(1, 1, 1, 1);
          
-         gameObject.SetActive(false);
+         //gameObject.SetActive(false);
     }
 
-    private void SetActiveF()
+    /*private void SetActiveF()
     {
         if(bloodPackImage.fillAmount <= 0)
         {
