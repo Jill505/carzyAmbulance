@@ -228,7 +228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 19, y: 43.5}
+  m_AnchoredPosition: {x: 19, y: 19.9}
   m_SizeDelta: {x: -640, y: -420.18918}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26203297
@@ -4412,6 +4412,12 @@ MonoBehaviour:
       - myEventType: 0
         atPos: 0.66
         triggered: 0
+      - myEventType: 0
+        atPos: 0.22
+        triggered: 0
+      - myEventType: 0
+        atPos: 0.77
+        triggered: 0
       alreadyReachTheEventPoints: 000000
     - pointType: 1
       linkingPointSort: 
@@ -4480,6 +4486,10 @@ MonoBehaviour:
   allObjectFather: {fileID: 0}
   shakeStrength: 0.05
   shakeInterval: 0.01
+  maxHocusCount: 3
+  nowHocusCount: 3
+  hocusSlowRate: 0.4
+  hocusTime: 4
   bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: d275813617fff2e4293e428609a90b2b, type: 3}
@@ -6688,8 +6698,8 @@ Transform:
   m_GameObject: {fileID: 1885282058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.83, y: 1.01, z: 0}
-  m_LocalScale: {x: 0.50440735, y: 0.50440735, z: 0.50440735}
+  m_LocalPosition: {x: -1.81, y: 1.03, z: 0}
+  m_LocalScale: {x: 0.5256429, y: 0.5765376, z: 0.50440735}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
