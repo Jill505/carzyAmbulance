@@ -165,7 +165,7 @@ public class Heartbeat : MonoBehaviour
     {
         //Debug.Log("from Heartbeat.cs. the message called currectly");
         pendingNote ++;
-        gameCore.heartbeatMiss();
+        gameCore.BanditAttack();
     }
 
     public void insSoundEffect()

@@ -101,6 +101,10 @@ public class GameCore : MonoBehaviour
     public float shakeInterval = 0.1f;
     Coroutine theShakeCoroutine;
 
+    [Header("Hocus system")]
+    public int maxHocusCount = 3;
+    public int nowHocusCount = 3;
+
     [Header("who'd fuck are you?")]
     public int theBPM
     {
@@ -413,6 +417,10 @@ public class GameCore : MonoBehaviour
                         case (EventPoint.eventType.goatScream):
                             Event_goatScream();
                             break;
+                        case (EventPoint.eventType.speedUp):
+                            Event_speedUp();
+                            break;
+
                         default:
                             Debug.Log("未知事件");
                             break;
@@ -588,6 +596,22 @@ public class GameCore : MonoBehaviour
         //Debug.Log("from GameCore.cs, the message called");
         hp -= 5f;
         comboCount = 0;
+        showHintText(3);
+
+        if (hp < 0)
+        {
+            fail = true;
+            gameEnd();
+        }
+    }
+
+    public void BanditAttack()
+    {
+        //Debug.Log("from GameCore.cs, the message called");
+
+        carShake(4, 1.4f, 0.15f, false);
+        hp -= 5f;
+        comboCount = 0;
 
         if (hp < 0)
         {
@@ -709,7 +733,12 @@ public class GameCore : MonoBehaviour
         else if (res == 2)
         {
             theHintTxt.text = "Good";
-            theHintTxt.color = new Color(0.3f,0.75f,0, hintTextAlpha);
+            theHintTxt.color = new Color(0.3f, 0.75f, 0, hintTextAlpha);
+        }
+        else if (res == 3)
+        {
+            theHintTxt.text = "Miss";
+            theHintTxt.color = new Color(0.2f, 0.2f, 0.2f, hintTextAlpha);
         }
         else
         {
@@ -820,6 +849,20 @@ public class GameCore : MonoBehaviour
         AS.pitch = theFuq;
         heartbeat.BPMChange(theFuq);
     }
+
+    public void Event_speedUp()
+    {
+        playSpeed += 0.1f;
+    }
+
+    public void Hocus()
+    {
+
+    }
+    public void Hocus(float sec)
+    {
+
+    }
 }
 
 [System.Serializable]
@@ -862,7 +905,7 @@ public class Point
 [System.Serializable]
 public class EventPoint
 {
-    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream}
+    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream, speedUp}
     public eventType myEventType;
     [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
     public bool triggered = false;

@@ -44,7 +44,7 @@ public class Line : MonoBehaviour
             {
                 //Debug.Log("a hint from Line.cs, the function triggered currecrt");
                 gameCore.damagedHintFunc();
-                Heartbeat.InjuryAndSpawnANote();
+                gameCore.heartbeatMiss();
                 Heartbeat.nextLineToCheck++;
                 Heartbeat.RemoveLine(thisLineNumber); 
                 if (childSpriteRenderer != null)
