@@ -204,6 +204,9 @@ public class GameCore : MonoBehaviour
                 lineRenderer.useWorldSpace = true;
                 lineRenderer.positionCount = 2; // ����I
 
+                lineRenderer.endColor = new Color(0, 0, 0, 0);
+                lineRenderer.startColor = new Color(0, 0, 0, 0);
+
                 // �]�m�u��������I
                 Vector3 startPos = new Vector3(currentPoint.x, currentPoint.y, 0);
                 Vector3 endPos = new Vector3(linkedPoint.x, linkedPoint.y, 0);
@@ -248,6 +251,7 @@ public class GameCore : MonoBehaviour
                         Debug.Log("未知事件");
                         break;
                 }
+                sr.color = new Color(0, 0, 0, 0);
                 j++;
             }
         }
@@ -637,7 +641,8 @@ public class GameCore : MonoBehaviour
     public void Event_roadRock()
     {       
         heartbeat.pendingNote ++;
-        PlaySoundEffect(SoundEffects[0]);           
+        PlaySoundEffect(SoundEffects[0]);
+        carShake(4, 1.4f, 0.15f, false);
     }
     public void InsCthulhu()
     {

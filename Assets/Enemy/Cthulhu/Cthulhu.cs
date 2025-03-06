@@ -89,6 +89,7 @@ public class Cthulhu : MonoBehaviour
     public void kys()
     {
         GameObject.Find("Chart").GetComponent<Heartbeat>().pendingNote += 5;
+        gameCore.carShake(4, 1.4f, 0.15f, false);
 
         /*
         for(int note = 0;note < 5;note++)
