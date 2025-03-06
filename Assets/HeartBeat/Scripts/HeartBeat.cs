@@ -104,6 +104,10 @@ public class Heartbeat : MonoBehaviour
     {
         duration = 60f/(BPM*4f);
     }
+    public void BPMChange(float arguement)
+    {
+        duration *= (1/arguement);
+    }
     public void BPMsyncToText()
     {
         bpmTextMesh.text = "BPM: "+(int)BPM;

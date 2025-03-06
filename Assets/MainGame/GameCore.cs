@@ -50,6 +50,7 @@ public class GameCore : MonoBehaviour
     public GameObject referencePointMobMovingRangeA;
     public GameObject referencePointMobMovingRangeB;
     public GameObject CthulhuObject;
+    public GameObject Goat;
 
     [Header("我也不知道為什麼Heartbeat會宣告在這")]
     public Heartbeat heartbeat;
@@ -92,6 +93,7 @@ public class GameCore : MonoBehaviour
 
     [Header("BPM, 對")]
     public int bpm = 120;
+    public float playSpeed =1f;
 
     [Header("shake 系統")]
     public GameObject allObjectFather;
@@ -151,8 +153,10 @@ public class GameCore : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                carShake(10f, 3f, 0.2f,false);
+                carShake(3f, 0.15f, 0.15f,false);
             }
+
+            timeControl(playSpeed);
 
             gameStatementRate[hpStatement] += Time.deltaTime;
         }
@@ -628,6 +632,7 @@ public class GameCore : MonoBehaviour
             InsEnemy();
         }*/
         InsEnemy();
+        Debug.Log("Enemy spawn from the event.");
     }
     public void Event_roadRock()
     {       
@@ -651,7 +656,7 @@ public class GameCore : MonoBehaviour
     }
     public void goatScream()
     {
-
+        Instantiate(Goat);
     }
 
     [Header("BGM and SoundEffects")]
@@ -802,6 +807,13 @@ public class GameCore : MonoBehaviour
 
         yield return null;
         allObjectFather.transform.position = new Vector3(0, 0, 0);
+    }
+
+    public void timeControl(float theFuq)
+    {
+        AudioSource AS = theBgmPlayer.GetComponent<AudioSource>();
+        AS.pitch = theFuq;
+        heartbeat.BPMChange(theFuq);
     }
 }
 
