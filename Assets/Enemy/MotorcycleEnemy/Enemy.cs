@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -67,7 +68,7 @@ public class Enemy : MonoBehaviour
     //敵人左右移動
     void HandleMovement()
     {
-        if (canMove )
+        if (canMove)
         {
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
         }
@@ -90,7 +91,7 @@ public class Enemy : MonoBehaviour
 
         //平滑過渡
         currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTilt, tiltSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0f, 0f, currentTiltAngle);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, currentTiltAngle);
     }
 
 
@@ -148,12 +149,32 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        animator.SetBool("Shake", true);
         health -= damage;
         if (health <= 0)
         {
-            Die();
+            animator.SetBool("FlipDown", true);
+            int ranRes = Random.Range(0,1);
+            if(ranRes == 1)
+            {
+                Debug.Log("down to left");
+                transform.localEulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+            }
+            else
+            {
+                Debug.Log("down to right");
+                transform.localEulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+            }
         }
     }
+
+    public void ShakeOver()
+    {
+        animator.SetBool("Shake", false);
+    }
+    
+
+    
 
     void Die()
     {

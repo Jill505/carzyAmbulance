@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  attackFrequency: 6
+  attackFrequency: 3
   moveSpeed: 5
   tiltAngle: 15
   tiltSpeed: 5
@@ -147,7 +147,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.55, y: 15.742817}
+    oldSize: {x: 10.26, y: 18.89138}
     newSize: {x: 6.18, y: 12.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
