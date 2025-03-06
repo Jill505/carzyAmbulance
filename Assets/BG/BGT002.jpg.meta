@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3869341de6bbbfa49959187d8979ac9a
+guid: 2edef1f25b7c25941894cefbc832fe0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7401793070628834706
-    second: Chr_MotorcycleEnemy_03_0
+      213: 4138633090927539385
+    second: BGT002_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chr_MotorcycleEnemy_03_0
+      name: BGT002_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 122
-        width: 986
-        height: 1954
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e62783c2b6c874990800000000000000
-      internalID: -7401793070628834706
+      spriteID: 9b4b9686ed06f6930800000000000000
+      internalID: 4138633090927539385
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Chr_MotorcycleEnemy_03_0: -7401793070628834706
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
