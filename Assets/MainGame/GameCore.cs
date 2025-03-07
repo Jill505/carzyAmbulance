@@ -72,6 +72,16 @@ public class GameCore : MonoBehaviour
     public Sprite emptyStar;
     public Sprite star;
 
+    [Header("Note判定圖片放置呦")]
+    public Image hintImage;
+    public Sprite Perfect;
+    public Sprite Great;
+    public Sprite Good;
+    public Sprite Miss;
+    public Sprite Fail;
+    public float hintImageAlpha = 1;
+    
+
     [Header("莫名其妙的參數 我也忘記幹嘛用了")]
     public int gameRate = 0; // -1~2, -1�N�����d����, 0~2�N��1~3�P
     public int starNumber = 0;
@@ -147,6 +157,7 @@ public class GameCore : MonoBehaviour
             BloodLoose();
 
             hintTextAutoFade();
+            HintImageAutoFade();
 
             //�o���u���u�Ʊ�
             O2Sync();
@@ -600,6 +611,7 @@ public class GameCore : MonoBehaviour
         hp -= 5f;
         comboCount = 0;
         showHintText(3);
+        ShowHintImage(3);
 
         if (hp < 0)
         {
@@ -761,6 +773,42 @@ public class GameCore : MonoBehaviour
         {
             hintTextAlpha = hintTextAlpha - Time.deltaTime*1.2f;
             theHintTxt.color = new Color(theHintTxt.color.r, theHintTxt.color.g, theHintTxt.color.b,hintTextAlpha);
+        }
+    }
+    public void ShowHintImage(int res)
+    {
+        countingRemain = 1;
+        hintImageAlpha = 1;
+
+        if (res == 1)
+        {
+            hintImage.sprite = Perfect;
+        }
+        else if (res == 2)
+        {
+            hintImage.sprite = Good;
+        }
+        else if (res == 3)
+        {
+            hintImage.sprite = Miss;
+        }
+        else if (res == 4)
+        {
+            hintImage.sprite = Great;
+        }
+        else
+        {
+            hintImage.sprite = Fail;
+        }
+    }
+
+    public void HintImageAutoFade()
+    {
+        countingRemain += Time.deltaTime;
+        if (countingRemain > 0.2f)
+        {
+            hintImageAlpha = hintImageAlpha - Time.deltaTime * 1.2f;
+            hintImage.color = new Color(hintImage.color.r, hintImage.color.g, hintImage.color.b, hintImageAlpha);
         }
     }
 

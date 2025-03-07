@@ -2003,6 +2003,7 @@ RectTransform:
   - {fileID: 1169609021}
   - {fileID: 1046105580}
   - {fileID: 471801618}
+  - {fileID: 658447141}
   m_Father: {fileID: 835290679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2622,6 +2623,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629892978}
   m_CullTransparentMesh: 1
+--- !u!1 &658447138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 658447141}
+  - component: {fileID: 658447140}
+  - component: {fileID: 658447139}
+  m_Layer: 5
+  m_Name: noteCheckText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &658447139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658447138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 3168358946285472129, guid: 199e989602376d746a6f45855cf7394e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &658447140
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658447138}
+  m_CullTransparentMesh: 1
+--- !u!224 &658447141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658447138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.05, y: 0.51249, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445491596}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 21.6, y: -157.6}
+  m_SizeDelta: {x: 143.321, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &739340317
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,7 +3856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1046105580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4128,6 +4204,7 @@ MonoBehaviour:
   - {fileID: -501752215079892395, guid: c7a9e012844931a4a80dab967c06b7b6, type: 3}
   - {fileID: 5697519827353580428, guid: 340e7b40c34d6a5488890facdbf835d8, type: 3}
   - {fileID: 8286674289734884917, guid: e09cb2172b0164f4d811be0aadc48fc8, type: 3}
+  isLastBloodPack: 0
 --- !u!61 &1076068638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5060,6 +5137,13 @@ MonoBehaviour:
   - {fileID: 882868064}
   emptyStar: {fileID: -6155696173841487834, guid: fc1ceddb3eddefc4aa59f71850de4cc3, type: 3}
   star: {fileID: 1549216194427799674, guid: a1f49fd4d6d4bf74fafcf0cf63337106, type: 3}
+  hintImage: {fileID: 658447139}
+  Perfect: {fileID: 6779734204767495030, guid: f22a8a3895594b14ca141a89930e9d2e, type: 3}
+  Great: {fileID: -7556016082631641370, guid: 0dd3c56bb8512d943bc7f33f94163691, type: 3}
+  Good: {fileID: 6256978819795432554, guid: f5e536110482196409fb8d8a712434cd, type: 3}
+  Miss: {fileID: 413248917955918174, guid: ec61e976a751b194195a81ecced31625, type: 3}
+  Fail: {fileID: 3243871851857501483, guid: bf8bc909abc782f48af8a37c7a1372e6, type: 3}
+  hintImageAlpha: 1
   gameRate: 0
   starNumber: 0
   fail: 0
@@ -6762,6 +6846,7 @@ MonoBehaviour:
   bulletbox: {fileID: 26322208}
   syringSystem: {fileID: 0}
   soundEffect: {fileID: 801324056}
+  draggableBloodPack: {fileID: 0}
 --- !u!4 &1784427913
 Transform:
   m_ObjectHideFlags: 0

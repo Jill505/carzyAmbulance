@@ -79,6 +79,7 @@ public class Line : MonoBehaviour
         {
             Debug.Log("懲罰");
             gameCore.showHintText(3);
+            gameCore.ShowHintImage(3);
             StartCoroutine(PunishTime());
         }
         if(InThePerfectPoint)
@@ -88,6 +89,7 @@ public class Line : MonoBehaviour
             gameCore.heartbeatHit();
             gameCore.perfectHintFunc();
             gameCore.showHintText(1);
+            gameCore.ShowHintImage(1);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
@@ -105,6 +107,7 @@ public class Line : MonoBehaviour
             gameCore.heartbeatHit();
             gameCore.perfectHintFunc();
             gameCore.showHintText(4);
+            gameCore.ShowHintImage(4);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
@@ -122,6 +125,7 @@ public class Line : MonoBehaviour
             gameCore.heartbeatHit();
             gameCore.perfectHintFunc();
             gameCore.showHintText(2);
+            gameCore.ShowHintImage(2);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
