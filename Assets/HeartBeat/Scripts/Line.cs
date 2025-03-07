@@ -12,6 +12,7 @@ public class Line : MonoBehaviour
     private bool getPoint = false;
     private bool hasExecuted = false;
     public bool InThePerfectPoint = false;
+    public bool InTheGreatPoint = false;
     public bool InTheGoodPoint = false;
     public bool InThePunishPoint = false;
 
@@ -97,6 +98,23 @@ public class Line : MonoBehaviour
             Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
 
         }
+        else if(InTheGreatPoint)
+        {
+            Debug.Log("很棒");
+            getPoint = true;
+            gameCore.heartbeatHit();
+            gameCore.perfectHintFunc();
+            gameCore.showHintText(4);
+
+
+            childSpriteRenderer.color = new Color(0, 1, 0, 1);
+            //Play Animation
+                
+            myAnimator.SetTrigger("makeItClear");
+            Debug.Log("CClear");
+            isChecked = true;
+            Heartbeat.RemoveLine(thisLineNumber); // 檢查後移除該Line
+        }
         else if(InTheGoodPoint)
         {
             Debug.Log("很好");
@@ -131,6 +149,10 @@ public class Line : MonoBehaviour
         {
             InTheGoodPoint = true;
         }
+        if (collision.gameObject.tag == "Great")
+        {
+            InTheGreatPoint = true;
+        }
         if (collision.gameObject.tag == "Perfect")
         {
             InThePerfectPoint = true;
@@ -149,6 +171,10 @@ public class Line : MonoBehaviour
         if (collision.gameObject.tag == "Good")
         {
             InTheGoodPoint = false;
+        }
+        if (collision.gameObject.tag == "Great")
+        {
+            InTheGreatPoint = false;
         }
         if (collision.gameObject.tag == "Perfect")
         {

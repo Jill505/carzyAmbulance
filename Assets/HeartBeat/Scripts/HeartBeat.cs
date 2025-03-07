@@ -223,7 +223,7 @@ public class Heartbeat : MonoBehaviour
                     line.CheckInput(); // 執行按鍵判定
                 }
             }
-            if (line.InTheGoodPoint || line.InThePerfectPoint)
+            if (line.InTheGoodPoint || line.InThePerfectPoint || line.InTheGreatPoint)
             {
                 if(line != null && !line.IsChecked() && !line.punish)
                 {

@@ -743,6 +743,11 @@ public class GameCore : MonoBehaviour
             theHintTxt.text = "Miss";
             theHintTxt.color = new Color(0.2f, 0.2f, 0.2f, hintTextAlpha);
         }
+        else if (res == 4)
+        {
+            theHintTxt.text = "Great";
+            theHintTxt.color = new Color(0.3f, 0.75f, 0, hintTextAlpha);
+        }
         else
         {
             theHintTxt.text = "Wrong";

@@ -18,11 +18,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 5f;  //速度
     private Vector3 moveDirection = Vector3.right; //初始方向
 
-    [Header("傾斜")]
-    public float tiltAngle = 15f; //最大傾斜角
-    private float currentTiltAngle = 0f; //當前傾斜角
-    public float tiltSpeed = 5f; //傾斜變化的速度
-
+    
 
     private bool canMove = true;
     private bool shootRange;     
