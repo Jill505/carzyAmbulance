@@ -517,7 +517,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.39110208}
+  m_Offset: {x: -0.19907928, y: 0.83610296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -527,7 +527,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8.66, y: 8.1878395}
+  m_Size: {x: 9.058159, y: 7.2978373}
   m_EdgeRadius: 0
 --- !u!212 &26322210
 SpriteRenderer:
@@ -1197,7 +1197,7 @@ Transform:
   m_GameObject: {fileID: 131574668}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.018122444, w: 0.9998358}
-  m_LocalPosition: {x: 2.18, y: 5.64, z: 9.931946}
+  m_LocalPosition: {x: 1.32, y: 5.51, z: 9.931946}
   m_LocalScale: {x: 0.8757531, y: 0.8757531, z: 0.8757531}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3050,6 +3050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805005205}
   - component: {fileID: 805005206}
+  - component: {fileID: 805005207}
   m_Layer: 0
   m_Name: SyringSystem
   m_TagString: Untagged
@@ -3086,9 +3087,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed110c680704ebb4a81cc45535170eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allMedicineUsed: 0
   syringeObject: {fileID: 1814688338}
   stringSprite: {fileID: 623389385916360402, guid: 7beaffc7dc56761438f6f1eb4e7a96cc, type: 3}
   string2Sprite: {fileID: 3032264914042368451, guid: f2d3c56e39353974199c8ed378aea298, type: 3}
+--- !u!61 &805005207
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805005204}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 3.2394834, y: -0.15024984}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1915643, y: 1.2656338}
+  m_EdgeRadius: 0
 --- !u!1 &835290678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,7 +5112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203994950}
-  - component: {fileID: 1203994951}
   m_Layer: 0
   m_Name: Medicine
   m_TagString: Untagged
@@ -5090,52 +5137,6 @@ Transform:
   - {fileID: 1969572436}
   m_Father: {fileID: 805005205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1203994951
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203994949}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 3.2550814, y: -0.24580705}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.283051, y: 1.491614}
-  m_EdgeRadius: 0
 --- !u!1 &1215380699
 GameObject:
   m_ObjectHideFlags: 0
@@ -6751,6 +6752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletBox: {fileID: 26322209}
   bloodPack: {fileID: 1076068638}
+  Medicine: {fileID: 805005207}
   shootRange: {fileID: 1185947681}
   crosshairShoot: {fileID: 2800000, guid: d9fccae6c74e67942b48c02c73083b6d, type: 3}
   crosshairNoBullet: {fileID: 2800000, guid: f5e519c801ea06d4ba2593e8f04a8717, type: 3}
@@ -6758,6 +6760,7 @@ MonoBehaviour:
   maxAmmo: 1
   Firepower: 1
   bulletbox: {fileID: 26322208}
+  syringSystem: {fileID: 0}
   soundEffect: {fileID: 801324056}
 --- !u!4 &1784427913
 Transform:

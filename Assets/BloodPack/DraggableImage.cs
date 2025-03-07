@@ -16,6 +16,7 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     private bool isDragging = false;
     private Vector2 mousePosition;
     private Vector2 originalPos;
+    public bool isLastBloodPack = false; 
 
     private void Start()
     {
@@ -43,6 +44,14 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
             bloodPackBox.sprite = bloodPackSprites[currentIndex]; // 設定新的圖片
             isDragging = true;
             newbloodPack.rectTransform.position = mousePosition; 
+        }
+        if (currentIndex == bloodPackSprites.Length - 1)
+        {
+            isLastBloodPack = true;  // 設置為 true
+        }
+        else
+        {
+            isLastBloodPack = false; // 不是最後一張則設置為 false
         }
         
         

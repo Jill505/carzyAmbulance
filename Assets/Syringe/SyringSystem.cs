@@ -6,6 +6,7 @@ public class SyringSystem : MonoBehaviour
     private GameObject medicine;    
     private bool isHoldingMedicine = false; 
     private bool usingMedicine = false;
+    public bool allMedicineUsed = false;
     private Vector2 mousePosition;
     private GameCore gameCore;
 
@@ -29,6 +30,7 @@ public class SyringSystem : MonoBehaviour
     {
         HoldMedicine();
         ChangeSyring();
+        CheckAllMedicineUsed();
     }
 
     void HoldMedicine()
@@ -97,5 +99,21 @@ public class SyringSystem : MonoBehaviour
         {
             syringeRenderer.sprite = string2Sprite;
         }
+    }
+    public void CheckAllMedicineUsed()
+    {
+        GameObject[] medicines = GameObject.FindGameObjectsWithTag("Medicine");
+
+        bool allUsed = true;
+        foreach (GameObject med in medicines)
+        {
+            if (med.activeSelf) 
+            {
+                allUsed = false;
+                break;
+            }
+        }
+
+        allMedicineUsed = allUsed; 
     }
 }

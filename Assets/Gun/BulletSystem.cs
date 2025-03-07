@@ -6,6 +6,7 @@ public class BulletSystem : MonoBehaviour
     [Header ("存放碰撞體")]
     public BoxCollider2D bulletBox; 
     public BoxCollider2D bloodPack;   
+    public BoxCollider2D Medicine;   
     public BoxCollider2D shootRange; 
 
 
@@ -30,11 +31,15 @@ public class BulletSystem : MonoBehaviour
 
     public GameObject bulletbox;
     private GameCore gameCore;
+    public SyringSystem syringSystem;
     public SoundEffect soundEffect;
+    public DraggableBloodPack draggableBloodPack;
 
     void Start()
     {
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();     
+        syringSystem = GameObject.Find("SyringSystem").GetComponent<SyringSystem>(); 
+        draggableBloodPack = GameObject.Find("BloodPackBox").GetComponent<DraggableBloodPack>();
         originalPos = bulletbox.transform.position;    
     }
     void Update()
@@ -74,10 +79,19 @@ public class BulletSystem : MonoBehaviour
         }
         
         
-        else if(IsMouseOver(bulletBox, mousePosition) || IsMouseOver(bloodPack, mousePosition))
+        else if(IsMouseOver(bulletBox, mousePosition) )
         {
             Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
         }
+        else if(IsMouseOver(Medicine, mousePosition) && syringSystem.allMedicineUsed == false)
+        {
+            Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
+        }
+        else if(IsMouseOver(bloodPack, mousePosition)&& draggableBloodPack.isLastBloodPack == false)
+        {
+            Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
+        }
+
         else
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
