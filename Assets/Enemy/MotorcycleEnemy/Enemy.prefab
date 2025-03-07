@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -9007825056619670696, guid: 26647dd232d5cca4bad0dbad524dcbfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,8 +106,6 @@ MonoBehaviour:
   health: 1
   attackFrequency: 3
   moveSpeed: 5
-  tiltAngle: 15
-  tiltSpeed: 5
   animator: {fileID: 6279818403489068925}
 --- !u!61 &152565502582087422
 BoxCollider2D:
