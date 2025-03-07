@@ -59,12 +59,7 @@ public class BulletSystem : MonoBehaviour
     {
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
         bool isMouseOverCthulhu = hitCollider != null && hitCollider.TryGetComponent<Cthulhu>(out _); // 確保 hitCollider 不是 null 才檢查 Cthulhu
-        if(IsMouseOver(bulletBox, mousePosition) || IsMouseOver(bloodPack, mousePosition))
-        {
-            Cursor.SetCursor(crosshairHand, new Vector2(32, 32), CursorMode.Auto);
-        }
-        
-        else if(IsMouseOver(shootRange, mousePosition) || isMouseOverCthulhu)
+        if(IsMouseOver(shootRange, mousePosition) || isMouseOverCthulhu)
         {
             if (loadIn && currentAmmo > 0)
             {
@@ -76,6 +71,12 @@ public class BulletSystem : MonoBehaviour
                 Cursor.SetCursor(crosshairNoBullet, new Vector2(32, 32), CursorMode.Auto);
                 isInShootRange = true;
             }
+        }
+        
+        
+        else if(IsMouseOver(bulletBox, mousePosition) || IsMouseOver(bloodPack, mousePosition))
+        {
+            Cursor.SetCursor(crosshairHand, new Vector2(32, 32), CursorMode.Auto);
         }
         else
         {

@@ -146,26 +146,15 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("Shake", true);
         health -= damage;
-        if (health <= 0)
-        {
-            animator.SetBool("FlipDown", true);
-            int ranRes = Random.Range(0,1);
-            if(ranRes == 1)
-            {
-                Debug.Log("down to left");
-                transform.localEulerAngles = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-            }
-            else
-            {
-                Debug.Log("down to right");
-                transform.localEulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            }
-        }
     }
 
     public void ShakeOver()
     {
         animator.SetBool("Shake", false);
+        if (health <= 0)
+        {
+            animator.SetBool("FlipDown", true);
+        }
     }
     
 
