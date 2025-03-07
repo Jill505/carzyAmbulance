@@ -63,12 +63,12 @@ public class BulletSystem : MonoBehaviour
         {
             if (loadIn && currentAmmo > 0)
             {
-                Cursor.SetCursor(crosshairShoot, new Vector2(32, 32), CursorMode.Auto);
+                Cursor.SetCursor(crosshairShoot, new Vector2(64, 64), CursorMode.Auto);
                 isInShootRange = true;
             }
             else
             {
-                Cursor.SetCursor(crosshairNoBullet, new Vector2(32, 32), CursorMode.Auto);
+                Cursor.SetCursor(crosshairNoBullet, new Vector2(64, 64), CursorMode.Auto);
                 isInShootRange = true;
             }
         }
@@ -76,7 +76,7 @@ public class BulletSystem : MonoBehaviour
         
         else if(IsMouseOver(bulletBox, mousePosition) || IsMouseOver(bloodPack, mousePosition))
         {
-            Cursor.SetCursor(crosshairHand, new Vector2(32, 32), CursorMode.Auto);
+            Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
         }
         else
         {
@@ -91,10 +91,6 @@ public class BulletSystem : MonoBehaviour
         {
             isHoldingBullet = true;
             //Debug.Log("取得子彈數據");
-            soundEffect.ReloadSound();
-            currentAmmo = maxAmmo;
-            Debug.Log("成功將子彈放入槍枝");
-            loadIn = true;
         }
 
         if (isHoldingBullet)
@@ -119,6 +115,7 @@ public class BulletSystem : MonoBehaviour
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
                     loadIn = true;
+                    ChangeColor(bulletbox,"#806A6A");
                 /*
                 }
                 else
@@ -172,6 +169,7 @@ public class BulletSystem : MonoBehaviour
         if (currentAmmo <= 0)
         {
             loadIn = false;
+            ChangeColor(bulletbox,"#FFFFFF");
         }
 
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
@@ -215,6 +213,18 @@ public class BulletSystem : MonoBehaviour
     private bool IsMouseOver(BoxCollider2D collider, Vector2 point)
     {
         return collider.OverlapPoint(point);
+    }
+
+    void ChangeColor(GameObject obj,string hexColor)
+    {
+        if (ColorUtility.TryParseHtmlString(hexColor, out Color newColor))
+        {
+            SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                sprite.color = newColor;
+            }
+        }
     }
 
     

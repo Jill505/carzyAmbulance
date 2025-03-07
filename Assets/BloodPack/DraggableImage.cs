@@ -4,13 +4,29 @@ using UnityEngine.UI;
 
 public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
-    public Image activeSlot; 
-    public BloodPackDrag bloodPackDrag;
+    //public Image activeSlot; 
+    //public BloodPackDrag bloodPackDrag;
     public GameCore gameCore;
+    public Image newbloodPack;
+    private Image bloodPackBox;
 
-    private bool isDragging = false; 
+    public Sprite[] bloodPackSprites; // 存放四張不同的圖片
+    private int currentIndex = 0;
 
+    private bool isDragging = false;
+    private Vector2 mousePosition;
+    private Vector2 originalPos;
+
+    private void Start()
+    {
+        bloodPackBox = GetComponent<Image>();
+        originalPos = newbloodPack.rectTransform.position;
+    }
+
+    public void Update()
+    {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -19,14 +35,24 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
             return; 
         }*/
 
-        isDragging = true;
-        startPosition = transform.position;
+        if (bloodPackSprites.Length == 0) return; // 確保有圖片可切換
+        
+        if (currentIndex < bloodPackSprites.Length - 1) // 確保不超過最後一張
+        {
+            currentIndex++; 
+            bloodPackBox.sprite = bloodPackSprites[currentIndex]; // 設定新的圖片
+            isDragging = true;
+            newbloodPack.rectTransform.position = mousePosition; 
+        }
+        
+        
     }
+    
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return; 
-        transform.position = Input.mousePosition;
+        newbloodPack.rectTransform.position = mousePosition; 
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -35,11 +61,11 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
 
         ChangeBloodPack();
         isDragging = false; 
+        newbloodPack.rectTransform.position = originalPos; 
     }
 
     public void ChangeBloodPack()
     {
-        transform.position = startPosition;
         //bloodPackDrag.gameObject.SetActive(true);
         gameCore.ChangeBloodPack();
     }
