@@ -77,21 +77,16 @@ public class Enemy : MonoBehaviour
     //敵人的傾斜
    void HandleTilting()
    {
-    
-        float targetTilt;
-
         if (moveDirection.x > 0)
         {
-            targetTilt = tiltAngle;  //當 moveDirection.x 為正時，目標傾斜角度為 tiltAngle
+            animator.SetBool("TileL",false);
+            animator.SetBool("TileR",true);
         }
-        else
+        else if(moveDirection.x < 0)
         {
-            targetTilt = -tiltAngle;  //當 moveDirection.x 為負時，目標傾斜角度為 -tiltAngle
+            animator.SetBool("TileR",false);
+            animator.SetBool("TileL",true);
         }
-
-        //平滑過渡
-        currentTiltAngle = Mathf.Lerp(currentTiltAngle, targetTilt, tiltSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, currentTiltAngle);
     }
 
 

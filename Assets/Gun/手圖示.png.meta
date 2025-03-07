@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 3fefcdad7bc9cdd49bd433864de64dd0
+guid: 686acbf6cbec5ec47b28b93d36ee686d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2370849504497391015
-    second: BG-blood bag-out of blood_0
-  - first:
-      213: 2934425841036630671
-    second: BG-blood bag-out of blood_1
+      213: -5518269664679944845
+    second: "\u624B\u5716\u793A_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -27,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -54,13 +51,13 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 350
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 7
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -112,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG-blood bag-out of blood_0
+      name: "\u624B\u5716\u793A_0"
       rect:
         serializedVersion: 2
-        x: 375
-        y: 339
-        width: 565
-        height: 937
+        x: 16
+        y: 15
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95aa58cdfec091fd0800000000000000
-      internalID: -2370849504497391015
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG-blood bag-out of blood_1
-      rect:
-        serializedVersion: 2
-        x: 618
-        y: 271
-        width: 11
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f8a17b251cc29b820800000000000000
-      internalID: 2934425841036630671
+      spriteID: 37d10fd1afa2b63b0800000000000000
+      internalID: -5518269664679944845
       vertices: []
       indices: 
       edges: []
@@ -185,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG-blood bag-out of blood_0: -2370849504497391015
-      BG-blood bag-out of blood_1: 2934425841036630671
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,14 +4,15 @@ using UnityEngine;
 public class BulletSystem : MonoBehaviour
 {
     [Header ("存放碰撞體")]
-    public BoxCollider2D bulletBoxCollider; 
-    public BoxCollider2D gunCollider;   
+    public BoxCollider2D bulletBox; 
+    public BoxCollider2D bloodPack;   
     public BoxCollider2D shootRange; 
 
 
     [Header ("圖標")]
     public Texture2D crosshairShoot;    
     public Texture2D crosshairNoBullet; 
+    public Texture2D crosshairHand; 
 
     [Header ("彈藥量")]
     public int maxAmmo = 5; 
@@ -58,16 +59,21 @@ public class BulletSystem : MonoBehaviour
     {
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
         bool isMouseOverCthulhu = hitCollider != null && hitCollider.TryGetComponent<Cthulhu>(out _); // 確保 hitCollider 不是 null 才檢查 Cthulhu
-        if(IsMouseOver(shootRange, mousePosition) || isMouseOverCthulhu)
+        if(IsMouseOver(bulletBox, mousePosition) || IsMouseOver(bloodPack, mousePosition))
+        {
+            Cursor.SetCursor(crosshairHand, new Vector2(32, 32), CursorMode.Auto);
+        }
+        
+        else if(IsMouseOver(shootRange, mousePosition) || isMouseOverCthulhu)
         {
             if (loadIn && currentAmmo > 0)
             {
-                Cursor.SetCursor(crosshairShoot, new Vector2(64, 64), CursorMode.Auto);
+                Cursor.SetCursor(crosshairShoot, new Vector2(32, 32), CursorMode.Auto);
                 isInShootRange = true;
             }
             else
             {
-                Cursor.SetCursor(crosshairNoBullet, new Vector2(64, 64), CursorMode.Auto);
+                Cursor.SetCursor(crosshairNoBullet, new Vector2(32, 32), CursorMode.Auto);
                 isInShootRange = true;
             }
         }
@@ -80,7 +86,7 @@ public class BulletSystem : MonoBehaviour
 
     void HoldBullet()
     {
-        if (Input.GetMouseButtonDown(0) && IsMouseOver(bulletBoxCollider, mousePosition) && !loadIn)
+        if (Input.GetMouseButtonDown(0) && IsMouseOver(bulletBox, mousePosition) && !loadIn)
         {
             isHoldingBullet = true;
             //Debug.Log("取得子彈數據");
