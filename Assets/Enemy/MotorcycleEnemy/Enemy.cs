@@ -140,13 +140,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        animator.SetBool("Shake", true);
         health -= damage;
-    }
-
-    public void ShakeOver()
-    {
-        animator.SetBool("Shake", false);
         if (health <= 0)
         {
             animator.SetBool("FlipDown", true);

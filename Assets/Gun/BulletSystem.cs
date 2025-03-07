@@ -29,7 +29,7 @@ public class BulletSystem : MonoBehaviour
     private Vector2 originalPos;
 
     public GameObject bulletbox;
-    public GameCore gameCore;
+    private GameCore gameCore;
     public SoundEffect soundEffect;
 
     void Start()
