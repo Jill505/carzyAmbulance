@@ -6739,9 +6739,9 @@ MonoBehaviour:
   bulletBox: {fileID: 26322209}
   bloodPack: {fileID: 1076068638}
   shootRange: {fileID: 1185947681}
-  crosshairShoot: {fileID: 2800000, guid: 0c07def5dfeb1df4598b111ed5381d4e, type: 3}
-  crosshairNoBullet: {fileID: 2800000, guid: dc870482d696fce4f808d4cc46e91960, type: 3}
-  crosshairHand: {fileID: 2800000, guid: 686acbf6cbec5ec47b28b93d36ee686d, type: 3}
+  crosshairShoot: {fileID: 2800000, guid: d9fccae6c74e67942b48c02c73083b6d, type: 3}
+  crosshairNoBullet: {fileID: 2800000, guid: f5e519c801ea06d4ba2593e8f04a8717, type: 3}
+  crosshairHand: {fileID: 2800000, guid: 7a473a7975489914eafe77d48b990f5d, type: 3}
   maxAmmo: 1
   Firepower: 1
   bulletbox: {fileID: 26322208}
