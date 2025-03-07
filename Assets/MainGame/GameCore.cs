@@ -105,6 +105,9 @@ public class GameCore : MonoBehaviour
     public int maxHocusCount = 3;
     public int nowHocusCount = 3;
 
+    public float hocusSlowRate = 0.4f;
+    public float hocusTime = 4f;
+
     [Header("who'd fuck are you?")]
     public int theBPM
     {
@@ -857,11 +860,17 @@ public class GameCore : MonoBehaviour
 
     public void Hocus()
     {
-
+        StartCoroutine(hocus(hocusTime));
     }
     public void Hocus(float sec)
     {
-
+        StartCoroutine(hocus(sec));
+    }
+    IEnumerator hocus(float sec)
+    {
+        Time.timeScale = hocusSlowRate;
+        yield return new WaitForSecondsRealtime(sec);
+        Time.timeScale = 1f;
     }
 }
 
