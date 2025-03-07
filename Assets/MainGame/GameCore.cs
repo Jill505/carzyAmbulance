@@ -72,7 +72,7 @@ public class GameCore : MonoBehaviour
     public Sprite emptyStar;
     public Sprite star;
 
-    [Header("Note判定圖片放置呦")]
+    [Header("Note相關呦")]
     public Image hintImage;
     public Sprite Perfect;
     public Sprite Great;
@@ -80,6 +80,10 @@ public class GameCore : MonoBehaviour
     public Sprite Miss;
     public Sprite Fail;
     public float hintImageAlpha = 1;
+    public float scaleFactor = 10000f; // 放大的比例
+    public float scaleDuration = 0.002f; // 放大的時間（秒）
+
+    private Vector3 originalScale;
     
 
     [Header("莫名其妙的參數 我也忘記幹嘛用了")]
@@ -135,6 +139,7 @@ public class GameCore : MonoBehaviour
 
         //Swap
         ambulanceMovingToPoint = 1;
+        originalScale = hintImage.transform.localScale;
 
         if (GAME_MODE == 0)
         {
@@ -800,6 +805,7 @@ public class GameCore : MonoBehaviour
         {
             hintImage.sprite = Fail;
         }
+        StartCoroutine(ScaleImage());
     }
 
     public void HintImageAutoFade()
@@ -810,6 +816,32 @@ public class GameCore : MonoBehaviour
             hintImageAlpha = hintImageAlpha - Time.deltaTime * 1.2f;
             hintImage.color = new Color(hintImage.color.r, hintImage.color.g, hintImage.color.b, hintImageAlpha);
         }
+    }
+    private IEnumerator ScaleImage()
+    {
+        // 放大動畫
+        Vector3 targetScale = originalScale * scaleFactor;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < scaleDuration)
+        {
+            hintImage.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / scaleDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        hintImage.transform.localScale = targetScale;
+
+        // 恢復原來尺寸
+        elapsedTime = 0f;
+        while (elapsedTime < scaleDuration)
+        {
+            hintImage.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsedTime / scaleDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        hintImage.transform.localScale = originalScale; // 確保最後的尺寸是原來的尺寸
     }
 
     public void carShake()

@@ -2695,7 +2695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.6, y: -157.6}
+  m_AnchoredPosition: {x: 21.6, y: -130.2}
   m_SizeDelta: {x: 143.321, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &739340317
@@ -5144,6 +5144,8 @@ MonoBehaviour:
   Miss: {fileID: 413248917955918174, guid: ec61e976a751b194195a81ecced31625, type: 3}
   Fail: {fileID: 3243871851857501483, guid: bf8bc909abc782f48af8a37c7a1372e6, type: 3}
   hintImageAlpha: 1
+  scaleFactor: 1.2
+  scaleDuration: 0.3
   gameRate: 0
   starNumber: 0
   fail: 0
