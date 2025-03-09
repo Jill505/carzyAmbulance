@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -139,6 +140,8 @@ public class GameCore : MonoBehaviour
         resetAmbulancePosition();
         ambulanceMovingFromPoint = 0;// set the start point
 
+        driverText.text = "";
+
         //Swap
         ambulanceMovingToPoint = 1;
         originalScale = hintImage.transform.localScale;
@@ -156,6 +159,10 @@ public class GameCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
+        }
         if (gameRunning)
         {
             AmbulanceMoving();
@@ -179,6 +186,11 @@ public class GameCore : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
                 carShake(3f, 0.15f, 0.15f,false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
             }
 
             timeControl(playSpeed);
@@ -965,11 +977,40 @@ public class GameCore : MonoBehaviour
         heartPumpingAnimator.speed = speedRate;
     }
 
-    [Header("Dirver System")]
+    [Header("Driver System")]
     public SpriteRenderer DSSR;
-    public void driver_system()
+    public Coroutine driverCoroutine;
+    public TextMeshProUGUI driverText;
+    public Animator textAnimator;
+    public Animator driverAnimator;
+    public void driver_system(string str)
+    {
+    }
+    public void driver_speak(string str)
     {
 
+        if (driverCoroutine != null)
+        {
+            StopCoroutine(driverCoroutine);
+        }
+        StartCoroutine(driver_SpeakCoroutine(str));
+    }
+    IEnumerator driver_SpeakCoroutine(string str)
+    {
+        string swapStr = "";
+        driverAnimator.SetBool("onSpeaking",true);
+        textAnimator.SetBool("onSpeaking", true);
+        yield return new WaitForSeconds(0.7f);
+        for (int i = 0; i < str.Length; i++)
+        {
+            swapStr += str[i];
+            driverText.text = swapStr;
+            yield return new WaitForSeconds(0.08f);
+        }
+        yield return new WaitForSeconds(1.2f + (str.Length/12));
+        driverText.text = "";
+        driverAnimator.SetBool("onSpeaking", false);
+        textAnimator.SetBool("onSpeaking", false);
     }
 }
 
