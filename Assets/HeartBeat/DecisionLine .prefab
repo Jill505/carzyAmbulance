@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3500
+  m_SortingOrder: 2600
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,6 +151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  punishTime: 0.2
+  punish: 0
+  InThePerfectPoint: 0
+  InTheGreatPoint: 0
+  InTheGoodPoint: 0
+  InThePunishPoint: 0
   childSpriteRenderer: {fileID: 0}
   myAnimator: {fileID: 0}
 --- !u!50 &5306977947569191537

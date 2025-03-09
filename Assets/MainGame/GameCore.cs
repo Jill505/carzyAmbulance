@@ -37,6 +37,7 @@ public class GameCore : MonoBehaviour
     public int hpStatement = 4; // 0=���`�A
     public Sprite[] uiSprite = new Sprite[5];
     public SpriteRenderer heartbeatChart;
+    public Image hpShowRate;
 
     [Header("血包相關")]
     public float bloodLooseRate = 1f;
@@ -108,6 +109,7 @@ public class GameCore : MonoBehaviour
     [Header("BPM, 對")]
     public int bpm = 120;
     public float playSpeed =1f;
+    public Animator heartPumpingAnimator;
 
     [Header("shake 系統")]
     public GameObject allObjectFather;
@@ -541,7 +543,7 @@ public class GameCore : MonoBehaviour
             hpStatement = 0;
         }
         heartbeatChart.sprite = uiSprite[hpStatement];
-
+        hpShowRate.fillAmount = hpRate;
         //�W�[��ı�ĪG
     }
 
@@ -956,6 +958,18 @@ public class GameCore : MonoBehaviour
         Time.timeScale = hocusSlowRate;
         yield return new WaitForSecondsRealtime(sec);
         Time.timeScale = 1f;
+    }
+
+    public void con_HeartPumping(float speedRate)
+    {
+        heartPumpingAnimator.speed = speedRate;
+    }
+
+    [Header("Dirver System")]
+    public SpriteRenderer DSSR;
+    public void driver_system()
+    {
+
     }
 }
 
