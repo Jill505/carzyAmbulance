@@ -5463,11 +5463,11 @@ MonoBehaviour:
   emptyStar: {fileID: -6155696173841487834, guid: fc1ceddb3eddefc4aa59f71850de4cc3, type: 3}
   star: {fileID: 1549216194427799674, guid: a1f49fd4d6d4bf74fafcf0cf63337106, type: 3}
   hintImage: {fileID: 658447139}
-  Perfect: {fileID: 6779734204767495030, guid: f22a8a3895594b14ca141a89930e9d2e, type: 3}
-  Great: {fileID: -7556016082631641370, guid: 0dd3c56bb8512d943bc7f33f94163691, type: 3}
-  Good: {fileID: 6256978819795432554, guid: f5e536110482196409fb8d8a712434cd, type: 3}
-  Miss: {fileID: 413248917955918174, guid: ec61e976a751b194195a81ecced31625, type: 3}
-  Fail: {fileID: 3243871851857501483, guid: bf8bc909abc782f48af8a37c7a1372e6, type: 3}
+  Perfect: {fileID: 2723950150571589912, guid: 0d5c4d379200bdf4081cd9d0885169f0, type: 3}
+  Great: {fileID: 618100125864224345, guid: 812e94d14a190a14ea33240dc7664c04, type: 3}
+  Good: {fileID: 6590036580447774269, guid: 4847a4f909e65854e8b5ddec4497c539, type: 3}
+  Miss: {fileID: -562918433547053450, guid: ad60247ff9d759641bc5d560a3fb2961, type: 3}
+  Fail: {fileID: 2638874685923018113, guid: f9321827e48a1c6468898cf35720bb82, type: 3}
   hintImageAlpha: 1
   scaleFactor: 1.2
   scaleDuration: 0.3

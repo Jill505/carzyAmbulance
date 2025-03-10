@@ -78,8 +78,8 @@ public class Line : MonoBehaviour
         if(InThePunishPoint == true)
         {
             Debug.Log("懲罰");
-            gameCore.showHintText(3);
-            gameCore.ShowHintImage(3);
+            gameCore.showHintText(5);
+            gameCore.ShowHintImage(5);
             StartCoroutine(PunishTime());
         }
         if(InThePerfectPoint)
