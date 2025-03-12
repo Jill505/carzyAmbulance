@@ -62,6 +62,8 @@ public class GameCore : MonoBehaviour
     public Animator bloodPackTipAnimator;
     public Animator UIAnimator;
     public Animator gameEndPenalAnimator;
+    public Animator BulletLight;
+    public Animator BloodBoxLight;
 
 
     [Header("這些是Sprite和Image大家庭")]
@@ -320,10 +322,12 @@ public class GameCore : MonoBehaviour
         if (bloodNow / bloodMax < 0.2f)
         {
             bloodPackTipAnimator.SetBool("Warning", true);
+            BloodBoxLight.SetBool("BloodBoxLightUp",true);
         }
         else
         {
             bloodPackTipAnimator.SetBool("Warning",false);
+            BloodBoxLight.SetBool("BloodBoxLightUp",false);
         }
     }
 
@@ -694,6 +698,7 @@ public class GameCore : MonoBehaviour
             InsEnemy();
         }*/
         InsEnemy();
+        BulletLight.SetTrigger("BulletLightUp"); //子彈變亮提示
         Debug.Log("Enemy spawn from the event.");
     }
     public void Event_roadRock()
@@ -711,6 +716,7 @@ public class GameCore : MonoBehaviour
     }
     public void Event_cthulhu()
     {
+        BulletLight.SetTrigger("BulletLightUp");  //子彈變亮提示
         InsCthulhu();
     }
     public void Event_goatScream()

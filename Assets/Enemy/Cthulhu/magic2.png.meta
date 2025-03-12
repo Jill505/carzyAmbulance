@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bad1ad839de51c84994bb14cbd22bc4d
+guid: 15d7d72c7f47ddb4aa6ecdefbf40bbcd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -623212079524696433
-    second: Heart-1_0
+      213: 7626799846958017437
+    second: magic2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 665
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Heart-1_0
+      name: magic2_0
       rect:
         serializedVersion: 2
-        x: 62
-        y: 64
-        width: 644
-        height: 870
+        x: 83
+        y: 83
+        width: 834
+        height: 834
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8ea2346ae7e957f0800000000000000
-      internalID: -623212079524696433
+      spriteID: d9bafe26d06d7d960800000000000000
+      internalID: 7626799846958017437
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Heart-1_0: -623212079524696433
+      magic2_0: 7626799846958017437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
