@@ -166,6 +166,7 @@ public class GameCore : MonoBehaviour
         {
             //driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
         }
+        HintImageAutoFade(); //放這結算畫面note評分才會消失
         if (gameRunning)
         {
             AmbulanceMoving();
@@ -174,7 +175,7 @@ public class GameCore : MonoBehaviour
             BloodLoose();
 
             hintTextAutoFade();
-            HintImageAutoFade();
+            
 
             //�o���u���u�Ʊ�
             O2Sync();
@@ -827,17 +828,21 @@ public class GameCore : MonoBehaviour
         {
             hintImage.sprite = Fail;
         }
+        hintImage.color = new Color(hintImage.color.r, hintImage.color.g, hintImage.color.b, hintImageAlpha);
+
         StartCoroutine(ScaleImage());
     }
+
 
     public void HintImageAutoFade()
     {
         countingRemain += Time.deltaTime;
         if (countingRemain > 0.2f)
         {
-            hintImageAlpha = hintImageAlpha - Time.deltaTime * 1.2f;
+            hintImageAlpha = hintImageAlpha - Time.unscaledDeltaTime * 1.2f;
             hintImage.color = new Color(hintImage.color.r, hintImage.color.g, hintImage.color.b, hintImageAlpha);
         }
+        
     }
     private IEnumerator ScaleImage()
     {

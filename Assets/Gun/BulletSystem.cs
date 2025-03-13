@@ -31,9 +31,9 @@ public class BulletSystem : MonoBehaviour
 
     public GameObject bulletbox;
     private GameCore gameCore;
-    public SyringSystem syringSystem;
+    private SyringSystem syringSystem;
     public SoundEffect soundEffect;
-    public DraggableBloodPack draggableBloodPack;
+    private DraggableBloodPack draggableBloodPack;
 
     void Start()
     {
@@ -211,13 +211,17 @@ public class BulletSystem : MonoBehaviour
     {
         float duration = 0.5f;
         float elapsed = 0f;
+        Vector2 originalHotspot = new Vector2(64,64);
         while (elapsed < duration)
         {
             float offsetX = Random.Range(-1f, 3f);
             float offsetY = Random.Range(-1f, 3f);
-            Cursor.SetCursor(crosshairNoBullet, new Vector2(offsetX, offsetY), CursorMode.Auto);
+            Vector2 shakeHotspot = originalHotspot + new Vector2(offsetX, offsetY);
 
-            elapsed += Time.deltaTime;
+            // 設定游標
+            Cursor.SetCursor(crosshairNoBullet, shakeHotspot, CursorMode.Auto);
+
+            elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
         Cursor.SetCursor(crosshairNoBullet, Vector2.zero, CursorMode.Auto);
