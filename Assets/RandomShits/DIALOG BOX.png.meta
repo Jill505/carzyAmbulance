@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 56f53ea80cf8e344ba5aac0310867223
+guid: 0ac1bc5b11a6c044aa8cad5b346ea2e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2191668444884831948
-    second: BG2_0
+      213: 5438078848187686046
+    second: DIALOG BOX_0
+  - first:
+      213: -4075161204994290100
+    second: DIALOG BOX_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +100,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG2_0
+      name: DIALOG BOX_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 352
+        y: 642
+        width: 1804
+        height: 1146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 431f43d4921a591e0800000000000000
-      internalID: -2191668444884831948
+      spriteID: e9cdac676efe77b40800000000000000
+      internalID: 5438078848187686046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DIALOG BOX_1
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 1468
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4eccd5a97e1277c0800000000000000
+      internalID: -4075161204994290100
       vertices: []
       indices: 
       edges: []
@@ -160,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG2_0: -2191668444884831948
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

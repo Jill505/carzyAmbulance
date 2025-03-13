@@ -7,6 +7,7 @@ using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -163,7 +164,7 @@ public class GameCore : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
+            //driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
         }
         if (gameRunning)
         {
@@ -188,11 +189,6 @@ public class GameCore : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
                 carShake(3f, 0.15f, 0.15f,false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
             }
 
             timeControl(playSpeed);
@@ -456,6 +452,12 @@ public class GameCore : MonoBehaviour
                             break;
                         case (EventPoint.eventType.speedUp):
                             Event_speedUp();
+                            break;
+                        case (EventPoint.eventType.driverSpeak):
+                            Event_driverSpeak(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].argument);
+                            break;
+                        case (EventPoint.eventType.driverSpeakSystem):
+                            Event_driverSpeakSystem(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].argument);
                             break;
 
                         default:
@@ -963,6 +965,15 @@ public class GameCore : MonoBehaviour
         playSpeed += 0.1f;
     }
 
+    public void Event_driverSpeak(string[] args)
+    {
+        driver_speak(args);
+    }
+    public void Event_driverSpeakSystem(string[] args)
+    {
+        driver_speak_system(args);
+    }
+
     public void Hocus()
     {
         StartCoroutine(hocus(hocusTime));
@@ -987,36 +998,114 @@ public class GameCore : MonoBehaviour
     public SpriteRenderer DSSR;
     public Coroutine driverCoroutine;
     public TextMeshProUGUI driverText;
+    public GameObject dialogTextbox;
     public Animator textAnimator;
     public Animator driverAnimator;
+    public bool isReadReady = false;
+    public GameObject CastButton;
+
+    public GameObject driver_mouth;
+    public GameObject driver_mouthPosA;
+    public GameObject driver_mouthPosB;
+    public void CastButtonEvent()
+    {
+       isReadReady = true;
+        Debug.Log("time stop released");
+    }
     public void driver_system(string str)
     {
     }
-    public void driver_speak(string str)
+    public void driver_speak(string[] strs)
     {
-
-        if (driverCoroutine != null)
+        if (strs != null)
         {
-            StopCoroutine(driverCoroutine);
+            if (driverCoroutine != null)
+            {
+                StopCoroutine(driverCoroutine);
+            }
+            StartCoroutine(driver_SpeakCoroutine(strs[0]));
         }
-        StartCoroutine(driver_SpeakCoroutine(str));
+        else
+        {
+            Debug.Log("AkBug: event is empty");
+        }
+        
     }
     IEnumerator driver_SpeakCoroutine(string str)
     {
         string swapStr = "";
-        driverAnimator.SetBool("onSpeaking",true);
-        textAnimator.SetBool("onSpeaking", true);
-        yield return new WaitForSeconds(0.7f);
+        //driverAnimator.SetBool("onSpeaking",true);
+        //textAnimator.SetBool("onSpeaking", true);
+        dialogTextbox.SetActive(true);
+        //yield return new WaitForSecondsRealtime(0.7f);
         for (int i = 0; i < str.Length; i++)
         {
             swapStr += str[i];
             driverText.text = swapStr;
-            yield return new WaitForSeconds(0.08f);
+            yield return new WaitForSecondsRealtime(0.08f);
         }
-        yield return new WaitForSeconds(1.2f + (str.Length/12));
+        yield return new WaitForSecondsRealtime(1.2f + (str.Length/12));
         driverText.text = "";
-        driverAnimator.SetBool("onSpeaking", false);
-        textAnimator.SetBool("onSpeaking", false);
+        //driverAnimator.SetBool("onSpeaking", false);
+        //textAnimator.SetBool("onSpeaking", false);
+        dialogTextbox.SetActive(false);
+    }
+    public void driver_speak_system(string[] strs)
+    {
+        if (driverCoroutine != null)
+        {
+            StopCoroutine(driverCoroutine);
+        }
+        StartCoroutine(driver_SpeakCoroutine_system(strs));
+    }
+    IEnumerator driver_SpeakCoroutine_system(string[] strs)
+    {
+        Debug.Log("Driver Speak System Triggered");
+        string swapStr = "";
+        //driverAnimator.SetBool("onSpeaking", true);
+        //textAnimator.SetBool("onSpeaking", true);
+
+        //yield return new WaitForSecondsRealtime(0.7f);
+
+        for (int j = 0; j < strs.Length; j++)
+        {
+            dialogTextbox.SetActive(true);
+            Time.timeScale = 0f;
+            isReadReady = false;
+            yield return new WaitForSecondsRealtime(0.01f);
+            CastButton.SetActive(true);
+            swapStr = "";
+
+
+            for (int i = 0; i < strs[j].Length; i++)
+            {
+                swapStr += strs[j][i];
+                driverText.text = swapStr;
+                Debug.Log("Driver Count" + i);
+
+                int ran = Random.Range(0,2);
+                if (ran == 0)
+                {
+                    driver_mouth.transform.position = driver_mouthPosA.transform.position;
+                }
+                else
+                {
+                    driver_mouth.transform.position = driver_mouthPosB.transform.position;
+                }
+                yield return new WaitForSecondsRealtime(0.08f);
+            }
+
+            yield return new WaitUntil(() => isReadReady);
+
+            Time.timeScale = 1f;
+
+            driverText.text = "";
+        }
+        //driverAnimator.SetBool("onSpeaking", false);
+        //textAnimator.SetBool("onSpeaking", false);
+        dialogTextbox.SetActive(false);
+        CastButton.SetActive(false);
+        driver_mouth.transform.position = driver_mouthPosA.transform.position;
     }
 }
 
@@ -1060,8 +1149,9 @@ public class Point
 [System.Serializable]
 public class EventPoint
 {
-    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream, speedUp}
+    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream, speedUp, driverSpeak, driverSpeakSystem}
     public eventType myEventType;
+    public string[] argument = new string[0];
     [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
     public bool triggered = false;
 }

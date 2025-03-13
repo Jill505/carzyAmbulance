@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 56f53ea80cf8e344ba5aac0310867223
+guid: 37ec9bac8dcc4de49a76facd2efe85f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2191668444884831948
-    second: BG2_0
+      213: 5932671340430788817
+    second: driver EYE_0
+  - first:
+      213: 2609751680537411830
+    second: driver EYE_1
+  - first:
+      213: 1670588880982481067
+    second: driver EYE_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +103,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG2_0
+      name: driver EYE_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 866
+        y: 1615
+        width: 170
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 431f43d4921a591e0800000000000000
-      internalID: -2191668444884831948
+      spriteID: 1d88487c625155250800000000000000
+      internalID: 5932671340430788817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: driver EYE_1
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 1655
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0496e8353b73420800000000000000
+      internalID: 2609751680537411830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: driver EYE_2
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 1604
+        width: 156
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba89da07cbf1f2710800000000000000
+      internalID: 1670588880982481067
       vertices: []
       indices: 
       edges: []
@@ -160,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG2_0: -2191668444884831948
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
