@@ -30,7 +30,7 @@ public class Lobby_Core : MonoBehaviour
     public void openAndClose()
     {
         isSelectionCanvasOpening = !isSelectionCanvasOpening;
-        selectionCanvas2.SetActive(isSelectionCanvasOpening);
+        selectionCanvas.SetActive(isSelectionCanvasOpening);
     }
 
     public void QuitGame()

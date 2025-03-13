@@ -3849,7 +3849,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &835290678
@@ -6014,9 +6014,10 @@ MonoBehaviour:
         - 
         atPos: 0.59
         triggered: 0
-      - myEventType: 4
-        argument: []
-        atPos: 0.801
+      - myEventType: 7
+        argument:
+        - "\u6B63\u5E38\u4E0D\u6642\u505C\u7684\u8CC7\u8A0A\u986F\u793A"
+        atPos: 0.347
         triggered: 0
       - myEventType: 4
         argument: []
@@ -8481,9 +8482,7 @@ MonoBehaviour:
   maxAmmo: 1
   Firepower: 1
   bulletbox: {fileID: 26322208}
-  syringSystem: {fileID: 0}
   soundEffect: {fileID: 801324056}
-  draggableBloodPack: {fileID: 0}
 --- !u!4 &1784427913
 Transform:
   m_ObjectHideFlags: 0
