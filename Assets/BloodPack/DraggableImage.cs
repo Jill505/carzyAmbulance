@@ -8,6 +8,7 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     //public BloodPackDrag bloodPackDrag;
     public GameCore gameCore;
     public Image newbloodPack;
+    public BoxCollider2D TheBloodWhichIsUsing;
     private Image bloodPackBox;
 
     public Sprite[] bloodPackSprites; // 存放四張不同的圖片
@@ -36,7 +37,7 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
             return; 
         }*/
 
-        if (bloodPackSprites.Length == 0) return; // 確保有圖片可切換
+        if (bloodPackSprites.Length == 0) return; 
         
         if (currentIndex < bloodPackSprites.Length - 1) // 確保不超過最後一張
         {
@@ -47,11 +48,11 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
         }
         if (currentIndex == bloodPackSprites.Length - 1)
         {
-            isLastBloodPack = true;  // 設置為 true
+            isLastBloodPack = true;  
         }
         else
         {
-            isLastBloodPack = false; // 不是最後一張則設置為 false
+            isLastBloodPack = false; 
         }
         
         
@@ -68,7 +69,17 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     {
         if (!isDragging) return; 
 
-        ChangeBloodPack();
+        if(IsMouseOver(TheBloodWhichIsUsing,mousePosition))
+        {
+            ChangeBloodPack();
+        }
+        else
+        {
+            currentIndex--; 
+            bloodPackBox.sprite = bloodPackSprites[currentIndex];
+        }
+
+        
         isDragging = false; 
         newbloodPack.rectTransform.position = originalPos; 
     }
@@ -77,5 +88,10 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     {
         //bloodPackDrag.gameObject.SetActive(true);
         gameCore.ChangeBloodPack();
+    }
+
+    private bool IsMouseOver(BoxCollider2D collider, Vector2 point)
+    {
+        return collider.OverlapPoint(point);
     }
 }
