@@ -152,14 +152,17 @@ public class Line : MonoBehaviour
         if (collision.gameObject.tag == "Good")
         {
             InTheGoodPoint = true;
+            childSpriteRenderer.color = new Color(1, 1, 1, 0.7f);
         }
         if (collision.gameObject.tag == "Great")
         {
             InTheGreatPoint = true;
+            childSpriteRenderer.color = new Color(1, 1, 1, 0.8f);
         }
         if (collision.gameObject.tag == "Perfect")
         {
             InThePerfectPoint = true;
+            childSpriteRenderer.color = new Color(1, 1, 1, 0.9f);
             //gameCore.perfectHintFunc();
         }
         if (collision.gameObject.tag == "PunishPoint")

@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
 using System.Threading;
@@ -124,6 +125,7 @@ public class GameCore : MonoBehaviour
     [Header("Hocus system")]
     public int maxHocusCount = 3;
     public int nowHocusCount = 3;
+    public Animator HocusAnimator;
 
     public float hocusSlowRate = 0.4f;
     public float hocusTime = 4f;
@@ -650,7 +652,8 @@ public class GameCore : MonoBehaviour
     {
         //Debug.Log("from GameCore.cs, the message called");
 
-        carShake(4, 1.4f, 0.15f, false);
+        //carShake(4, 1.4f, 0.15f, false);
+        carShake(3f, 0.15f, 0.15f, false);
         hp -= 5f;
         comboCount = 0;
 
@@ -708,7 +711,8 @@ public class GameCore : MonoBehaviour
     {       
         heartbeat.pendingNote ++;
         PlaySoundEffect(SoundEffects[0]);
-        carShake(4, 1.4f, 0.15f, false);
+        //carShake(4, 1.4f, 0.15f, false);
+        carShake(3f, 0.2f, 0.15f, false);
     }
     public void InsCthulhu()
     {
@@ -990,8 +994,10 @@ public class GameCore : MonoBehaviour
     IEnumerator hocus(float sec)
     {
         Time.timeScale = hocusSlowRate;
+        HocusAnimator.SetBool("hocusing",true);
         yield return new WaitForSecondsRealtime(sec);
         Time.timeScale = 1f;
+        HocusAnimator.SetBool("hocusing", false);
     }
 
     public void con_HeartPumping(float speedRate)
