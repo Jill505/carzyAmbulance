@@ -69,17 +69,7 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     {
         if (!isDragging) return; 
 
-        if(IsMouseOver(TheBloodWhichIsUsing,mousePosition))
-        {
-            ChangeBloodPack();
-        }
-        else
-        {
-            currentIndex--; 
-            bloodPackBox.sprite = bloodPackSprites[currentIndex];
-        }
-
-        
+        ChangeBloodPack();
         isDragging = false; 
         newbloodPack.rectTransform.position = originalPos; 
     }
@@ -88,10 +78,5 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     {
         //bloodPackDrag.gameObject.SetActive(true);
         gameCore.ChangeBloodPack();
-    }
-
-    private bool IsMouseOver(BoxCollider2D collider, Vector2 point)
-    {
-        return collider.OverlapPoint(point);
     }
 }
