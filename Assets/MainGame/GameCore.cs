@@ -145,7 +145,7 @@ public class GameCore : MonoBehaviour
         resetAmbulancePosition();
         ambulanceMovingFromPoint = 0;// set the start point
 
-        driverText.text = "";
+        driverText2.text = "";
 
         //Swap
         ambulanceMovingToPoint = 1;
@@ -159,6 +159,9 @@ public class GameCore : MonoBehaviour
         {
             //
         }
+
+        Invoke(nameof(gameStart), 1f);
+        //gameStart();
     }
 
     // Update is called once per frame
@@ -431,6 +434,7 @@ public class GameCore : MonoBehaviour
             Vector2 ambulanceAtPos = new Vector2(AmbulanceObject.transform.position.x, AmbulanceObject.transform.position.y);
             float distanceTravelled = (ambulanceAtPos - new Vector2(myMapGraph.points[ambulanceMovingFromPoint].x, myMapGraph.points[ambulanceMovingFromPoint].y)).magnitude; // 已移動距離
             float percent = distanceTravelled / journeyLength; // 計算進度百分比
+            GameObject.Find("process_dur").GetComponent<Text>().text = "process: "+percent;
             //float percent = Mathf.Sqrt(Mathf.Pow((journey.x - ambulanceAtPos.x),2) - Mathf.Pow((journey.y - ambulanceAtPos.y),2))
 
             for (int i = 0, times = myMapGraph.points[ambulanceMovingFromPoint].theEventPoints.Length; i< times; i++)
@@ -709,10 +713,10 @@ public class GameCore : MonoBehaviour
     }
     public void Event_roadRock()
     {       
-        heartbeat.pendingNote ++;
+        heartbeat.pendingNote += 5;
         PlaySoundEffect(SoundEffects[0]);
         //carShake(4, 1.4f, 0.15f, false);
-        carShake(3f, 0.2f, 0.15f, false);
+        carShake(3f, 0.3f, 0.15f, false);
     }
     public void InsCthulhu()
     {
@@ -1009,6 +1013,7 @@ public class GameCore : MonoBehaviour
     public SpriteRenderer DSSR;
     public Coroutine driverCoroutine;
     public TextMeshProUGUI driverText;
+    public Text driverText2;
     public GameObject dialogTextbox;
     public Animator textAnimator;
     public Animator driverAnimator;
@@ -1034,7 +1039,7 @@ public class GameCore : MonoBehaviour
             {
                 StopCoroutine(driverCoroutine);
             }
-            StartCoroutine(driver_SpeakCoroutine(strs[0]));
+            driverCoroutine =StartCoroutine(driver_SpeakCoroutine(strs[0]));
         }
         else
         {
@@ -1052,11 +1057,11 @@ public class GameCore : MonoBehaviour
         for (int i = 0; i < str.Length; i++)
         {
             swapStr += str[i];
-            driverText.text = swapStr;
+            driverText2.text = swapStr;
             yield return new WaitForSecondsRealtime(0.08f);
         }
-        yield return new WaitForSecondsRealtime(1.2f + (str.Length/12));
-        driverText.text = "";
+        yield return new WaitForSecondsRealtime(1.2f + (str.Length/14));
+        driverText2.text = "";
         //driverAnimator.SetBool("onSpeaking", false);
         //textAnimator.SetBool("onSpeaking", false);
         dialogTextbox.SetActive(false);
@@ -1067,7 +1072,7 @@ public class GameCore : MonoBehaviour
         {
             StopCoroutine(driverCoroutine);
         }
-        StartCoroutine(driver_SpeakCoroutine_system(strs));
+        driverCoroutine = StartCoroutine(driver_SpeakCoroutine_system(strs));
     }
     IEnumerator driver_SpeakCoroutine_system(string[] strs)
     {
@@ -1091,8 +1096,8 @@ public class GameCore : MonoBehaviour
             for (int i = 0; i < strs[j].Length; i++)
             {
                 swapStr += strs[j][i];
-                driverText.text = swapStr;
-                Debug.Log("Driver Count" + i);
+                driverText2.text = swapStr;
+                //Debug.Log("Driver Count" + i);
 
                 int ran = Random.Range(0,2);
                 if (ran == 0)
@@ -1110,7 +1115,7 @@ public class GameCore : MonoBehaviour
 
             Time.timeScale = 1f;
 
-            driverText.text = "";
+            driverText2.text = "";
         }
         //driverAnimator.SetBool("onSpeaking", false);
         //textAnimator.SetBool("onSpeaking", false);

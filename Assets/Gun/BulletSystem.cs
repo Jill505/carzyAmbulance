@@ -39,7 +39,7 @@ public class BulletSystem : MonoBehaviour
     {
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();     
         syringSystem = GameObject.Find("SyringSystem").GetComponent<SyringSystem>(); 
-        draggableBloodPack = GameObject.Find("BloodPackBox").GetComponent<DraggableBloodPack>();
+        //draggableBloodPack = GameObject.Find("BloodPackBox").GetComponent<DraggableBloodPack>();
         originalPos = bulletbox.transform.position;    
     }
     void Update()
