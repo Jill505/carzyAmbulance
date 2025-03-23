@@ -266,7 +266,7 @@ public class GameCore : MonoBehaviour
                 SpriteRenderer sr =  gObj.AddComponent<SpriteRenderer>();
                 sr.sortingOrder = 10;
 
-                Debug.Log(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[j].myEventType + "載入");
+                //Debug.Log(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[j].myEventType + "載入");
                 switch (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[j].myEventType)
                 {
                     case (EventPoint.eventType.enemySpawn):
@@ -289,7 +289,7 @@ public class GameCore : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("未知事件");
+                        //Debug.Log("未知事件");
                         break;
                 }
                 sr.color = new Color(0, 0, 0, 0);
@@ -1060,7 +1060,7 @@ public class GameCore : MonoBehaviour
             driverText2.text = swapStr;
             yield return new WaitForSecondsRealtime(0.08f);
         }
-        yield return new WaitForSecondsRealtime(1.2f + (str.Length/14));
+        yield return new WaitForSecondsRealtime(1.2f + (str.Length/12));
         driverText2.text = "";
         //driverAnimator.SetBool("onSpeaking", false);
         //textAnimator.SetBool("onSpeaking", false);
