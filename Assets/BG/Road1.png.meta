@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ba0c3ae58f5e8d4db09794e62236b48
+guid: 115ed5a6a0fc39a4c9dd4eafdfc9a427
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5774163580340884036
-    second: BG5_0
+      213: -6405582830355974013
+    second: Road1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,24 +109,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG5_0
+      name: Road1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbda8c601dc0edfa0800000000000000
-      internalID: -5774163580340884036
+      spriteID: 3887a41aa5cca17a0800000000000000
+      internalID: -6405582830355974013
       vertices: []
       indices: 
       edges: []
@@ -160,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG5_0: -5774163580340884036
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
