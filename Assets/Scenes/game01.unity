@@ -6995,7 +6995,7 @@ MonoBehaviour:
         triggered: 0
       - myEventType: 7
         argument:
-        - "\u90A3\u500B\u5C0F\u5B69\uFF0C\u9577\u5F97\u771F\u7684\u5F88\u50CF\u6211\u7684\u990A\u5B50"
+        - ......
         atPos: 0.95
         triggered: 0
       alreadyReachTheEventPoints: 

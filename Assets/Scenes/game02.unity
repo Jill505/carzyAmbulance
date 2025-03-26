@@ -6906,7 +6906,7 @@ MonoBehaviour:
       - myEventType: 7
         argument:
         - "\u55EF\uFF1F\u4F60\u8AAA\u69CD\u5728\u54EA\uFF1F"
-        atPos: 0.255
+        atPos: 0.262
         triggered: 0
       - myEventType: 7
         argument:
@@ -6915,7 +6915,7 @@ MonoBehaviour:
         triggered: 0
       - myEventType: 0
         argument:
-        - "\u963F\u5E79\uFF0C\u53C8\u5FD8\u8A18\u5E36\u5230\u4E86\uFF0C\u5E0C\u671B\u7B49\u4E00\u4E0B\u4E0D\u8981\u9047\u5230\u90A3\u7FA4\u5F37\u76DC"
+        - 
         atPos: 0.3
         triggered: 0
       - myEventType: 7
@@ -10357,7 +10357,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 3095648225022645599, guid: ffbe13077fb741145a9f1165cb5bce51, type: 3}
+  m_Sprite: {fileID: -6405582830355974013, guid: 115ed5a6a0fc39a4c9dd4eafdfc9a427, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10365,7 +10365,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1885282061

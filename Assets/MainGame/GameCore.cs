@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
@@ -446,6 +447,7 @@ public class GameCore : MonoBehaviour
                     switch (myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].myEventType)
                     {
                         case (EventPoint.eventType.enemySpawn):
+                            Debug.Log("The Call is from enemy spawn event: " + myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].myEventType);
                             Event_enemySpawn();
                             break;
                         case (EventPoint.eventType.roadRock):
@@ -458,6 +460,8 @@ public class GameCore : MonoBehaviour
                             Event_goatScream();
                             break;
                         case (EventPoint.eventType.speedUp):
+                            Debug.Log("The Call is from speed up event: " + myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].myEventType);
+                            Debug.Log("The Call is from object: " + gameObject);
                             Event_speedUp();
                             break;
                         case (EventPoint.eventType.driverSpeak):
@@ -708,7 +712,15 @@ public class GameCore : MonoBehaviour
             InsEnemy();
         }*/
         InsEnemy();
-        BulletLight.SetTrigger("BulletLightUp"); //子彈變亮提示
+        
+        
+        
+        //暴力解Bug 之後有問題修掉
+        playSpeed -= 0.1f;
+
+
+
+        //BulletLight.SetTrigger("BulletLightUp"); //子彈變亮提示
         Debug.Log("Enemy spawn from the event.");
     }
     public void Event_roadRock()
@@ -727,7 +739,7 @@ public class GameCore : MonoBehaviour
     }
     public void Event_cthulhu()
     {
-        BulletLight.SetTrigger("BulletLightUp");  //子彈變亮提示
+        //BulletLight.SetTrigger("BulletLightUp");  //子彈變亮提示
         InsCthulhu();
     }
     public void Event_goatScream()
@@ -976,6 +988,7 @@ public class GameCore : MonoBehaviour
     public void Event_speedUp()
     {
         playSpeed += 0.1f;
+        Debug.Log("Speed up from script event, now speed: " + playSpeed);
     }
 
     public void Event_driverSpeak(string[] args)
