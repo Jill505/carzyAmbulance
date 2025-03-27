@@ -67,6 +67,7 @@ public class GameCore : MonoBehaviour
     public Animator gameEndPenalAnimator;
     public Animator BulletLight;
     public Animator BloodBoxLight;
+    public Animator Road;
 
 
     [Header("這些是Sprite和Image大家庭")]
@@ -656,13 +657,13 @@ public class GameCore : MonoBehaviour
         }
     }
 
-    public void BanditAttack()
+    public void BanditAttack(float damage)
     {
         //Debug.Log("from GameCore.cs, the message called");
 
         //carShake(4, 1.4f, 0.15f, false);
         carShake(3f, 0.15f, 0.15f, false);
-        hp -= 5f;
+        hp -= damage;
         comboCount = 0;
 
         if (hp < 0)
@@ -988,6 +989,8 @@ public class GameCore : MonoBehaviour
     public void Event_speedUp()
     {
         playSpeed += 0.1f;
+        Road.speed += 0.1f;
+
         Debug.Log("Speed up from script event, now speed: " + playSpeed);
     }
 

@@ -37,9 +37,20 @@ public class BulletSystem : MonoBehaviour
 
     void Start()
     {
-        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();     
-        syringSystem = GameObject.Find("SyringSystem").GetComponent<SyringSystem>(); 
-        draggableBloodPack = GameObject.Find("BloodPackBox").GetComponent<DraggableBloodPack>();
+        gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();  
+
+        GameObject syringSystemObj = GameObject.Find("SyringSystem"); 
+        if(syringSystemObj != null)
+        {
+            syringSystem = syringSystemObj.GetComponent<SyringSystem>();
+        }
+
+        GameObject draggableBloodPackObj = GameObject.Find("BloodPackBox"); 
+        if(draggableBloodPackObj != null)
+        {
+            draggableBloodPack = draggableBloodPackObj.GetComponent<DraggableBloodPack>();
+        }
+        
         originalPos = bulletbox.transform.position;    
     }
     void Update()
@@ -79,15 +90,15 @@ public class BulletSystem : MonoBehaviour
         }
         
         
-        else if(IsMouseOver(bulletBox, mousePosition) )
+        else if(bulletBox != null && IsMouseOver(bulletBox, mousePosition) )
         {
             Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
         }
-        else if(IsMouseOver(Medicine, mousePosition) && syringSystem.allMedicineUsed == false)
+        else if(Medicine != null && IsMouseOver(Medicine, mousePosition) && syringSystem.allMedicineUsed == false)
         {
             Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
         }
-        else if(IsMouseOver(bloodPack, mousePosition)&& draggableBloodPack.isLastBloodPack == false)
+        else if(bloodPack != null && draggableBloodPack != null && IsMouseOver(bloodPack, mousePosition)&& draggableBloodPack.isLastBloodPack == false)
         {
             Cursor.SetCursor(crosshairHand, new Vector2(64, 64), CursorMode.Auto);
         }
