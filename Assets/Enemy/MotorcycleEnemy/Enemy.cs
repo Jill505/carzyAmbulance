@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        //heartbeat.InjuryAndSpawnANote();
+        heartbeat.InjuryAndSpawnANote();
     }
 
     public void TakeDamage(float damage)
