@@ -472,6 +472,10 @@ public class GameCore : MonoBehaviour
                             Event_driverSpeakSystem(myMapGraph.points[ambulanceMovingFromPoint].theEventPoints[i].argument);
                             break;
 
+                        case (EventPoint.eventType.spec_allowUseSryinge):
+                            SpecEvent_allowUseSryinge();
+                            break;
+
                         default:
                             Debug.Log("未知事件");
                             break;
@@ -1002,7 +1006,16 @@ public class GameCore : MonoBehaviour
     {
         driver_speak_system(args);
     }
-
+    [Header("特別事件變數")]
+    public GameObject specEvent_objA;
+    public GameObject specEvent_objB;
+    public GameObject specEvent_objC;
+    public void SpecEvent_allowUseSryinge()
+    {
+        specEvent_objA.SetActive(true);
+        specEvent_objB.SetActive(true);
+        specEvent_objC.SetActive(false);
+    }
     public void Hocus()
     {
         StartCoroutine(hocus(hocusTime));
@@ -1207,7 +1220,7 @@ public class Point
 [System.Serializable]
 public class EventPoint
 {
-    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream, speedUp, driverSpeak, driverSpeakSystem}
+    public enum eventType { enemySpawn, roadRock, enemySpawnHint, roadRockHint, cthulhu , goatScream, speedUp, driverSpeak, driverSpeakSystem, spec_allowUseSryinge}
     public eventType myEventType;
     public string[] argument = new string[0];
     [Range(0,1f)]public float atPos;//0 to 1, to control the position it spawn on the line.
