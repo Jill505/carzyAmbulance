@@ -1035,14 +1035,25 @@ public class GameCore : MonoBehaviour
     public Animator driverAnimator;
     public bool isReadReady = false;
     public GameObject CastButton;
+    public bool onSpeaking = false;
+    public bool breakTrigger = false;
 
     public GameObject driver_mouth;
     public GameObject driver_mouthPosA;
     public GameObject driver_mouthPosB;
     public void CastButtonEvent()
     {
-       isReadReady = true;
-        Debug.Log("time stop released");
+       if (onSpeaking)
+        {
+            Debug.Log("break the trigger call");
+            breakTrigger = true;
+        }
+       else
+        {
+            Debug.Log("Finish reading and skip to the next line of text, call");
+            isReadReady = true;
+        }
+        //Debug.Log("time stop released");
     }
     public void driver_system(string str)
     {
@@ -1111,6 +1122,20 @@ public class GameCore : MonoBehaviour
 
             for (int i = 0; i < strs[j].Length; i++)
             {
+
+                onSpeaking = true;
+
+                //break condition
+                if (breakTrigger)
+                {
+                    //break the for loop
+                    driverText2.text = strs[j];
+                    onSpeaking = false;
+                    breakTrigger = false;
+                    Debug.Log("break trigger skip out");
+                    break;
+                }
+                
                 swapStr += strs[j][i];
                 driverText2.text = swapStr;
                 //Debug.Log("Driver Count" + i);
@@ -1126,7 +1151,8 @@ public class GameCore : MonoBehaviour
                 }
                 yield return new WaitForSecondsRealtime(0.08f);
             }
-
+            onSpeaking = false;
+            Debug.Log("starting wait the reading cast");
             yield return new WaitUntil(() => isReadReady);
 
             Time.timeScale = 1f;
