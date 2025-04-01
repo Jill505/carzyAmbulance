@@ -28,7 +28,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();     
+        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();    
+        moveSpeed += Random.Range(0.2f,0.8f); 
+        attackFrequency += Random.Range(-0.2f,0.5f); 
         StartCoroutine(AttackCycle());
     }
 
@@ -121,6 +123,7 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(attackFrequency);  
+            
 
             if(shootRange)
             {

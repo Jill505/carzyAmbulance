@@ -28,9 +28,12 @@ public class SyringSystem : MonoBehaviour
 
     void Update()
     {
-        HoldMedicine();
-        ChangeSyring();
-        CheckAllMedicineUsed();
+        if(Time.timeScale != 0f)
+        {
+            HoldMedicine();
+            ChangeSyring();
+            CheckAllMedicineUsed();
+        }
     }
 
     void HoldMedicine()

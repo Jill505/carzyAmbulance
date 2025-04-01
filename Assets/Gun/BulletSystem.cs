@@ -60,9 +60,12 @@ public class BulletSystem : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             HandleCrosshair(); //鼠標
-            HoldBullet();     //拿子彈
-            //LoadIn();         //上膛
-            HandleShooting(); //射擊   
+            if(Time.timeScale != 0f)
+            {
+                HoldBullet();     //拿子彈
+                //LoadIn();         //上膛
+                HandleShooting(); //射擊
+            }   
         }    
         else
         {

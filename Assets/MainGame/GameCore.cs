@@ -697,16 +697,20 @@ public class GameCore : MonoBehaviour
     public void InsEnemy()
     {
         Vector2 spawnPosition;
+        float randomX;
 
         if (Random.Range(0, 2) == 0)
         {
             spawnPosition = referencePointMobMovingRangeA.transform.position;
+            randomX = Random.Range(1f,-0.6f);
         }
         else
         {
             spawnPosition = referencePointMobMovingRangeB.transform.position;
+            randomX = Random.Range(-1f,0.6f);
         }
-        Instantiate(enemy, spawnPosition, Quaternion.identity);
+        Vector2 randomOffset = new Vector2(randomX, Random.Range(-0.3f, 0.3f));
+        Instantiate(enemy, spawnPosition + randomOffset, Quaternion.identity);
     }
         public void Event_enemySpawn()
         {
