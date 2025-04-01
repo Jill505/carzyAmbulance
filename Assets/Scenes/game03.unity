@@ -6964,12 +6964,12 @@ MonoBehaviour:
       - myEventType: 7
         argument:
         - "\u5509\u5466\uFF0C\u9019\u9EBC\u5FEB\u5C31\u51FA\u73FE\u4E86"
-        atPos: 0.16
+        atPos: 0.13
         triggered: 0
       - myEventType: 7
         argument:
         - "\u5FEB\u9EDE\u7206\u6253\u4ED6\u4E00\u9813\u5427"
-        atPos: 0.185
+        atPos: 0.14
         triggered: 0
       - myEventType: 0
         argument:
@@ -6984,8 +6984,10 @@ MonoBehaviour:
         - "\u53EF\u60DC......"
         - "\u662F\u4E0D\u662F\u4EE5\u70BA\u6211\u53C8\u6C92\u5E36\u5230\uFF0C\u60F3\u591A\u56C9"
         - "\u4F60\u7239\u600E\u9EBC\u53EF\u80FD\u540C\u4E00\u500B\u932F\u72AF\u4E09\u6B21"
+        - SpecEvent_allowUseSryinge
+        - "\u770B\uFF0C\u9EBB\u9189\u91DD"
         - "\u73FE\u5728\u5C31\u7528\u770B\u770B\u5427\uFF01"
-        atPos: 0.53
+        atPos: 0.51
         triggered: 0
       - myEventType: 9
         argument: []
