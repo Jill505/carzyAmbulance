@@ -721,7 +721,7 @@ public class GameCore : MonoBehaviour
         
         
         //暴力解Bug 之後有問題修掉
-        playSpeed -= 0.1f;
+        //playSpeed -= 0.1f;
 
 
 
@@ -1133,44 +1133,55 @@ public class GameCore : MonoBehaviour
             swapStr = "";
 
 
-            for (int i = 0; i < strs[j].Length; i++)
+
+            if (strs[j] == "SpecEvent_allowUseSryinge")
             {
-
-                onSpeaking = true;
-
-                //break condition
-                if (breakTrigger)
-                {
-                    //break the for loop
-                    driverText2.text = strs[j];
-                    onSpeaking = false;
-                    breakTrigger = false;
-                    Debug.Log("break trigger skip out");
-                    break;
-                }
-                
-                swapStr += strs[j][i];
-                driverText2.text = swapStr;
-                //Debug.Log("Driver Count" + i);
-
-                int ran = Random.Range(0,2);
-                if (ran == 0)
-                {
-                    driver_mouth.transform.position = driver_mouthPosA.transform.position;
-                }
-                else
-                {
-                    driver_mouth.transform.position = driver_mouthPosB.transform.position;
-                }
-                yield return new WaitForSecondsRealtime(0.08f);
+                SpecEvent_allowUseSryinge();
+                onSpeaking = false;
+                breakTrigger = false;
+                Debug.Log("SpecEvent_allowUseSryinge triggered by dialog system");
             }
-            onSpeaking = false;
-            Debug.Log("starting wait the reading cast");
-            yield return new WaitUntil(() => isReadReady);
+            else
+            {
+                for (int i = 0; i < strs[j].Length; i++)
+                {
 
-            Time.timeScale = 1f;
+                    onSpeaking = true;
 
-            driverText2.text = "";
+                    //break condition
+                    if (breakTrigger)
+                    {
+                        //break the for loop
+                        driverText2.text = strs[j];
+                        onSpeaking = false;
+                        breakTrigger = false;
+                        //Debug.Log("break trigger skip out");
+                        break;
+                    }
+
+                    swapStr += strs[j][i];
+                    driverText2.text = swapStr;
+                    //Debug.Log("Driver Count" + i);
+
+                    int ran = Random.Range(0, 2);
+                    if (ran == 0)
+                    {
+                        driver_mouth.transform.position = driver_mouthPosA.transform.position;
+                    }
+                    else
+                    {
+                        driver_mouth.transform.position = driver_mouthPosB.transform.position;
+                    }
+                    yield return new WaitForSecondsRealtime(0.08f);
+                }
+                onSpeaking = false;
+               // Debug.Log("starting wait the reading cast");
+                yield return new WaitUntil(() => isReadReady);
+
+                Time.timeScale = 1f;
+
+                driverText2.text = "";
+            }
         }
         //driverAnimator.SetBool("onSpeaking", false);
         //textAnimator.SetBool("onSpeaking", false);

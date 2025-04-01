@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &26322209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1233,7 +1233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &131574669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2747,7 +2747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &465214471
 Transform:
   m_ObjectHideFlags: 0
@@ -6946,19 +6946,68 @@ MonoBehaviour:
       theEventPoints:
       - myEventType: 8
         argument:
-        - "\u5C0F\u5B50\u6B38\uFF01\u4F60\u77E5\u9053\u4ECA\u5929\u6551\u8B77\u8ECA\u6709\u4EC0\u9EBC\u4E0D\u4E00\u6A23\u55CE\uFF1F"
-        - "\u5E79\u561B\u963F\uFF1F\u53C8\u4E0D\u662F\u5973\u670B\u53CB\u7684\u53E3\u7D05\u984F\u8272\u770B\u4E0D\u51FA\u4F86"
-        - "\u8840\u888B\u5566\uFF0C\u8840\u888B\uFF0C\u4F60\u87A2\u5E55\u53F3\u624B\u908A\u7684"
-        - "\u5099\u7528\u8840\u888B\u7BB1\uFF0C\u85CD\u8272\u7684\u90A3\u500B"
-        - "\u4FDD\u6301\u8F38\u8840\u53EF\u662F\u5F88\u91CD\u8981\u7684"
-        - "\u7576\u6B63\u5728\u8F38\u8840\u7684\u8840\u888B\u898B\u5E95\u6642\uFF0C\u9EDE\u4E00\u4E0B\u5099\u7528\u8840\u888B\u7BB1\u5C31\u53EF\u4EE5\u66F4\u63DB\u4E86\uFF0C\u65B9\u4FBF\u5427"
-        - "\u81F3\u65BC\u4E0A\u6B21\u649E\u5230\u7684\u90A3\u500B\u5C0F\u5B69\uFF0C\u4E0A\u9762\u8AAA\u7576\u975C\u5F85\u8655\u5206"
-        - "\u4EC0\u9EBC\u90FD\u4E0D\u8DDF\u6211\u8AAA\uFF0C\u958B\u5EAD\u9023\u6211\u672C\u4EBA\u90FD\u4E0D\u7528\u51FA\u5E2D"
-        - "\u516C\u53F8\u7684\u5F8B\u5E2B\u4EE3\u7406\u4EBA\u6703\u5E6B\u6211\u5F04\u597D\u6240\u6709\u4E8B\u60C5"
-        - "\u771F\u7684\u6709\u5920\u6A5F\u516B\u7684\uFF0C\u6211\u958B\u9019\u9EBC\u5FEB\u9084\u4E0D\u662F\u70BA\u4E86\u4ED6\u5011\u7684\u5BA2\u6236"
-        - "\u8981\u662F\u771F\u7684\u628A\u934B\u63A8\u5230\u6211\u982D\u4E0A\uFF0C\u4E00\u5B9A\u958B\u8457\u6551\u8B77\u8ECA\u53BB\u649E\u721B\u5B83\u5011\u5927\u6A13"
-        - "\u4E0D\u8AAA\u4E86\uFF0C\u51FA\u767C\u5427"
+        - "\u963F\u56C9\u54C8\u963F\u963F\u963F\u963F"
+        - "\u770B\u5427\uFF0C\u4ECA\u5929\u6709\u69CD\u4E86"
+        - "\u53EA\u9700\u8981\u9EDE\u4E00\u4E0B\u5B50\u5F48\u5C31\u53EF\u4EE5\u9032\u884C\u586B\u88DD\uFF0C\u5F48\u5323\u4E0A\u9650\u662F\u4E00\u767C"
+        - "\u63A5\u8457\u518D\u7784\u6E96\u5C04\u64CA\uFF0C\u5C31\u53EF\u4EE5\u5C0D\u5C0F\u6DF7\u6DF7\u9020\u6210\u50B7\u5BB3\u5566"
+        - "\u4F60\u554F\u6211\u600E\u9EBC\u9019\u9EBC\u958B\u5FC3?"
+        - "\u4E0A\u6B21\u649E\u5230\u90A3\u500B\u5C0F\u5B69\uFF0C\u6211\u5DF2\u7D93\u5169\u5BE9\u7121\u7F6A\u4E86"
+        - "\u6AA2\u5BDF\u5B98\u4E0A\u8A34\u5230\u6700\u9AD8\u6CD5\u9662\uFF0C\u4E00\u9EDE\u90FD\u4E0D\u6015"
+        - "\u6211\u9084\u53BB\u9001\u6C34\u679C\u7D66\u6211\u7684\u8FAF\u8B77\u5F8B\u5E2B\uFF0C\u770B\u8D77\u4F86\u5F88\u7CBE\u660E\u5167\uFF0C\u9084\u7A7F\u897F\u88DD\u5594"
+        - "\u4E0D\u8AAA\u4E86\uFF0C\u518D\u62D6\u6642\u9593\u5F37\u76DC\u53C8\u8981\u4F86\u4E86\uFF0C\u6211\u5011\u51FA\u767C\u5427"
         atPos: 0.05
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.12
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u5509\u5466\uFF0C\u9019\u9EBC\u5FEB\u5C31\u51FA\u73FE\u4E86"
+        atPos: 0.16
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u5FEB\u9EDE\u7206\u6253\u4ED6\u4E00\u9813\u5427"
+        atPos: 0.185
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u4E00\u6B21\u4E5F\u51FA\u73FE\u592A\u591A\u6575\u4EBA\u4E86\u5427"
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 8
+        argument:
+        - "\u53EF\u60E1\uFF0C\u4E00\u6B21\u4E5F\u51FA\u73FE\u592A\u591A\u6575\u4EBA\u4E86\u5427"
+        - "\u8981\u662F\u6709\u9EBB\u9189\u91DD\u5C31\u597D\u4E86"
+        - "\u5B83\u53EF\u4EE5\u7DE9\u4E0B\u6642\u9593\uFF0C\u8B93\u4F60\u6BD4\u8F03\u597D"
+        - "\u53EF\u60DC......"
+        - "\u662F\u4E0D\u662F\u4EE5\u70BA\u6211\u53C8\u6C92\u5E36\u5230\uFF0C\u60F3\u591A\u56C9"
+        - "\u4F60\u7239\u600E\u9EBC\u53EF\u80FD\u540C\u4E00\u500B\u932F\u72AF\u4E09\u6B21"
+        - "\u73FE\u5728\u5C31\u7528\u770B\u770B\u5427\uFF01"
+        atPos: 0.53
+        triggered: 0
+      - myEventType: 9
+        argument: []
+        atPos: 0.56
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - 0.5
+        atPos: 0.56
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - 0.5
+        atPos: 0.5
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
@@ -7053,6 +7102,9 @@ MonoBehaviour:
   theHintTxt: {fileID: 1046105581}
   hintTextAlpha: 1
   countingRemain: 0
+  specEvent_objA: {fileID: 1814688338}
+  specEvent_objB: {fileID: 1203994949}
+  specEvent_objC: {fileID: 593386053}
   DSSR: {fileID: 1468782591}
   driverText: {fileID: 821246910}
   driverText2: {fileID: 1083885688}
