@@ -3199,7 +3199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &593386054
 Transform:
   m_ObjectHideFlags: 0
@@ -6946,147 +6946,173 @@ MonoBehaviour:
       theEventPoints:
       - myEventType: 8
         argument:
-        - "\u963F\u56C9\u54C8\u963F\u963F\u963F\u963F"
-        - "\u770B\u5427\uFF0C\u4ECA\u5929\u6709\u69CD\u4E86"
-        - "\u53EA\u9700\u8981\u9EDE\u4E00\u4E0B\u5B50\u5F48\u5C31\u53EF\u4EE5\u9032\u884C\u586B\u88DD\uFF0C\u5F48\u5323\u4E0A\u9650\u662F\u4E00\u767C"
-        - "\u63A5\u8457\u518D\u7784\u6E96\u5C04\u64CA\uFF0C\u5C31\u53EF\u4EE5\u5C0D\u5C0F\u6DF7\u6DF7\u9020\u6210\u50B7\u5BB3\u5566"
-        - "\u4F60\u554F\u6211\u600E\u9EBC\u9019\u9EBC\u958B\u5FC3?"
-        - "\u4E0A\u6B21\u649E\u5230\u90A3\u500B\u5C0F\u5B69\uFF0C\u6211\u5DF2\u7D93\u4E00\u5BE9\u7121\u7F6A\u4E86"
-        - "\u6AA2\u5BDF\u5B98\u4E0A\u8A34\u5230\u6700\u9AD8\u6CD5\u9662\uFF0C\u4E00\u9EDE\u90FD\u4E0D\u6015"
-        - "\u6211\u9084\u53BB\u9001\u6C34\u679C\u7D66\u6211\u7684\u8FAF\u8B77\u5F8B\u5E2B\uFF0C\u770B\u8D77\u4F86\u5F88\u7CBE\u660E\u5167\uFF0C\u9084\u7A7F\u897F\u88DD\u5594"
-        - "\u4E0D\u8AAA\u4E86\uFF0C\u518D\u62D6\u6642\u9593\u5F37\u76DC\u53C8\u8981\u4F86\u4E86\uFF0C\u6211\u5011\u51FA\u767C\u5427"
+        - "\u5C0F\u5B50\u6B38\uFF0C\u6E96\u5099\u51FA\u767C\u4E86\u55CE\uFF01"
+        - "\u73FE\u5728\u6211\u5011\u6551\u8B77\u8ECA\u53EF\u662F\u6700\u5F37\u7684\u5B8C\u5168\u9AD4\uFF0C\u4E00\u9EDE\u88DD\u5099\u90FD\u6C92\u843D\u4E0B"
+        - "\u540C\u6642\u6211\u7684\u4E8C\u5BE9\u5149\u901F\u7121\u7F6A\uFF0C\u8B9A\u5566"
+        - "\u6AA2\u5BDF\u5B98\u548C\u5C0D\u9762\u7684\u5F8B\u5E2B\u8AAA\u8981\u4E0A\u8A34\u4E09\u5BE9\u7684\u6A23\u5B50\u592A\u597D\u7B11\u4E86"
+        - "\u5F9E\u4ECA\u5929\u958B\u59CB\u6211\u5011\u5C31\u662F\u8DEF\u4E0A\u6700\u975A\u7684\u4ED4"
+        - "\u4E3B\u6253\u7684\u5C31\u662F\u4E00\u500B\u9748\u8ECA\u98C4\u79FB\uFF0C\u6C92\u6709\u5728\u8ECA\u4E0A\u6B7B\u7684\u75C5\u60A3\uFF0C\u53EA\u6709\u88AB\u7529\u4E0B\u53BB\u7684\u75C5\u60A3"
+        - "\u6211\u770B\u770B\u8CC7\u6599\uFF0C\u4ECA\u5929\u8981\u8F09\u7684\u662F\u4E00\u500B\u4EBA\uFF0C\u8077\u696D\u662F\u6E05\u6F54\u5DE5"
+        - "\u597D\u5C11\u898B\uFF0C\u9019\u7A2E\u4EBA\u600E\u9EBC\u8CB7\u5F97\u8D77\u91AB\u7642\u670D\u52D9\u4FDD\u96AA\u7684"
+        - "\u770B\u4E00\u4E0B\u8CC7\u6599\uFF0C\u624D\u9285\u7D1A\u6703\u54E1\u800C\u5DF2\uFF0C\u6C92\u734E\u91D1\u5DEE\u8A55\u6B38"
+        - "\u5730\u9EDE\u9084\u662F\u5728\u9019\u7A2E\u8CA7\u6C11\u7A9F\u88E1\u9762\uFF0C\u771F\u7684\u591A\u5F85\u4E00\u79D2\u90FD\u4E0D\u8212\u670D"
+        - "\u9019\u9644\u8FD1\u5F37\u76DC\u6703\u5F88\u591A\uFF0C\u6211\u5149\u805E\u90FD\u53EF\u4EE5\u805E\u5230\u90A3\u4E9B\u793E\u6703\u5E95\u5C64\u7684\u81ED\u9A37\u5473"
+        - "\u4E00\u958B\u59CB\u6211\u901F\u5EA6\u5C31\u6703\u5FEB\u4E00\u9EDE\uFF0C\u5225\u88AB\u6643\u4E0B\u53BB\u4E86"
+        - "\u51FA\u767C\u5427\uFF01"
         atPos: 0.05
         triggered: 0
       - myEventType: 0
         argument: []
-        atPos: 0.12
+        atPos: 0.15
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.45
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.6
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.8
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.8
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.8
         triggered: 0
       - myEventType: 7
         argument:
-        - "\u5509\u5466\uFF0C\u9019\u9EBC\u5FEB\u5C31\u51FA\u73FE\u4E86"
-        atPos: 0.13
+        - "\u53EF\u60E1\uFF0C\u662F\u7D46\u7DDA\uFF01  \u9019\u7FA4\u4EBA\u662F\u600E\u6A23\uFF0C\u600E\u9EBC\u4EC0\u9EBC\u90FD\u6709"
+        atPos: 0.2
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.2
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.45
         triggered: 0
       - myEventType: 7
         argument:
-        - "\u5FEB\u9EDE\u7206\u6253\u4ED6\u4E00\u9813\u5427"
+        - "\u6C92\u60F3\u5230\u9019\u9EBC\u5FEB\u5C31\u88AB\u5305\u570D\u4E86\uFF0C\u600E\u9EBC\u8FA6\uFF1F
+          \u90A3\u7576\u7136\u662F\u52A0\u901F\uFF01"
+        atPos: 0.38
+        triggered: 0
+      - myEventType: 6
+        argument: []
+        atPos: 0.4
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u5616\uFF0C\u9019\u4E9B\u4EBA\u662F\u6703\u7121\u6027\u589E\u503C\u662F\u4E0D\u662F\u963F"
+        atPos: 0.78
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u600E\u9EBC\u5230\u8655\u90FD\u662F\u4ED6\u5011\u7684\u4EBA\uFF0C\u6211\u518D\u52A0\u901F\u770B\u770B\u53EF\u4E0D\u53EF\u4EE5\u7529\u6389\u4ED6\u5011"
+        atPos: 0.8
+        triggered: 0
+      - myEventType: 6
+        argument: []
+        atPos: 0.812
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.18
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.15
+        triggered: 0
+      - myEventType: 0
+        argument: []
         atPos: 0.14
         triggered: 0
       - myEventType: 0
-        argument:
-        - "\u53EF\u60E1\uFF0C\u4E00\u6B21\u4E5F\u51FA\u73FE\u592A\u591A\u6575\u4EBA\u4E86\u5427"
-        atPos: 0.5
-        triggered: 0
-      - myEventType: 8
-        argument:
-        - "\u53EF\u60E1\uFF0C\u4E00\u6B21\u4E5F\u51FA\u73FE\u592A\u591A\u6575\u4EBA\u4E86\u5427"
-        - "\u8981\u662F\u6709\u9EBB\u9189\u91DD\u5C31\u597D\u4E86"
-        - "\u5B83\u53EF\u4EE5\u7DE9\u4E0B\u6642\u9593\uFF0C\u8B93\u4F60\u53EF\u4EE5\u61C9\u4ED8\u77ED\u6642\u9593\u5167\u51FA\u73FE\u7684\u5927\u91CF\u5A01\u8105"
-        - "\u53EF\u60DC......"
-        - "\u662F\u4E0D\u662F\u4EE5\u70BA\u6211\u53C8\u6C92\u5E36\u5230\uFF0C\u60F3\u591A\u56C9"
-        - "\u4F60\u7239\u600E\u9EBC\u53EF\u80FD\u540C\u4E00\u500B\u932F\u72AF\u4E09\u6B21"
-        - SpecEvent_allowUseSryinge
-        - "\u770B\uFF0C\u9EBB\u9189\u91DD"
-        - "\u53EA\u9700\u8981\u9EDE\u4E00\u4E0B\u85E5\u5291\u5C31\u53EF\u4EE5\u4F7F\u7528\u4E86"
-        - "\u4E0D\u904E\u5B83\u4E00\u6A23\u662F\u6709\u9650\u7684\u8CC7\u6E90\uFF0C\u6839\u64DA\u9700\u8981\u8B39\u614E\u4F7F\u7528"
-        - "\u73FE\u5728\u5C31\u7528\u770B\u770B\u5427\uFF01"
-        atPos: 0.51
-        triggered: 0
-      - myEventType: 9
         argument: []
-        atPos: 0.56
+        atPos: 0.8
         triggered: 0
       - myEventType: 0
         argument: []
-        atPos: 0.5
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.56
+        atPos: 0.8
         triggered: 0
       - myEventType: 0
         argument: []
-        atPos: 0.5
+        atPos: 0.9
         triggered: 0
       - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.25
+        argument: []
+        atPos: 0.92
         triggered: 0
       - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.36
-        triggered: 0
-      - myEventType: 1
-        argument:
-        - 0.5
-        atPos: 0.39
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.5
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.5
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.77
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.77
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.77
-        triggered: 0
-      - myEventType: 0
-        argument:
-        - 0.5
-        atPos: 0.77
-        triggered: 0
-      - myEventType: 7
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
-        atPos: 0.75
-        triggered: 0
-      - myEventType: 1
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
+        argument: []
         atPos: 0.95
         triggered: 0
-      - myEventType: 1
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
+      - myEventType: 0
+        argument: []
+        atPos: 0.55
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.6
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.6
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.87
+        triggered: 0
+      - myEventType: 0
+        argument: []
         atPos: 0.88
         triggered: 0
       - myEventType: 0
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
-        atPos: 0.88
+        argument: []
+        atPos: 0.89
         triggered: 0
       - myEventType: 0
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
-        atPos: 0.909
+        argument: []
+        atPos: 0.9
         triggered: 0
-      - myEventType: 7
-        argument:
-        - "\u7CDF\u7CD5\uFF0C\u6211\u5011\u02CA\u88AB\u5305\u570D\u4E86\uFF0C\u662F\u6642\u5019\u52A0\u901F\u5C55\u73FE\u771F\u7684\u6280\u8853\u4E86"
-        atPos: 0.77
+      - myEventType: 0
+        argument: []
+        atPos: 0.94
         triggered: 0
-      - myEventType: 6
-        argument:
-        - "\u53C8\u6709\u4E00\u7FA4\u5F37\u76DC\u4F86\u4E86\uFF01"
-        atPos: 0.79
+      - myEventType: 0
+        argument: []
+        atPos: 0.94
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
@@ -7165,7 +7191,7 @@ MonoBehaviour:
   O2TextMesh: {fileID: 1251035635}
   gameEndText: {fileID: 26203297}
   bpm: 100
-  playSpeed: 0.9
+  playSpeed: 1
   heartPumpingAnimator: {fileID: 385146642}
   allObjectFather: {fileID: 835290678}
   shakeStrength: 0.05
@@ -7228,7 +7254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1203994950
 Transform:
   m_ObjectHideFlags: 0
@@ -10011,7 +10037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1814688339
 SpriteRenderer:
   m_ObjectHideFlags: 0
