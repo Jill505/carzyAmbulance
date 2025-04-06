@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     
 
     private bool canMove = true;
+    private bool used = false;
     private bool shootRange;   
 
     public Animator animator;
@@ -48,15 +49,14 @@ public class Enemy : MonoBehaviour
     }
 
     void LateUpdate() 
-{
-    if (Mathf.Approximately(transform.position.y, 0.2445235f))
     {
-        // 直接修改 localScale
-        Renderer renderer = GetComponent<Renderer>();
-        transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
-        renderer.sortingOrder = 0;
+        if (Mathf.Approximately(transform.position.y, -0.06547654f) && used == false)
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
+            renderer.sortingOrder = 0;
+        }
     }
-}
 
     
 
@@ -164,6 +164,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            used = true;
             animator.SetBool("FlipDown", true);
         }
     }

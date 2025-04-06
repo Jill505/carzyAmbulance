@@ -58,7 +58,7 @@ public class GameCore : MonoBehaviour
     public GameObject Goat;
     private float[] AxPositions = { -0.1f, 0f,-0.2f };
     private float[] BxPositions = { 0f, 0.1f };
-    private float[] YPositions = { 0f, 0.81f };
+    private float[] YPositions = { 0f, 0.5f };
     private int currentInsAPos = 0;
     private int currentInsBPos = 0;
     private int currentInsYPos = 0;
@@ -179,7 +179,7 @@ public class GameCore : MonoBehaviour
         {
             //driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
         }
-        HintImageAutoFade(); //放這結算畫面note評分才會消失
+        HintImageAutoFade(); 
         if (gameRunning)
         {
             AmbulanceMoving();
@@ -655,15 +655,18 @@ public class GameCore : MonoBehaviour
     public void heartbeatMiss()
     {
         //Debug.Log("from GameCore.cs, the message called");
-        hp -= 5f;
-        comboCount = 0;
-        showHintText(3);
-        ShowHintImage(3);
-
-        if (hp < 0)
+        if(gameRunning)
         {
-            fail = true;
-            gameEnd();
+            hp -= 5f;
+            comboCount = 0;
+            showHintText(3);
+            ShowHintImage(3);
+
+            if (hp < 0)
+            {
+                fail = true;
+                gameEnd();
+            }
         }
     }
 
