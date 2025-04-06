@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class Lobby_Core : MonoBehaviour
     public TextMeshProUGUI pDesTmp;
     public Button buttonMi;
     public Button buttonPl;
+    public Animator Loading;
 
     public GameInfo[] gameInfo = new GameInfo[6]; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,12 +51,18 @@ public class Lobby_Core : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("¹CÀ¸°h¥X");
+        Debug.Log("ï¿½Cï¿½ï¿½ï¿½hï¿½X");
         Application.Quit();
     }
 
     public void LoadGame()
     {
+        StartCoroutine(LoadingAnimator());
+    }
+    IEnumerator LoadingAnimator()
+    {
+        Loading.SetTrigger("LoadOut");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(loadingSort+1);
     }
     public void loadSortPlus()
