@@ -6136,7 +6136,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1193066365}
         m_TargetAssemblyTypeName: GameCore, Assembly-CSharp
-        m_MethodName: gameStart
+        m_MethodName: LoadNextGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
