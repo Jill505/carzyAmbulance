@@ -5076,7 +5076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &917256964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7235,6 +7235,9 @@ MonoBehaviour:
   theHintTxt: {fileID: 1046105581}
   hintTextAlpha: 1
   countingRemain: 0
+  specEvent_objA: {fileID: 0}
+  specEvent_objB: {fileID: 0}
+  specEvent_objC: {fileID: 0}
   DSSR: {fileID: 1468782591}
   driverText: {fileID: 821246910}
   driverText2: {fileID: 1083885688}
@@ -7243,6 +7246,8 @@ MonoBehaviour:
   driverAnimator: {fileID: 1468782590}
   isReadReady: 0
   CastButton: {fileID: 55749090}
+  onSpeaking: 0
+  breakTrigger: 0
   driver_mouth: {fileID: 874367830}
   driver_mouthPosA: {fileID: 448493097}
   driver_mouthPosB: {fileID: 1821038426}
