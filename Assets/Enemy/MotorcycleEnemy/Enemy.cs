@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour
     
 
     private bool canMove = true;
-    private bool shootRange;     
+    private bool used = false;
+    private bool shootRange;   
 
     public Animator animator;
     
@@ -29,9 +30,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();    
+        
         moveSpeed += Random.Range(0.2f,0.8f); 
-        attackFrequency += Random.Range(-0.2f,0.5f); 
+        attackFrequency += Random.Range(-2f,2f);
+        
         StartCoroutine(AttackCycle());
+        
+        
     }
 
     void Update()
@@ -39,6 +44,18 @@ public class Enemy : MonoBehaviour
         //HandleScaling();
         HandleMovement();
         HandleTilting();
+         
+        
+    }
+
+    void LateUpdate() 
+    {
+        if (Mathf.Approximately(transform.position.y, -0.06547654f) && used == false)
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
+            renderer.sortingOrder = 0;
+        }
     }
 
     
@@ -129,6 +146,7 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("AttackCycle");  
                 Attack();  
+                attackFrequency += Random.Range(-2f,2f); 
             }
         }
     }
@@ -146,6 +164,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            used = true;
             animator.SetBool("FlipDown", true);
         }
     }

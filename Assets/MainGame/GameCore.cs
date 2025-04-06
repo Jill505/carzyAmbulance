@@ -56,6 +56,12 @@ public class GameCore : MonoBehaviour
     public GameObject referencePointMobMovingRangeB;
     public GameObject CthulhuObject;
     public GameObject Goat;
+    private float[] AxPositions = { -0.1f, 0f,-0.2f };
+    private float[] BxPositions = { 0f, 0.1f };
+    private float[] YPositions = { 0f, 0.5f };
+    private int currentInsAPos = 0;
+    private int currentInsBPos = 0;
+    private int currentInsYPos = 0;
 
     [Header("我也不知道為什麼Heartbeat會宣告在這")]
     public Heartbeat heartbeat;
@@ -173,7 +179,7 @@ public class GameCore : MonoBehaviour
         {
             //driver_speak("h20純水真的是非常非常非常非常非常非常的好吃");
         }
-        HintImageAutoFade(); //放這結算畫面note評分才會消失
+        HintImageAutoFade(); 
         if (gameRunning)
         {
             AmbulanceMoving();
@@ -649,15 +655,18 @@ public class GameCore : MonoBehaviour
     public void heartbeatMiss()
     {
         //Debug.Log("from GameCore.cs, the message called");
-        hp -= 5f;
-        comboCount = 0;
-        showHintText(3);
-        ShowHintImage(3);
-
-        if (hp < 0)
+        if(gameRunning)
         {
-            fail = true;
-            gameEnd();
+            hp -= 5f;
+            comboCount = 0;
+            showHintText(3);
+            ShowHintImage(3);
+
+            if (hp < 0)
+            {
+                fail = true;
+                gameEnd();
+            }
         }
     }
 
@@ -697,20 +706,27 @@ public class GameCore : MonoBehaviour
     public void InsEnemy()
     {
         Vector2 spawnPosition;
-        float randomX;
+        float selectedX;
+        float selectedY;
 
         if (Random.Range(0, 2) == 0)
         {
             spawnPosition = referencePointMobMovingRangeA.transform.position;
-            randomX = Random.Range(1f,-0.6f);
+            selectedX = AxPositions[currentInsAPos];
+            currentInsAPos = (currentInsAPos + 1) % AxPositions.Length;
         }
         else
         {
             spawnPosition = referencePointMobMovingRangeB.transform.position;
-            randomX = Random.Range(-1f,0.6f);
+            selectedX = BxPositions[currentInsBPos];
+            currentInsBPos = (currentInsBPos + 1) % BxPositions.Length;
         }
-        Vector2 randomOffset = new Vector2(randomX, Random.Range(-0.3f, 0.3f));
+        selectedY = YPositions[currentInsYPos];
+        currentInsYPos = (currentInsYPos + 1) % YPositions.Length;
+        Vector2 randomOffset = new Vector2(selectedX, selectedY);
+        
         Instantiate(enemy, spawnPosition + randomOffset, Quaternion.identity);
+        
     }
         public void Event_enemySpawn()
         {
