@@ -32,7 +32,6 @@ public class BulletSystem : MonoBehaviour
     public GameObject bulletbox;
     private GameCore gameCore;
     private SyringSystem syringSystem;
-    public SoundEffect soundEffect;
     private DraggableBloodPack draggableBloodPack;
 
     void Start()
@@ -139,7 +138,7 @@ public class BulletSystem : MonoBehaviour
                 if (IsMouseOver(gunCollider, mousePosition))
                 {
                 */
-                    soundEffect.ReloadSound();
+                    gameCore.PlaySoundEffect(gameCore.SoundEffects[1]);
                     currentAmmo = maxAmmo;
                     Debug.Log("成功將子彈放入槍枝");
                     loadIn = true;
@@ -193,7 +192,7 @@ public class BulletSystem : MonoBehaviour
     void Shoot()
     {
         currentAmmo--;
-        soundEffect.ShotGunSound();
+        gameCore.PlaySoundEffect(gameCore.SoundEffects[2]);
         if (currentAmmo <= 0)
         {
             loadIn = false;
