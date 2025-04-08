@@ -6583,6 +6583,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fa65c2de91e6a4e4a8c395c415c8155d, type: 3}
   - {fileID: 8300000, guid: f14003900f16e7545a6c6615c926f04c, type: 3}
   - {fileID: 8300000, guid: 3c2543cc5e23ab748b369b5bc058bb72, type: 3}
+  - {fileID: 8300000, guid: 8fa9901fbc78e7a42816e86e6401350c, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   theHintTxt: {fileID: 1046105581}
   hintTextAlpha: 1
   countingRemain: 0
@@ -9887,7 +9889,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -6405582830355974013, guid: 115ed5a6a0fc39a4c9dd4eafdfc9a427, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
