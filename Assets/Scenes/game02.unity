@@ -6828,7 +6828,7 @@ MonoBehaviour:
         triggered: 0
       - myEventType: 7
         argument:
-        - "\u4F60\u5F9E\u53F0\u5317\u4F86\u7684\u61C9\u8A72\u4E0D\u77E5\u9053"
+        - "\u4F60\u5F9E\u82D4\u5317\u4F86\u7684\u61C9\u8A72\u4E0D\u77E5\u9053"
         atPos: 0.15
         triggered: 0
       - myEventType: 7

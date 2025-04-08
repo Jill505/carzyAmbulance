@@ -6882,8 +6882,137 @@ MonoBehaviour:
         triggered: 1
       - myEventType: 8
         argument:
-        - "\u5C0F\u5B50\u6B38\uFF0C\u6E96\u5099\u51FA\u767C\u4E86\u55CE\uFF01"
-        atPos: 0.05
+        - "\u5594\uFF0C\u6211\u7684\u5929\u554A\uFF0C\u4F60\u770B\u8D77\u4F86\u4E0D\u592A\u5C0D..."
+        - "\u6C92\u932F\uFF0C\u4F9D\u7167\u6211\u9577\u5E74\u7684\u7D93\u9A57\uFF0C\u4F60\u7F79\u60A3\u4E86\u5BA2\u8A34\u9B6F\u75C7\u5019\u7FA4"
+        - "\u9019\u7A2E\u75C7\u72C0\u6703\u5728\u4F60\u6975\u5EA6\u7DCA\u5F35\u7684\u6642\u5019\u51FA\u73FE\uFF0C\u4E26\u7522\u751F\u756B\u9762\u4E0A\u6709\u5BA2\u8607\u9B6F\u7684\u5E7B\u89BA"
+        - "\u5509\uFF0C\u82D4\u7063\u91AB\u8B77\u771F\u7684\u592A\u8F9B\u82E6\u4E86\u55DA\u55DA\u55DA\u55DA"
+        - "\u5982\u679C\u653E\u4EFB\u4E0D\u7BA1\u8B93\u4ED6\u81EA\u7206\u7684\u8A71\uFF0C\u4F60\u6703\u505A\u51FA\u4E0D\u53EF\u63A7\u7684\u884C\u70BA\uFF0C\u4E26\u5C0D\u75C5\u4EBA\u9020\u6210\u5371\u5BB3"
+        - "\u75C5\u4EBA\u7684\u65B0\u5BA4\u6703\u7522\u751F\u6975\u70BA\u5F37\u70C8\u7684\u9707\u986B\uFF01"
+        - "\u5E78\u597D\uFF0C\u4F60\u624B\u4E0A\u7684\u9730\u5F48\u69CD\u6709\u88AB\u5EDF\u516C\u52A0\u6301\u904E"
+        - "\u4E00\u908A\u9ED8\u5FF5\u300C\u963F\u5F4C\u9640\u4F5B\u300D\u4E00\u908A\u5C0D\u5BA2\u8A34\u9B6F\u958B\u69CD\u6709\u986F\u8457\u7684\u6548\u679C\uFF0C\u53EF\u4EE5\u6D88\u9664\u5E7B\u89BA"
+        - "\u4F86\u8DDF\u8457\u6211\u4E00\u8D77\u9ED8\u5FF5\uFF0C\u963F\u5F4C\u9640\u4F5B\uFF0C\u514B\u8607\u9B6F\u9000\u6563\uFF01\uFF01"
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.13
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.13
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.13
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.17
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.22
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.35
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.35
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.52
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.52
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.72
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.72
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u53EF\u60E1\u963F... \u6700\u5F8C\u4E00\u55AE\u4E86\uFF0C\u7D66\u6211\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6211\u5011\u52A0\u901F\uFF01"
+        atPos: 0.65
+        triggered: 0
+      - myEventType: 6
+        argument: []
+        atPos: 0.667
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.68
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.68
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.77
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.77
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.8
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.8
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.92
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.92
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.95
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.95
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.92
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.92
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.72
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
