@@ -1829,6 +1829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0320099c1d76c5245b06a146f9fc17e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carHorn: {fileID: 8300000, guid: 9c3fd235f26579f4ead24dcddda6e5b1, type: 3}
+  attention: {fileID: 8300000, guid: fa22d46a56a4a0c4db5bcf0dc2a52885, type: 3}
+  changeScene: {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   selectionCanvas: {fileID: 149010979}
   selectionCanvas2: {fileID: 1947518912}
   gameScene:
@@ -1860,6 +1863,7 @@ MonoBehaviour:
     description: 
   - name: "\u3010\u75C5\u865F-301\u3011"
     description: 
+  bgmClip: {fileID: 8300000, guid: 579c69f5daa0e2149859ff531b912dfc, type: 3}
 --- !u!4 &838028833
 Transform:
   m_ObjectHideFlags: 0

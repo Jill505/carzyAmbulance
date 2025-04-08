@@ -78,5 +78,6 @@ public class DraggableBloodPack : MonoBehaviour,  IBeginDragHandler, IDragHandle
     {
         //bloodPackDrag.gameObject.SetActive(true);
         gameCore.ChangeBloodPack();
+        gameCore.PlaySoundEffect(gameCore.SoundEffects[4]);
     }
 }

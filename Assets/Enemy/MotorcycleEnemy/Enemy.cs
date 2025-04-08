@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     public Animator animator;
     
+    
 
     void Start()
     {
@@ -146,7 +147,6 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("AttackCycle");  
                 Attack();  
-                attackFrequency += Random.Range(-2f,2f); 
             }
         }
     }

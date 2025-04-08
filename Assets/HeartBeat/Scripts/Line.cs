@@ -88,8 +88,8 @@ public class Line : MonoBehaviour
             getPoint = true;
             gameCore.heartbeatHit();
             gameCore.perfectHintFunc();
-            gameCore.showHintText(1);
             gameCore.ShowHintImage(1);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[3]);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
@@ -108,6 +108,7 @@ public class Line : MonoBehaviour
             gameCore.perfectHintFunc();
             gameCore.showHintText(4);
             gameCore.ShowHintImage(4);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[3]);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
@@ -126,6 +127,7 @@ public class Line : MonoBehaviour
             gameCore.perfectHintFunc();
             gameCore.showHintText(2);
             gameCore.ShowHintImage(2);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[3]);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);

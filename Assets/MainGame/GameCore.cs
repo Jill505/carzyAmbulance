@@ -391,7 +391,7 @@ public class GameCore : MonoBehaviour
     {
         if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+            StartCoroutine(LoadNextGameAnimation());
         }
         else
         {
@@ -406,9 +406,17 @@ public class GameCore : MonoBehaviour
     {
         StartCoroutine(LoadAnimation(0));
     }
+    public IEnumerator LoadNextGameAnimation()
+    {
+        UIAnimator.SetTrigger("LoadOut");
+        PlaySoundEffect(SoundEffects[5]);
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
     public IEnumerator LoadAnimation(int LoadScene)
     {
         UIAnimator.SetTrigger("LoadOut");
+        PlaySoundEffect(SoundEffects[5]);
         yield return new WaitForSeconds(1.2f);
         SceneManager.LoadScene(LoadScene);
     }

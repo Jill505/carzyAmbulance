@@ -9,6 +9,10 @@ using UnityEngine.UIElements.Experimental;
 
 public class Lobby_Core : MonoBehaviour
 {
+    [Header ("音效")]
+    public AudioClip carHorn;
+    public AudioClip attention;
+    public AudioClip changeScene;
     public GameObject selectionCanvas;
     bool isSelectionCanvasOpening = false;
 
@@ -28,13 +32,18 @@ public class Lobby_Core : MonoBehaviour
     public Animator Loading;
 
     public GameInfo[] gameInfo = new GameInfo[6]; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    
+
+    
     void Start()
     {
         loadingSort = 0;
         pNameTmp.text = gameInfo[loadingSort].name;
         pDesTmp.text = gameInfo[loadingSort].name;
         buttonMi.interactable = false;
+        AK_SoundObject.PlaySoundObject(carHorn);
+        swapMusicPlayer();
     }
 
     // Update is called once per frame
@@ -61,7 +70,9 @@ public class Lobby_Core : MonoBehaviour
     }
     IEnumerator LoadingAnimator()
     {
+        AK_SoundObject.PlaySoundObject(changeScene);
         Loading.SetTrigger("LoadOut");
+        stopSwapMusicPLayer();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(loadingSort+1);
     }
@@ -99,6 +110,22 @@ public class Lobby_Core : MonoBehaviour
     {
         pNameTmp.text = gameInfo[loadingSort].name;
         pDesTmp.text = gameInfo[loadingSort].name;
+    }
+
+    [Header("BGM and SoundEffects")]
+    public AudioClip bgmClip;
+    GameObject theBgmPlayer;
+    public void swapMusicPlayer()
+    {
+        theBgmPlayer = new GameObject("BgmPlayer");
+        AudioSource AS =  theBgmPlayer.AddComponent<AudioSource>();
+        AS.clip = bgmClip;
+        AS.loop = true;
+        AS.Play();
+    }
+    public void stopSwapMusicPLayer()
+    {
+        Destroy(theBgmPlayer);
     }
 }
 
