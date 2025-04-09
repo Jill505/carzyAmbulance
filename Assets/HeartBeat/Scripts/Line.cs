@@ -39,34 +39,37 @@ public class Line : MonoBehaviour
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
 
-        if (transform.position.x < Heartbeat.checkIfShouldChangeColor.transform.position.x)
+        if(gameCore.gameRunning)
         {
-            if (getPoint != true && hasExecuted == false)
+            if (transform.position.x < Heartbeat.checkIfShouldChangeColor.transform.position.x)
             {
-                //Debug.Log("a hint from Line.cs, the function triggered currecrt");
-                gameCore.damagedHintFunc();
-                gameCore.heartbeatMiss();
-                gameCore.PlaySoundEffect(gameCore.SoundEffects[7]);
-                Heartbeat.nextLineToCheck++;
-                Heartbeat.RemoveLine(thisLineNumber); 
-                if (childSpriteRenderer != null)
+                if (getPoint != true && hasExecuted == false)
                 {
-                    childSpriteRenderer.color = Color.red;
+                    //Debug.Log("a hint from Line.cs, the function triggered currecrt");
+                    gameCore.damagedHintFunc();
+                    gameCore.heartbeatMiss();
+                    gameCore.PlaySoundEffect(gameCore.SoundEffects[7]);
+                    Heartbeat.nextLineToCheck++;
+                    Heartbeat.RemoveLine(thisLineNumber); 
+                    if (childSpriteRenderer != null)
+                    {
+                        childSpriteRenderer.color = Color.red;
+                    }
+                    else
+                    {
+                        childSpriteRenderer.color = new Color(0,1,0,1);
+                        //Play Animation
+                        myAnimator.SetTrigger("makeItClear");
+                    }
+                    hasExecuted = true;
+                    isChecked = true; 
                 }
-                else
-                {
-                    childSpriteRenderer.color = new Color(0,1,0,1);
-                    //Play Animation
-                    myAnimator.SetTrigger("makeItClear");
-                }
-                hasExecuted = true;
-                isChecked = true; 
             }
-        }
 
-        if (transform.position.x < Heartbeat.border.transform.position.x)
-        {
-            Destroy(gameObject);
+            if (transform.position.x < Heartbeat.border.transform.position.x)
+            {
+                Destroy(gameObject);
+            }
         }
 
     }        

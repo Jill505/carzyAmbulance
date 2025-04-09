@@ -831,7 +831,7 @@ public class GameCore : MonoBehaviour
     }
     public void Event_roadRock()
     {       
-        heartbeat.pendingNote += 5;
+        heartbeat.pendingNote += 3;
         PlaySoundEffect(SoundEffects[0]);
         //carShake(4, 1.4f, 0.15f, false);
         carShake(3f, 0.3f, 0.15f, false);

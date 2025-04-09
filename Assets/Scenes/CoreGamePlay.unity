@@ -3488,6 +3488,7 @@ GameObject:
   - component: {fileID: 629892982}
   - component: {fileID: 629892981}
   - component: {fileID: 629892980}
+  - component: {fileID: 629892983}
   m_Layer: 5
   m_Name: GameEndButtonReloadGame
   m_TagString: Untagged
@@ -3608,6 +3609,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629892978}
   m_CullTransparentMesh: 1
+--- !u!114 &629892983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629892978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1193066365}
+          m_TargetAssemblyTypeName: GameCore, Assembly-CSharp
+          m_MethodName: PlaySoundEffect
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 099ed8696fad18c4e82f30c5f3a2ae07, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &658447138
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +5664,7 @@ GameObject:
   - component: {fileID: 1095975392}
   - component: {fileID: 1095975391}
   - component: {fileID: 1095975390}
+  - component: {fileID: 1095975393}
   m_Layer: 5
   m_Name: GameEndButtonLoadNextLevel
   m_TagString: Untagged
@@ -5754,6 +5785,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095975388}
   m_CullTransparentMesh: 1
+--- !u!114 &1095975393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095975388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1193066365}
+          m_TargetAssemblyTypeName: GameCore, Assembly-CSharp
+          m_MethodName: PlaySoundEffect
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 099ed8696fad18c4e82f30c5f3a2ae07, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1096584514
 GameObject:
   m_ObjectHideFlags: 0
@@ -6731,15 +6791,18 @@ MonoBehaviour:
   bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: d275813617fff2e4293e428609a90b2b, type: 3}
-  - {fileID: 8300000, guid: fa65c2de91e6a4e4a8c395c415c8155d, type: 3}
-  - {fileID: 8300000, guid: f14003900f16e7545a6c6615c926f04c, type: 3}
-  - {fileID: 8300000, guid: 3c2543cc5e23ab748b369b5bc058bb72, type: 3}
-  - {fileID: 8300000, guid: 8fa9901fbc78e7a42816e86e6401350c, type: 3}
+  - {fileID: 8300000, guid: b5b6f353f271d114d85bf72aacd4a5e4, type: 3}
+  - {fileID: 8300000, guid: 406877d3e34ff84479d58a84a367599a, type: 3}
+  - {fileID: 8300000, guid: 4042f562052c3df458f840b58538aa5e, type: 3}
+  - {fileID: 8300000, guid: 806cbaae5f0212e48afd6ce1c3a7cc30, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 848fd8241ca69c0409583404e12960cf, type: 3}
+  - {fileID: 8300000, guid: a6560b3177b8f0041b89a360959d2fef, type: 3}
+  - {fileID: 8300000, guid: b0e9d227e30dd6b4189c660c3fdf00bb, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
-  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
-  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
-  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: d07ca13eecc40d742894d3823ea12acb, type: 3}
+  - {fileID: 8300000, guid: 4fb81c4d011c15a4192ca5170ea884f4, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   theHintTxt: {fileID: 1046105581}
@@ -7503,6 +7566,7 @@ GameObject:
   - component: {fileID: 1352905011}
   - component: {fileID: 1352905010}
   - component: {fileID: 1352905009}
+  - component: {fileID: 1352905012}
   m_Layer: 5
   m_Name: GameEndButtonBackToMenu
   m_TagString: Untagged
@@ -7623,6 +7687,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352905007}
   m_CullTransparentMesh: 1
+--- !u!114 &1352905012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352905007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1193066365}
+          m_TargetAssemblyTypeName: GameCore, Assembly-CSharp
+          m_MethodName: PlaySoundEffect
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 099ed8696fad18c4e82f30c5f3a2ae07, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1360895975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3808725870450760099, guid: 3dbea6713d0600b47adc72892104d3a4, type: 3}

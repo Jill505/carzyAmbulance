@@ -141,11 +141,12 @@ public class Lobby_Core : MonoBehaviour
         EzMode = !EzMode;
         if (EzMode)//圖標切換為綠色
         {
-
+            Debug.Log("EZ模式開啟");
         }
         else
         {
             //切換為紅色
+            Debug.Log("EZ模式關閉");
         }
     }
     public void QuitGame()

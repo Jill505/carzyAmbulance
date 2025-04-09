@@ -198,7 +198,11 @@ public class BulletSystem : MonoBehaviour
             loadIn = false;
             ChangeColor(bulletbox,"#FFFFFF");
         }
-
+        if(Lobby_Core.EzMode)
+        {
+            StartCoroutine(EzModeBlast());
+        }
+        else{
         Collider2D[] hitColliders = Physics2D.OverlapPointAll(mousePosition, LayerMask.GetMask("Enemy"));
 
         if (hitColliders.Length > 0)
@@ -231,7 +235,45 @@ public class BulletSystem : MonoBehaviour
         {
             Debug.Log("空氣");
         }
+        }
     }
+
+    IEnumerator EzModeBlast()
+{
+    float blastRadius = 0.8f; // 調整攻擊範圍大小
+    float duration = 0.1f;
+
+    // 顯示攻擊特效（可選）
+    ShowBlastEffect(mousePosition, blastRadius);
+
+    // 在鼠標位置檢查敵人
+    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(mousePosition, blastRadius, LayerMask.GetMask("Enemy"));
+
+    foreach (Collider2D enemy in hitEnemies)
+    {
+        // 如果有 Enemy 類別就扣血
+        if (enemy.TryGetComponent<Enemy>(out Enemy theEnemy))
+        {
+            theEnemy.TakeDamage(Firepower);
+        }
+        else if (enemy.TryGetComponent<Cthulhu>(out Cthulhu cthulhu))
+        {
+            cthulhu.TakeDamage();
+        }
+    }
+
+    yield return new WaitForSeconds(duration);
+}
+    [SerializeField] GameObject blastEffectPrefab;
+
+void ShowBlastEffect(Vector2 position, float radius)
+{
+    if (blastEffectPrefab == null) return;
+
+    GameObject blast = Instantiate(blastEffectPrefab, position, Quaternion.identity);
+    blast.transform.localScale = new Vector3(radius * 2f, radius * 2f, 1f);
+    Destroy(blast, 0.2f);
+}
 
     IEnumerator ShakeCursor()
     {
