@@ -107,7 +107,6 @@ public class Lobby_Core : MonoBehaviour
         s_GSF = JsonUtility.FromJson<GameSaveFile>(PlayerPrefs.GetString("SaveFile"));
 
     }
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D))
@@ -126,6 +125,7 @@ public class Lobby_Core : MonoBehaviour
     {
         isSelectionCanvasOpening = !isSelectionCanvasOpening;
         selectionCanvas2.SetActive(isSelectionCanvasOpening);
+
 
         //判定是否有看過開頭動畫
         if (s_GSF.alreadyReadOpeningManga == false)
@@ -152,6 +152,7 @@ public class Lobby_Core : MonoBehaviour
             buttonPl.interactable = false;
             Debug.Log("From open and close not allow");
         }
+        
     }
     public GameObject ezButton; 
     public Sprite[] EZButton = new Sprite[2];
