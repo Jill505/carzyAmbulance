@@ -1948,7 +1948,7 @@ MonoBehaviour:
   EZButton:
   - {fileID: 7169501990056374605, guid: 02d82cf8c41973347b42396f421cc3ae, type: 3}
   - {fileID: -6098597117279859387, guid: 58238bea8bc57fb41bf6611b0a1bb74b, type: 3}
-  bgmClip: {fileID: 8300000, guid: 579c69f5daa0e2149859ff531b912dfc, type: 3}
+  bgmClip: {fileID: 8300000, guid: 1a43e865b4b285e4cbb7c53c31517739, type: 3}
 --- !u!4 &838028833
 Transform:
   m_ObjectHideFlags: 0
