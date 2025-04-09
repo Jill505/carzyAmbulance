@@ -7146,8 +7146,8 @@ MonoBehaviour:
   BulletLight: {fileID: 480493967}
   BloodBoxLight: {fileID: 1450038778}
   Road: {fileID: 1885282059}
-  gameEndBGLoadinAnimator: {fileID: 0}
-  GameEndBGLoadinPanel: {fileID: 0}
+  gameEndBGLoadinAnimator: {fileID: 920586133}
+  GameEndBGLoadinPanel: {fileID: 920586131}
   eventSprite_enemySpawn: {fileID: 4611381252443479281, guid: 5e52bb4e7cce8994aaf9ad95ef1c57b9, type: 3}
   eventSprite_roadRock: {fileID: -768929691181379306, guid: 66c89f772240abb42b63d4cf82138ca1, type: 3}
   eventSprite_cthulhu: {fileID: 769085689064147767, guid: d5336e6b6028875429097b0f9ec75db2, type: 3}
@@ -7200,8 +7200,8 @@ MonoBehaviour:
   gameEndBackgroundPatient: {fileID: 0}
   gameEndBackgroundSprite:
   - {fileID: 2006328501548352024, guid: af8034ad2d1dc9547a59a0eb2b744aa9, type: 3}
-  - {fileID: 4256281459129216183, guid: affaa9e351e136d45a5a7fec0482c44d, type: 3}
   - {fileID: 21300000, guid: 08c504bca78dc494a8d26d73da7d23bf, type: 3}
+  - {fileID: 4256281459129216183, guid: affaa9e351e136d45a5a7fec0482c44d, type: 3}
   GameEndButtonLoadNextLevel: {fileID: 0}
   bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
   SoundEffects:
@@ -10945,6 +10945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999749164}
   - component: {fileID: 1999749165}
+  - component: {fileID: 1999749166}
   m_Layer: 0
   m_Name: GameEndPanelAnimation
   m_TagString: Untagged
@@ -10995,6 +10996,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1999749166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999749163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e891e7a8761f1ee4b9d8681c7fae48b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamecore: {fileID: 1193066365}
 --- !u!1 &2001450252
 GameObject:
   m_ObjectHideFlags: 0

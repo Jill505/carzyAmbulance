@@ -386,6 +386,7 @@ public class GameCore : MonoBehaviour
     {
         gameRunning = false;
         GameEndPanel.SetActive(true);
+        gameEndPenalAnimator = GameObject.Find("GameEndPanelAnimation").GetComponent<Animator>();
         gameEndPenalAnimator.SetBool("active",true);
         
 
