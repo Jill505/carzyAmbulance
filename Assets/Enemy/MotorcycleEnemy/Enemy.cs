@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
         if (gamecore.gameRunning)
         {
             gamecore.PlaySoundEffect(gamecore.SoundEffects[13]); 
-            heartbeat.InjuryAndSpawnANote();
+            heartbeat.BanditAttack();
         }
     }
 

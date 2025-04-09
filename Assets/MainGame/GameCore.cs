@@ -1127,6 +1127,12 @@ public class GameCore : MonoBehaviour
     }
     IEnumerator hocus(float sec)
     {
+        hp += 35f;
+        if (hp > 100f)
+        {
+            hp = 100f;
+        }
+
         Time.timeScale = hocusSlowRate;
         HocusAnimator.SetBool("hocusing",true);
         yield return new WaitForSecondsRealtime(sec);
