@@ -135,7 +135,19 @@ public class Lobby_Core : MonoBehaviour
             Debug.Log("From open and close not allow");
         }
     }
+    public void EzModeOnAndOff()
+    {
+        //初始為紅色
+        EzMode = !EzMode;
+        if (EzMode)//圖標切換為綠色
+        {
 
+        }
+        else
+        {
+            //切換為紅色
+        }
+    }
     public void QuitGame()
     {
         Debug.Log("�C���h�X");
@@ -221,4 +233,5 @@ public class GameSaveFile
     public int emptyNumber;
     public int mexUnlockGame = 0;
     public bool[] gamePassed = new bool[6];
+    public bool alreadyReadOpeningManga = false;
 }
