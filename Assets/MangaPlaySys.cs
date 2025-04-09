@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MangaPlaySys : MonoBehaviour
 {
@@ -13,10 +14,10 @@ public class MangaPlaySys : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        CdCounting = Cd;
         if (spec_pre)
         {
-            spec_pre = false;
-
+            //anyway
         }
     }
 
@@ -28,8 +29,10 @@ public class MangaPlaySys : MonoBehaviour
 
     public void LoadNextAnimation()
     {
+        Debug.Log("pressed");
         if (CdCounting < 0)
         {
+            Debug.Log("Load next ani");
             CdCounting = Cd;
             //Play next ani
             myAnimator.SetTrigger("nextAni");
@@ -39,5 +42,9 @@ public class MangaPlaySys : MonoBehaviour
             //Fin now Ani ?
             
         }
+    }
+    public void backToLobby()
+    {
+        SceneManager.LoadScene(0);
     }
 }
