@@ -4893,7 +4893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &917256964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6895,7 +6895,7 @@ MonoBehaviour:
         triggered: 0
       - myEventType: 4
         argument: []
-        atPos: 0.3
+        atPos: 0.29
         triggered: 0
       - myEventType: 0
         argument: []
@@ -6908,14 +6908,14 @@ MonoBehaviour:
       - myEventType: 0
         argument: []
         atPos: 0.13
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.32
         triggered: 0
       - myEventType: 1
         argument: []
-        atPos: 0.17
-        triggered: 0
-      - myEventType: 1
-        argument: []
-        atPos: 0.22
+        atPos: 0.438
         triggered: 0
       - myEventType: 4
         argument: []
@@ -6927,7 +6927,7 @@ MonoBehaviour:
         triggered: 0
       - myEventType: 4
         argument: []
-        atPos: 0.5
+        atPos: 0.4
         triggered: 0
       - myEventType: 4
         argument: []
@@ -6994,25 +6994,87 @@ MonoBehaviour:
         argument: []
         atPos: 0.92
         triggered: 0
-      - myEventType: 4
-        argument: []
-        atPos: 0.95
-        triggered: 0
-      - myEventType: 4
-        argument: []
-        atPos: 0.95
-        triggered: 0
       - myEventType: 0
         argument: []
         atPos: 0.92
         triggered: 0
       - myEventType: 0
         argument: []
-        atPos: 0.92
+        atPos: 0.9
         triggered: 0
       - myEventType: 0
         argument: []
         atPos: 0.72
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.42
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.48
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.47
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.48
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.35
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.44
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.51
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.53
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.56
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.56
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.55
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.55
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.58
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.58
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.58
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u52A0\u6CB9\uFF0C\u518D\u6490\u4E00\u4E0B\uFF0C\u6211\u5011\u4E0B\u500B\u8DEF\u53E3\u5C31\u5230\u4E86\uFF01"
+        atPos: 0.85
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u5616\uFF0C\u9019\u4E5F\u592A\u591A\u4E86\u5427\uFF0C\u5FEB\u7528\u9EBB\u9189\u91DD\uFF01"
+        atPos: 0.85
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
