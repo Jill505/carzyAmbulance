@@ -3,7 +3,6 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem.Composites;
 using UnityEngine.SceneManagement;
@@ -242,6 +241,15 @@ public class Lobby_Core : MonoBehaviour
     public void stopSwapMusicPLayer()
     {
         Destroy(theBgmPlayer);
+    }
+    public void PlaySoundEffect(AudioClip AC)
+    {
+        GameObject newSoundEffect = new GameObject("soundEffect");
+        AK_SoundObject AKS =  newSoundEffect.AddComponent<AK_SoundObject>();
+        AudioSource AS = newSoundEffect.AddComponent<AudioSource>();
+        AS.clip = AC;
+        AS.Play();
+        Destroy(newSoundEffect, AKS.playTime);
     }
 }
 
