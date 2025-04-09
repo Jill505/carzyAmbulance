@@ -470,7 +470,7 @@ public class GameCore : MonoBehaviour
             Vector2 ambulanceAtPos = new Vector2(AmbulanceObject.transform.position.x, AmbulanceObject.transform.position.y);
             float distanceTravelled = (ambulanceAtPos - new Vector2(myMapGraph.points[ambulanceMovingFromPoint].x, myMapGraph.points[ambulanceMovingFromPoint].y)).magnitude; // 已移動距離
             float percent = distanceTravelled / journeyLength; // 計算進度百分比
-            GameObject.Find("process_dur").GetComponent<Text>().text = "process: "+percent;
+            //GameObject.Find("process_dur").GetComponent<Text>().text = "process: "+percent;
             //float percent = Mathf.Sqrt(Mathf.Pow((journey.x - ambulanceAtPos.x),2) - Mathf.Pow((journey.y - ambulanceAtPos.y),2))
 
             for (int i = 0, times = myMapGraph.points[ambulanceMovingFromPoint].theEventPoints.Length; i< times; i++)
