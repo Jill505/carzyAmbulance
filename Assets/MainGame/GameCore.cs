@@ -1242,6 +1242,10 @@ public class GameCore : MonoBehaviour
                 breakTrigger = false;
                 Debug.Log("SpecEvent_allowUseSryinge triggered by dialog system");
             }
+            else if (strs[j] == "Spec_gameEnd")
+            { 
+                
+            }
             else
             {
                 for (int i = 0; i < strs[j].Length; i++)
@@ -1276,7 +1280,7 @@ public class GameCore : MonoBehaviour
                     yield return new WaitForSecondsRealtime(0.08f);
                 }
                 onSpeaking = false;
-               // Debug.Log("starting wait the reading cast");
+                // Debug.Log("starting wait the reading cast");
                 yield return new WaitUntil(() => isReadReady);
 
                 Time.timeScale = 1f;
