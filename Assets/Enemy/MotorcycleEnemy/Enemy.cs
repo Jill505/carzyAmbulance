@@ -159,8 +159,11 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        gamecore.PlaySoundEffect(gamecore.SoundEffects[13]); 
-        heartbeat.InjuryAndSpawnANote();
+        if (gamecore.gameRunning)
+        {
+            gamecore.PlaySoundEffect(gamecore.SoundEffects[13]); 
+            heartbeat.InjuryAndSpawnANote();
+        }
     }
 
     public void TakeDamage(float damage)
