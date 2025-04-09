@@ -67,7 +67,10 @@ public class Lobby_Core : MonoBehaviour
             Debug.Log("成功還原檔案");
         }
 
-
+        if (MangaPlaySys.spec_pre)
+        {
+            openAndClose();
+        }
     }
     static public void SaveGameFile()
     {
@@ -116,7 +119,7 @@ public class Lobby_Core : MonoBehaviour
             UnlockAllGameFile();
         }
 
-        Debug.Log("Lobby_Core.s_GSF.mexUnlockGame: "+ Lobby_Core.s_GSF.mexUnlockGame);
+        //Debug.Log("Lobby_Core.s_GSF.mexUnlockGame: "+ Lobby_Core.s_GSF.mexUnlockGame);
     }
 
     public void openAndClose()
@@ -128,8 +131,14 @@ public class Lobby_Core : MonoBehaviour
         if (s_GSF.alreadyReadOpeningManga == false)
         {
             //play
+            Debug.Log("還未看過開場動畫");
             s_GSF.alreadyReadOpeningManga = true;
+            MangaPlaySys.spec_pre = true;
             SaveGameFile();
+        }
+        else
+        { 
+            Debug.Log("已經看過開場動畫");
         }
 
         if (loadingSort + 1 < gameInfo.Length - 1 && loadingSort < Lobby_Core.s_GSF.mexUnlockGame)
@@ -143,6 +152,8 @@ public class Lobby_Core : MonoBehaviour
             Debug.Log("From open and close not allow");
         }
     }
+    public Sprite greenEzButton;
+    public Sprite redEzButton;
     public void EzModeOnAndOff()
     {
         //初始為紅色
