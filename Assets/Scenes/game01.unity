@@ -7073,42 +7073,42 @@ MonoBehaviour:
       - myEventType: 7
         argument:
         - "\u5982\u679C\u6211\u5011\u4E0D\u53CA\u6642\u66F4\u63DB\u8840\u888B\uFF0C\u4ED6\u7684\u751F\u547D\u8DE1\u8C61\u6703\u4E0B\u964D\u7684"
-        atPos: 0.45
+        atPos: 0.47
         triggered: 0
       - myEventType: 7
         argument:
         - "\u4E0D\u904E\u6C92\u95DC\u4FC2\uFF0C\u53EA\u8981\u4F60\u6B63\u78BA\u7684\u6309\u58D3\u8D85\u904E\u4E94\u6B21\u4EE5\u4E0A\uFF0C\u751F\u547D\u8DE1\u8C61\u53EF\u4EE5\u7DE9\u6162\u7684\u6062\u5FA9"
-        atPos: 0.5
+        atPos: 0.53
         triggered: 0
       - myEventType: 7
         argument:
         - "\u6158\u5566\u5C0F\u5B50\u6B38\uFF0C\u8840\u888B\u8981\u898B\u5E95\u4E86"
-        atPos: 0.55
+        atPos: 0.58
         triggered: 0
       - myEventType: 7
         argument:
         - "\u6211\u53EF\u8981\u52A0\u5FEB\u901F\u5EA6\u56C9"
-        atPos: 0.575
+        atPos: 0.6
         triggered: 0
       - myEventType: 6
         argument:
         - "\u6158\u5566\u5C0F\u5B50\u6B38\uFF0C\u8840\u888B\u8981\u898B\u5E95\u4E86\uFF0C\u6211\u53EF\u8981\u52A0\u5FEB\u901F\u5EA6\u56C9"
-        atPos: 0.58
+        atPos: 0.61
         triggered: 0
       - myEventType: 6
         argument:
         - 
-        atPos: 0.58
+        atPos: 0.61
         triggered: 0
       - myEventType: 7
         argument:
         - "\u4E0D\u884C\uFF0C\u5F97\u518D\u52A0\u5FEB\uFF0C\u8981\u662F\u88AB\u5BA2\u8A34\u5C31\u5B8C\u4E86"
-        atPos: 0.67
+        atPos: 0.68
         triggered: 0
       - myEventType: 6
         argument:
         - "\u4E0D\u884C\uFF0C\u6211\u518D\u52A0\u5FEB\uFF0C\u8981\u662F\u88AB\u5BA2\u8A34\u5C31\u5B8C\u4E86"
-        atPos: 0.673
+        atPos: 0.685
         triggered: 0
       - myEventType: 7
         argument:
