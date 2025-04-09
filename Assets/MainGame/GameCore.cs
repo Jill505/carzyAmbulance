@@ -90,6 +90,9 @@ public class GameCore : MonoBehaviour
     public Sprite emptyStar;
     public Sprite star;
 
+    public Image[] endBG = new Image[3];
+    
+
     [Header("Note相關呦")]
     public Image hintImage;
     public Sprite Perfect;
@@ -392,13 +395,21 @@ public class GameCore : MonoBehaviour
     }
     public void gameEndPanel()
     {
-        GameEndBGLoadinPanel.SetActive(true);
-        gameEndBGLoadinAnimator.SetBool("idle",true);
+        
+        gameEndBackgroundWall = GameObject.Find("geBG_Wall");
+        gameEndBackgroundPatient = GameObject.Find("geBG_Patient");
+        gameEndBackgroundAmbulance = GameObject.Find("geBG_Ambulance");
+
+        gameEndBackgroundWall.GetComponent<Image>().enabled = true;
+        gameEndBackgroundPatient.GetComponent<Image>().enabled = true;
+        gameEndBackgroundAmbulance.GetComponent<Image>().enabled = true;
+
+        gameEndBGLoadinAnimator.SetBool("Loadin",true);
     }
 
     public void LoadNextGame()
     {
-        if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1 && !fail)
+        if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1)
         {
             StartCoroutine(LoadNextGameAnimation());
         }
@@ -620,10 +631,29 @@ public class GameCore : MonoBehaviour
 
         finalGameRateResult = swapBaseNum2 / swapBaseNum;
     }
+    [Header("你知道哈密瓜很好吃嗎")]
+    public GameObject gameEndBackgroundWall;
+    public GameObject gameEndBackgroundAmbulance;
+    public GameObject gameEndBackgroundPatient;
+    public Sprite[] gameEndBackgroundSprite = new Sprite[3];
+    public GameObject GameEndButtonLoadNextLevel;
+
     public void finalGameExecute()
     {
         if (fail)
         {
+            GameEndButtonLoadNextLevel = GameObject.Find("GameEndButtonLoadNextLevel");
+            GameEndButtonLoadNextLevel.GetComponent<Button>().interactable = false; 
+
+            gameEndBackgroundWall = GameObject.Find("geBG_Wall");
+            gameEndBackgroundPatient = GameObject.Find("geBG_Patient");
+            gameEndBackgroundAmbulance = GameObject.Find("geBG_Ambulance");
+
+            gameEndBackgroundWall.GetComponent<Image>().sprite = gameEndBackgroundSprite[0];
+            gameEndBackgroundPatient.GetComponent<Image>().sprite = gameEndBackgroundSprite[1];
+            gameEndBackgroundAmbulance.GetComponent<Image>().sprite = gameEndBackgroundSprite[2];
+
+
             starNumber = 0;
             gameEndText.text = "病人半路中道崩殂";
             //跳到這裡

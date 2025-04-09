@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 316193412}
   - component: {fileID: 316193411}
   m_Layer: 5
-  m_Name: Ambulance
+  m_Name: geBG_Ambulance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316193409}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4256281459129216183, guid: affaa9e351e136d45a5a7fec0482c44d, type: 3}
+  m_Sprite: {fileID: -1633287339696134881, guid: 9dd5fc2e5b538534a842630807161e7f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4168,7 +4168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &828369478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6683,6 +6683,10 @@ MonoBehaviour:
   - {fileID: 882868064}
   emptyStar: {fileID: -6155696173841487834, guid: fc1ceddb3eddefc4aa59f71850de4cc3, type: 3}
   star: {fileID: 1549216194427799674, guid: a1f49fd4d6d4bf74fafcf0cf63337106, type: 3}
+  endBG:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hintImage: {fileID: 658447139}
   Perfect: {fileID: 2723950150571589912, guid: 0d5c4d379200bdf4081cd9d0885169f0, type: 3}
   Great: {fileID: 618100125864224345, guid: 812e94d14a190a14ea33240dc7664c04, type: 3}
@@ -6716,6 +6720,14 @@ MonoBehaviour:
   HocusAnimator: {fileID: 704483575}
   hocusSlowRate: 0.4
   hocusTime: 4
+  gameEndBackgroundWall: {fileID: 0}
+  gameEndBackgroundAmbulance: {fileID: 0}
+  gameEndBackgroundPatient: {fileID: 0}
+  gameEndBackgroundSprite:
+  - {fileID: 2006328501548352024, guid: af8034ad2d1dc9547a59a0eb2b744aa9, type: 3}
+  - {fileID: 21300000, guid: 08c504bca78dc494a8d26d73da7d23bf, type: 3}
+  - {fileID: 4256281459129216183, guid: affaa9e351e136d45a5a7fec0482c44d, type: 3}
+  GameEndButtonLoadNextLevel: {fileID: 0}
   bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: d275813617fff2e4293e428609a90b2b, type: 3}
@@ -9462,7 +9474,7 @@ GameObject:
   - component: {fileID: 1738298986}
   - component: {fileID: 1738298985}
   m_Layer: 5
-  m_Name: Patient
+  m_Name: geBG_Patient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9494,7 +9506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738298983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9507,7 +9519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 08c504bca78dc494a8d26d73da7d23bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3738a4c4ec439114e8b507250178a866, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9537,7 +9549,7 @@ GameObject:
   - component: {fileID: 1760596846}
   - component: {fileID: 1760596845}
   m_Layer: 5
-  m_Name: Wall
+  m_Name: geBG_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9569,7 +9581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760596843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -9582,7 +9594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2006328501548352024, guid: af8034ad2d1dc9547a59a0eb2b744aa9, type: 3}
+  m_Sprite: {fileID: -1637746687805867003, guid: 1cfffabf6ce0274488fe0b6ad6078edf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
