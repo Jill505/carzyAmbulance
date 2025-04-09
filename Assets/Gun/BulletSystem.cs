@@ -199,19 +199,32 @@ public class BulletSystem : MonoBehaviour
             ChangeColor(bulletbox,"#FFFFFF");
         }
 
-        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask("Enemy"));
-        if (hitCollider != null)
+        Collider2D[] hitColliders = Physics2D.OverlapPointAll(mousePosition, LayerMask.GetMask("Enemy"));
+
+        if (hitColliders.Length > 0)
         {
-            if (hitCollider.gameObject.TryGetComponent<Enemy>(out Enemy theEnemy) == true)
+            Collider2D topMost = hitColliders[0];
+            int highestOrder = -9999;
+
+            foreach (var col in hitColliders)
             {
-                //theEnemy = hitCollider.GetComponent<Enemy>();
-                theEnemy.TakeDamage(Firepower);
-                Debug.Log("Hit Enemy");
+                SpriteRenderer sr = col.GetComponent<SpriteRenderer>();
+                if (sr != null && sr.sortingOrder > highestOrder)
+                {
+                    highestOrder = sr.sortingOrder;
+                    topMost = col;
+                }
             }
-            else if (hitCollider.gameObject.TryGetComponent<Cthulhu>(out Cthulhu cthulhu) == true)
+
+            if (topMost.TryGetComponent<Enemy>(out Enemy theEnemy))
+            {
+                theEnemy.TakeDamage(Firepower);
+                Debug.Log("Hit Enemy with highest sortingOrder");
+            }
+            else if (topMost.TryGetComponent<Cthulhu>(out Cthulhu cthulhu))
             {
                 cthulhu.TakeDamage();
-                Debug.Log("Hit Cthulhu");
+                Debug.Log("Hit Cthulhu with highest sortingOrder");
             }
         }
         else
