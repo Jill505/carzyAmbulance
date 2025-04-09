@@ -152,20 +152,24 @@ public class Lobby_Core : MonoBehaviour
             Debug.Log("From open and close not allow");
         }
     }
-    public Sprite greenEzButton;
-    public Sprite redEzButton;
+    public GameObject ezButton; 
+    public Sprite[] EZButton = new Sprite[2];
     public void EzModeOnAndOff()
     {
         //初始為紅色
+        Image buttonImage = ezButton.GetComponent<Image>();
+
         EzMode = !EzMode;
         if (EzMode)//圖標切換為綠色
         {
             Debug.Log("EZ模式開啟");
+            buttonImage.sprite = EZButton[0]; 
         }
         else
         {
             //切換為紅色
             Debug.Log("EZ模式關閉");
+            buttonImage.sprite = EZButton[1]; 
         }
     }
     public void QuitGame()

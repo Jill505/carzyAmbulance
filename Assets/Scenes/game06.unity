@@ -2610,6 +2610,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 658447141}
   - {fileID: 1922711294}
   - {fileID: 891999844}
   - {fileID: 201586277}
@@ -2617,7 +2618,6 @@ RectTransform:
   - {fileID: 1169609021}
   - {fileID: 1046105580}
   - {fileID: 471801618}
-  - {fileID: 658447141}
   m_Father: {fileID: 835290679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11001,7 +11001,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -7377295934022830490, guid: cab8e7f9272f2974d85dcdfc6f277f1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
