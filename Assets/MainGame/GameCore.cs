@@ -75,6 +75,10 @@ public class GameCore : MonoBehaviour
     public Animator BloodBoxLight;
     public Animator Road;
 
+    [Header("gameEnd")]
+    public Animator gameEndBGLoadinAnimator;
+    public GameObject GameEndBGLoadinPanel;
+
 
     [Header("這些是Sprite和Image大家庭")]
     public Sprite eventSprite_enemySpawn;
@@ -379,17 +383,22 @@ public class GameCore : MonoBehaviour
     {
         gameRunning = false;
         GameEndPanel.SetActive(true);
-
         gameEndPenalAnimator.SetBool("active",true);
+        
 
         finalGameRateResultCal();
         finalGameExecute();
         stopSwapMusicPLayer();
     }
+    public void gameEndPanel()
+    {
+        GameEndBGLoadinPanel.SetActive(true);
+        gameEndBGLoadinAnimator.SetBool("idle",true);
+    }
 
     public void LoadNextGame()
     {
-        if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1)
+        if (SceneManager.sceneCount < SceneManager.GetActiveScene().buildIndex +1 && !fail)
         {
             StartCoroutine(LoadNextGameAnimation());
         }
@@ -617,6 +626,7 @@ public class GameCore : MonoBehaviour
         {
             starNumber = 0;
             gameEndText.text = "病人半路中道崩殂";
+            //跳到這裡
         }
         else
         {
