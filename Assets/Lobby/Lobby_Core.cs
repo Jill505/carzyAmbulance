@@ -27,6 +27,7 @@ public class Lobby_Core : MonoBehaviour
 
     public TextMeshProUGUI pNameTmp;
     public TextMeshProUGUI pDesTmp;
+    public Text r_p_text;
     public Button buttonMi;
     public Button buttonPl;
     public Animator Loading;
@@ -40,7 +41,7 @@ public class Lobby_Core : MonoBehaviour
     {
         loadingSort = 0;
         pNameTmp.text = gameInfo[loadingSort].name;
-        pDesTmp.text = gameInfo[loadingSort].name;
+        r_p_text.text = gameInfo[loadingSort].description;
         buttonMi.interactable = false;
         AK_SoundObject.PlaySoundObject(carHorn);
         swapMusicPlayer();
@@ -109,7 +110,7 @@ public class Lobby_Core : MonoBehaviour
     public void loadingSceneInformation(int sort)
     {
         pNameTmp.text = gameInfo[loadingSort].name;
-        pDesTmp.text = gameInfo[loadingSort].name;
+        r_p_text.text = gameInfo[loadingSort].description;
     }
 
     [Header("BGM and SoundEffects")]
