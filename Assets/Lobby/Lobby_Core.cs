@@ -1,6 +1,8 @@
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Composites;
 using UnityEngine.SceneManagement;
@@ -32,11 +34,13 @@ public class Lobby_Core : MonoBehaviour
     public Button buttonPl;
     public Animator Loading;
 
-    public GameInfo[] gameInfo = new GameInfo[6]; 
+    public GameInfo[] gameInfo = new GameInfo[6];
 
-    
+    static public bool EzMode = false;
 
-    
+    static public GameSaveFile s_GSF;
+
+
     void Start()
     {
         loadingSort = 0;
@@ -45,18 +49,91 @@ public class Lobby_Core : MonoBehaviour
         buttonMi.interactable = false;
         AK_SoundObject.PlaySoundObject(carHorn);
         swapMusicPlayer();
+
+        if (string.IsNullOrEmpty(PlayerPrefs.GetString("SaveFile")))
+        {
+            GameSaveFile GSF = new GameSaveFile();
+            string saveFile = JsonUtility.ToJson(GSF);
+            PlayerPrefs.SetString("SaveFile", saveFile);
+
+            s_GSF = JsonUtility.FromJson<GameSaveFile>(PlayerPrefs.GetString("SaveFile"));
+
+            Debug.Log("新建檔案");
+        }
+        else
+        {
+
+            s_GSF = JsonUtility.FromJson<GameSaveFile>(PlayerPrefs.GetString("SaveFile"));
+            Debug.Log("成功還原檔案");
+        }
+
+
+    }
+    static public void SaveGameFile()
+    {
+        string saveFile = JsonUtility.ToJson(Lobby_Core.s_GSF);
+        PlayerPrefs.SetString("SaveFile", saveFile);
+        PlayerPrefs.Save();
     }
 
+    static public void ResetAllGameFile()
+    {
+        Debug.Log("重置所有檔案");
+        PlayerPrefs.DeleteKey("SaveFile");
+
+        s_GSF = JsonUtility.FromJson<GameSaveFile>(PlayerPrefs.GetString("SaveFile"));
+
+        PlayerPrefs.Save();
+    }
+    static public void UnlockAllGameFile()
+    {
+        Debug.Log("解鎖所有遊玩進度");
+        GameSaveFile GSF = new GameSaveFile();
+
+        GSF.mexUnlockGame = 6;
+        s_GSF.mexUnlockGame = 6;
+        for (int i = 0; i < GSF.gamePassed.Length; i++)
+        {
+            GSF.gamePassed[i] = true;
+        }
+
+        string saveFile = JsonUtility.ToJson(GSF);
+        PlayerPrefs.SetString("SaveFile", saveFile);
+
+        Lobby_Core.SaveGameFile();
+        s_GSF = JsonUtility.FromJson<GameSaveFile>(PlayerPrefs.GetString("SaveFile"));
+
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D))
+        {
+            ResetAllGameFile();
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.U))
+        {
+            UnlockAllGameFile();
+        }
+
+        //Debug.Log("Lobby_Core.s_GSF.mexUnlockGame: "+ Lobby_Core.s_GSF.mexUnlockGame);
     }
 
     public void openAndClose()
     {
         isSelectionCanvasOpening = !isSelectionCanvasOpening;
         selectionCanvas2.SetActive(isSelectionCanvasOpening);
+
+        if (loadingSort + 1 < gameInfo.Length - 1 && loadingSort + 1 < Lobby_Core.s_GSF.mexUnlockGame)
+        {
+            buttonPl.interactable = true;
+            Debug.Log("From open and close allow");
+        }
+        else
+        {
+            buttonPl.interactable = false;
+            Debug.Log("From open and close not allow");
+        }
     }
 
     public void QuitGame()
@@ -79,7 +156,7 @@ public class Lobby_Core : MonoBehaviour
     }
     public void loadSortPlus()
     {
-        if (loadingSort+1 < gameInfo.Length-1)
+        if (loadingSort+1 < gameInfo.Length-1 && loadingSort+1 < s_GSF.mexUnlockGame)
         {
             //allow 
             buttonPl.interactable = true;
@@ -136,4 +213,12 @@ public class GameInfo
 {
     public string name;
     public string description;
+}
+
+[System.Serializable]
+public class GameSaveFile
+{
+    public int emptyNumber;
+    public int mexUnlockGame = 0;
+    public bool[] gamePassed = new bool[6];
 }

@@ -674,6 +674,17 @@ public class GameCore : MonoBehaviour
                 starNumber = 1;
             }
 
+
+            //Judge是否開關卡
+            //取得關卡序列 並比對關卡是否通過
+            int myGameSort = (SceneManager.GetActiveScene().buildIndex) -2;
+            if (Lobby_Core.s_GSF.gamePassed[myGameSort] == false)
+            {
+                Lobby_Core.s_GSF.gamePassed[myGameSort] = true;
+                Lobby_Core.s_GSF.mexUnlockGame += 1;
+                Lobby_Core.SaveGameFile();
+            }
+
         }
 
         for (int i = 0; i < starNumber; i++)
