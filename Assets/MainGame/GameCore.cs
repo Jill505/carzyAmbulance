@@ -1243,8 +1243,19 @@ public class GameCore : MonoBehaviour
                 Debug.Log("SpecEvent_allowUseSryinge triggered by dialog system");
             }
             else if (strs[j] == "Spec_gameEnd")
-            { 
-                
+            {
+                //Judge是否開關卡
+                //取得關卡序列 並比對關卡是否通過
+                int myGameSort = (SceneManager.GetActiveScene().buildIndex) - 1;
+                if (Lobby_Core.s_GSF.gamePassed[myGameSort] == false)
+                {
+                    Lobby_Core.s_GSF.gamePassed[myGameSort] = true;
+                    Lobby_Core.s_GSF.mexUnlockGame += 1;
+                    Lobby_Core.SaveGameFile();
+                }
+
+                SceneManager.LoadScene(8);
+
             }
             else
             {
