@@ -87,6 +87,7 @@ public class SyringSystem : MonoBehaviour
 
     IEnumerator UseMedicine()
     {
+        gameCore.PlaySoundEffect(gameCore.SoundEffects[8]);
         gameCore.Hocus();
         yield return new WaitForSeconds(gameCore.hocusTime -2.3f);
         usingMedicine = false;

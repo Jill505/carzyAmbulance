@@ -20,12 +20,14 @@ public class Cthulhu : MonoBehaviour
     Vector2 edgeBR;
     void Start()
     {
+        
         sr = gameObject.GetComponent<SpriteRenderer>();
         gameCore = GameObject.Find("GameCore").GetComponent<GameCore>();
         heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();
 
         edgeTL = GameObject.Find("edgeTL").GetComponent<Transform>().position;
         edgeBR = GameObject.Find("edgeRB").GetComponent<Transform>().position;
+        gameCore.PlaySoundEffect(gameCore.SoundEffects[9]);
         
 
         //just in case, check.
@@ -80,6 +82,7 @@ public class Cthulhu : MonoBehaviour
     public void TakeDamage()
     {
         hp--;
+        gameCore.PlaySoundEffect(gameCore.SoundEffects[10]);
         if (hp <= 0)
         {
             StartCoroutine(onDie());
@@ -88,7 +91,7 @@ public class Cthulhu : MonoBehaviour
     }
     public void kys()
     {
-        GameObject.Find("Chart").GetComponent<Heartbeat>().pendingNote += 5;
+        GameObject.Find("Chart").GetComponent<Heartbeat>().pendingNote += 4;
         gameCore.carShake(4, 1.4f, 0.15f, false);
 
         /*
