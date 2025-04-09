@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Heartbeat heartbeat;
+    private GameCore gamecore;
     
     [Header("基本數值")]
     public float health = 3;
@@ -30,7 +31,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();    
+        heartbeat = GameObject.Find("Chart").GetComponent<Heartbeat>();   
+        gamecore = GameObject.Find("GameCore").GetComponent<GameCore>();
+        gamecore.PlaySoundEffect(gamecore.SoundEffects[12]); 
         
         moveSpeed += Random.Range(0.2f,0.8f); 
         attackFrequency += Random.Range(-2f,2f);
@@ -156,6 +159,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
+        gamecore.PlaySoundEffect(gamecore.SoundEffects[13]); 
         heartbeat.InjuryAndSpawnANote();
     }
 
@@ -166,6 +170,7 @@ public class Enemy : MonoBehaviour
         {
             used = true;
             animator.SetBool("FlipDown", true);
+            gamecore.PlaySoundEffect(gamecore.SoundEffects[14]); 
         }
     }
     

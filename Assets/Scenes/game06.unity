@@ -7433,14 +7433,17 @@ MonoBehaviour:
   bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: d275813617fff2e4293e428609a90b2b, type: 3}
-  - {fileID: 8300000, guid: fa65c2de91e6a4e4a8c395c415c8155d, type: 3}
-  - {fileID: 8300000, guid: f14003900f16e7545a6c6615c926f04c, type: 3}
-  - {fileID: 8300000, guid: 3c2543cc5e23ab748b369b5bc058bb72, type: 3}
-  - {fileID: 8300000, guid: 8fa9901fbc78e7a42816e86e6401350c, type: 3}
+  - {fileID: 8300000, guid: b5b6f353f271d114d85bf72aacd4a5e4, type: 3}
+  - {fileID: 8300000, guid: 406877d3e34ff84479d58a84a367599a, type: 3}
+  - {fileID: 8300000, guid: 4042f562052c3df458f840b58538aa5e, type: 3}
+  - {fileID: 8300000, guid: 806cbaae5f0212e48afd6ce1c3a7cc30, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 848fd8241ca69c0409583404e12960cf, type: 3}
+  - {fileID: 8300000, guid: a6560b3177b8f0041b89a360959d2fef, type: 3}
+  - {fileID: 8300000, guid: b0e9d227e30dd6b4189c660c3fdf00bb, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
-  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
-  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: d07ca13eecc40d742894d3823ea12acb, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}

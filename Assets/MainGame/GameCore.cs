@@ -338,14 +338,35 @@ public class GameCore : MonoBehaviour
 
         if (bloodNow / bloodMax < 0.2f)
         {
+
             bloodPackTipAnimator.SetBool("Warning", true);
             BloodBoxLight.SetBool("BloodBoxLightUp",true);
+            PlaySoundEffect11Once();
         }
         else
         {
             bloodPackTipAnimator.SetBool("Warning",false);
             BloodBoxLight.SetBool("BloodBoxLightUp",false);
         }
+    }
+    private bool isSound11Playing = false;
+
+    public void PlaySoundEffect11Once()
+    {
+        if (!isSound11Playing)
+        {
+            isSound11Playing = true;
+
+            AudioClip clip = SoundEffects[11];
+            PlaySoundEffect(clip);
+            StartCoroutine(WaitUntilSound11Finish(clip.length));
+        }
+    }
+
+    private IEnumerator WaitUntilSound11Finish(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isSound11Playing = false;
     }
 
     int bloodClug = 0;
