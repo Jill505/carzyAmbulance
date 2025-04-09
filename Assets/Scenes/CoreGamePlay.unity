@@ -6788,7 +6788,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 08c504bca78dc494a8d26d73da7d23bf, type: 3}
   - {fileID: 4256281459129216183, guid: affaa9e351e136d45a5a7fec0482c44d, type: 3}
   GameEndButtonLoadNextLevel: {fileID: 0}
-  bgmClip: {fileID: 8300000, guid: 3cc24f66b9c67cb499516564d9772c18, type: 3}
+  bgmClip: {fileID: 8300000, guid: c0be42cdb857a48458f5fc2fd29659d8, type: 3}
   SoundEffects:
   - {fileID: 8300000, guid: 4ddfd5df2b7fe7b43a6cf6519cd69e92, type: 3}
   - {fileID: 8300000, guid: b5b6f353f271d114d85bf72aacd4a5e4, type: 3}
