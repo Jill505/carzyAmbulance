@@ -6951,10 +6951,110 @@ MonoBehaviour:
         - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
         atPos: 0.375
         triggered: 0
-      - myEventType: 7
+      - myEventType: 4
         argument:
         - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
         atPos: 0.38
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.385
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.4
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.4
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - 
+        atPos: 0.42
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.42
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.43
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.435
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.44
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.44
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.45
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.45
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.45
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.46
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.46
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.47
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - 
+        atPos: 0.474
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.474
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.48
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.48
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - 
+        atPos: 0.487
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
