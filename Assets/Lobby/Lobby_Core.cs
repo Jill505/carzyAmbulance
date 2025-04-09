@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem.Composites;
 using UnityEngine.SceneManagement;
@@ -135,6 +136,7 @@ public class Lobby_Core : MonoBehaviour
             s_GSF.alreadyReadOpeningManga = true;
             MangaPlaySys.spec_pre = true;
             SaveGameFile();
+            SceneManager.LoadScene(7);
         }
         else
         { 
