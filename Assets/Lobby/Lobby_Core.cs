@@ -116,7 +116,7 @@ public class Lobby_Core : MonoBehaviour
             UnlockAllGameFile();
         }
 
-        //Debug.Log("Lobby_Core.s_GSF.mexUnlockGame: "+ Lobby_Core.s_GSF.mexUnlockGame);
+        Debug.Log("Lobby_Core.s_GSF.mexUnlockGame: "+ Lobby_Core.s_GSF.mexUnlockGame);
     }
 
     public void openAndClose()
@@ -124,7 +124,15 @@ public class Lobby_Core : MonoBehaviour
         isSelectionCanvasOpening = !isSelectionCanvasOpening;
         selectionCanvas2.SetActive(isSelectionCanvasOpening);
 
-        if (loadingSort + 1 < gameInfo.Length - 1 && loadingSort + 1 < Lobby_Core.s_GSF.mexUnlockGame)
+        //判定是否有看過開頭動畫
+        if (s_GSF.alreadyReadOpeningManga == false)
+        {
+            //play
+            s_GSF.alreadyReadOpeningManga = true;
+            SaveGameFile();
+        }
+
+        if (loadingSort + 1 < gameInfo.Length - 1 && loadingSort < Lobby_Core.s_GSF.mexUnlockGame)
         {
             buttonPl.interactable = true;
             Debug.Log("From open and close allow");
