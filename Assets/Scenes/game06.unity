@@ -6693,7 +6693,6 @@ MonoBehaviour:
         - "\u6211\u9019\u8F29\u5B50\u6C92\u8B80\u904E\u4EC0\u9EBC\u66F8\uFF0C\u9019\u8F29\u5B50\u6703\u505A\u7684\u4E8B\u53EA\u6709\u958B\u8ECA"
         - "\u5230\u4E86\u9019\u500B\u5E74\u7D00\u4F60\u5C31\u6703\u77E5\u9053\uFF0C\u4E00\u500B\u4EBA\u5230\u56DB\u4E94\u5341\u6B72\u6C92\u6709\u4E00\u9EDE\u6210\u5C31\uFF0C\u662F\u5F88\u53EF\u6015\u7684\u4E8B\u60C5"
         - "\u6211\u77E5\u9053\uFF0C\u5E36\u8457\u8463\u4E8B\u53BB\u81EA\u6BBA\u4E0D\u662F\u4EC0\u9EBC\u9AD8\u660E\u4E4B\u8209"
-        - "\u4EE5\u524D\uFF0C\u6211\u4E5F\u66FE\u7D93\u662F\u52AB\u63A0\u6551\u8B77\u8ECA\u7684\u5C0F\u6DF7\u6DF7"
         - "\u4F46\u5728\u6688\u4E0A\u4E00\u500B\u5973\u5B69\u5F8C\uFF0C\u6211\u653E\u68C4\u4E86\u90A3\u6BB5\u65E5\u5B50\uFF0C\u627E\u4E86\u958B\u5927\u5361\u8ECA\u7684\u5DE5\u4F5C"
         - "\u5F8C\u4F86\uFF0C\u73FE\u5728\u8ECA\u4E0A\u9019\u540D\u8463\u4E8B\u7684\u5DE5\u5EE0\u51FA\u4E86\u5DEE\u932F\uFF0C\u4E00\u53F0\u5927\u8CA8\u8ECA\u5361\u5728\u4E86\u9435\u8ECC\u4E0A"
         - "\u90A3\u500B\u50A2\u4F19\u76F4\u63A5\u89E3\u6563\u516C\u53F8\u91CD\u7D44\uFF0C\u800C\u6211\u4E5F\u88AB\u9806\u4FBF\u6536\u7DE8\u5230\u4E86\u4ED6\u5165\u80A1\u7684GAY\u516C\u53F8\u65D7\u4E0B\u958B\u6551\u8B77\u8ECA"
@@ -6702,18 +6701,265 @@ MonoBehaviour:
         - "\u4E00\u5207\u90FD\u6C92\u6709\u610F\u7FA9\u4E86\uFF0C\u5C0F\u5B50\u6B38"
         - "\u6211\u53EF\u4E0D\u80FD\u6B7B\u5728\u76E3\u7344\u88E1\uFF0C\u6B7B\u4E5F\u8981\u5E36\u8D70\u4E00\u500B"
         - "\u518D\u898B"
-        - "(\u7529\u5C3E \u73A9\u5BB6\u88AB\u7529\u4E0B\u8ECA)"
-        atPos: 0.9
+        - "(\u7529\u5C3E \u73A9\u5BB6\u88AB\u7529\u4E0B\u8ECA \u64AD\u653E\u52D5\u756B\u7279\u6B8A\u4E8B\u4EF6)"
+        atPos: 0.95
         triggered: 0
-      - myEventType: 8
+      - myEventType: 0
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.3
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.5
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.7
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.12
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.13
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.15
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.18
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.18
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.2
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.22
+        triggered: 0
+      - myEventType: 1
+        argument: []
+        atPos: 0.23
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.23
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.25
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.25
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.28
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.29
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.22
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.22
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.09
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.09
+        triggered: 0
+      - myEventType: 4
+        argument: []
+        atPos: 0.09
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.11
+        triggered: 0
+      - myEventType: 0
+        argument: []
+        atPos: 0.11
+        triggered: 0
+      - myEventType: 6
+        argument: []
+        atPos: 0.318
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u5207\uFF0C\u9019\u4E9B\u50A2\u4F19\u4E5F\u592A\u96E3\u7E8F\u4E86\uFF0C\u662F\u56E0\u70BA\u8ECA\u4E0A\u9019\u50A2\u4F19\u7684\u7DE3\u6545\u55CE?
+          \u52A0\u901F\u52A0\u901F\uFF01 "
+        atPos: 0.31
+        triggered: 0
+      - myEventType: 6
+        argument:
+        - "\u5207\uFF0C\u9019\u4E9B\u50A2\u4F19\u4E5F\u592A\u96E3\u7E8F\u4E86\uFF0C\u662F\u56E0\u70BA\u8ECA\u4E0A\u9019\u50A2\u4F19\u7684\u7DE3\u6545\u55CE?
+          \u52A0\u901F\u52A0\u901F\uFF01 "
+        atPos: 0.518
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u600E\u9EBC\u4ECA\u5929\u4EBA\u9019\u9EBC\u591A\uFF0C\u6211\u63DB\u689D\u5C0F\u8DEF\u8D70\uFF0C\u6293\u7A69\uFF0C\u8981\u52A0\u901F\u4E86\uFF01"
+        atPos: 0.51
+        triggered: 0
+      - myEventType: 6
         argument:
         - 
-        atPos: 0.9
+        atPos: 0.71
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.718
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.32
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.32
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.34
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.34
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.348
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.35
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.35
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.36
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.36
+        triggered: 0
+      - myEventType: 4
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.37
+        triggered: 0
+      - myEventType: 1
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.37
+        triggered: 0
+      - myEventType: 0
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.375
+        triggered: 0
+      - myEventType: 7
+        argument:
+        - "\u53EF\u60E1\uFF0C\u5927\u6A13\u5C31\u5728\u524D\u9762\u4E86\uFF0C\u9084\u4F86\u9019\u9EBC\u591A\u4EBA\uFF0C\u6CB9\u9580\u8E29\u5230\u5E95\u4E86\u5566\uFF01"
+        atPos: 0.38
         triggered: 0
       alreadyReachTheEventPoints: 
     - pointType: 1
       linkingPointSort: 
-      x: 1.41
+      x: 3.7
       y: 4.01
       theEventPoints: []
       alreadyReachTheEventPoints: 
