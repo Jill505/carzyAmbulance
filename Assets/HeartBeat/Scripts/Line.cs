@@ -46,6 +46,7 @@ public class Line : MonoBehaviour
                 //Debug.Log("a hint from Line.cs, the function triggered currecrt");
                 gameCore.damagedHintFunc();
                 gameCore.heartbeatMiss();
+                gameCore.PlaySoundEffect(gameCore.SoundEffects[7]);
                 Heartbeat.nextLineToCheck++;
                 Heartbeat.RemoveLine(thisLineNumber); 
                 if (childSpriteRenderer != null)
@@ -80,6 +81,7 @@ public class Line : MonoBehaviour
             Debug.Log("懲罰");
             gameCore.showHintText(5);
             gameCore.ShowHintImage(5);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[7]);
             StartCoroutine(PunishTime());
         }
         if(InThePerfectPoint)
@@ -108,7 +110,7 @@ public class Line : MonoBehaviour
             gameCore.perfectHintFunc();
             gameCore.showHintText(4);
             gameCore.ShowHintImage(4);
-            gameCore.PlaySoundEffect(gameCore.SoundEffects[3]);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[6]);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);
@@ -127,7 +129,7 @@ public class Line : MonoBehaviour
             gameCore.perfectHintFunc();
             gameCore.showHintText(2);
             gameCore.ShowHintImage(2);
-            gameCore.PlaySoundEffect(gameCore.SoundEffects[3]);
+            gameCore.PlaySoundEffect(gameCore.SoundEffects[6]);
 
 
             childSpriteRenderer.color = new Color(0, 1, 0, 1);

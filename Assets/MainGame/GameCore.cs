@@ -75,6 +75,10 @@ public class GameCore : MonoBehaviour
     public Animator BloodBoxLight;
     public Animator Road;
 
+    [Header("gameEnd")]
+    public Animator gameEndBGLoadinAnimator;
+    public GameObject GameEndBGLoadinPanel;
+
 
     [Header("這些是Sprite和Image大家庭")]
     public Sprite eventSprite_enemySpawn;
@@ -85,6 +89,9 @@ public class GameCore : MonoBehaviour
     public Image[] starImages = new Image[3];
     public Sprite emptyStar;
     public Sprite star;
+
+    public Image[] endBG = new Image[3];
+    
 
     [Header("Note相關呦")]
     public Image hintImage;
@@ -379,12 +386,25 @@ public class GameCore : MonoBehaviour
     {
         gameRunning = false;
         GameEndPanel.SetActive(true);
-
         gameEndPenalAnimator.SetBool("active",true);
+        
 
         finalGameRateResultCal();
         finalGameExecute();
         stopSwapMusicPLayer();
+    }
+    public void gameEndPanel()
+    {
+        
+        gameEndBackgroundWall = GameObject.Find("geBG_Wall");
+        gameEndBackgroundPatient = GameObject.Find("geBG_Patient");
+        gameEndBackgroundAmbulance = GameObject.Find("geBG_Ambulance");
+
+        gameEndBackgroundWall.GetComponent<Image>().enabled = true;
+        gameEndBackgroundPatient.GetComponent<Image>().enabled = true;
+        gameEndBackgroundAmbulance.GetComponent<Image>().enabled = true;
+
+        gameEndBGLoadinAnimator.SetBool("Loadin",true);
     }
 
     public void LoadNextGame()
@@ -611,12 +631,32 @@ public class GameCore : MonoBehaviour
 
         finalGameRateResult = swapBaseNum2 / swapBaseNum;
     }
+    [Header("你知道哈密瓜很好吃嗎")]
+    public GameObject gameEndBackgroundWall;
+    public GameObject gameEndBackgroundAmbulance;
+    public GameObject gameEndBackgroundPatient;
+    public Sprite[] gameEndBackgroundSprite = new Sprite[3];
+    public GameObject GameEndButtonLoadNextLevel;
+
     public void finalGameExecute()
     {
         if (fail)
         {
+            GameEndButtonLoadNextLevel = GameObject.Find("GameEndButtonLoadNextLevel");
+            GameEndButtonLoadNextLevel.GetComponent<Button>().interactable = false; 
+
+            gameEndBackgroundWall = GameObject.Find("geBG_Wall");
+            gameEndBackgroundPatient = GameObject.Find("geBG_Patient");
+            gameEndBackgroundAmbulance = GameObject.Find("geBG_Ambulance");
+
+            gameEndBackgroundWall.GetComponent<Image>().sprite = gameEndBackgroundSprite[0];
+            gameEndBackgroundPatient.GetComponent<Image>().sprite = gameEndBackgroundSprite[1];
+            gameEndBackgroundAmbulance.GetComponent<Image>().sprite = gameEndBackgroundSprite[2];
+
+
             starNumber = 0;
             gameEndText.text = "病人半路中道崩殂";
+            //跳到這裡
         }
         else
         {
@@ -683,7 +723,7 @@ public class GameCore : MonoBehaviour
         //Debug.Log("from GameCore.cs, the message called");
 
         //carShake(4, 1.4f, 0.15f, false);
-        carShake(3f, 0.15f, 0.15f, false);
+        carShake(3f, 0.13f, 0.15f, false);
         hp -= damage;
         comboCount = 0;
 

@@ -6998,6 +6998,8 @@ MonoBehaviour:
   BulletLight: {fileID: 480493967}
   BloodBoxLight: {fileID: 1450038778}
   Road: {fileID: 1885282059}
+  gameEndBGLoadinAnimator: {fileID: 0}
+  GameEndBGLoadinPanel: {fileID: 0}
   eventSprite_enemySpawn: {fileID: 4611381252443479281, guid: 5e52bb4e7cce8994aaf9ad95ef1c57b9, type: 3}
   eventSprite_roadRock: {fileID: -768929691181379306, guid: 66c89f772240abb42b63d4cf82138ca1, type: 3}
   eventSprite_cthulhu: {fileID: 769085689064147767, guid: d5336e6b6028875429097b0f9ec75db2, type: 3}
@@ -7048,6 +7050,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f14003900f16e7545a6c6615c926f04c, type: 3}
   - {fileID: 8300000, guid: 3c2543cc5e23ab748b369b5bc058bb72, type: 3}
   - {fileID: 8300000, guid: 8fa9901fbc78e7a42816e86e6401350c, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
+  - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   - {fileID: 8300000, guid: 0c05183dbeb5464458c8407924f3c0cc, type: 3}
   theHintTxt: {fileID: 1046105581}
   hintTextAlpha: 1
