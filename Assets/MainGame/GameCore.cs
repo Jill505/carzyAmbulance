@@ -698,7 +698,7 @@ public class GameCore : MonoBehaviour
 
             //Judge是否開關卡
             //取得關卡序列 並比對關卡是否通過
-            int myGameSort = (SceneManager.GetActiveScene().buildIndex) -2;
+            int myGameSort = (SceneManager.GetActiveScene().buildIndex) -1;
             if (Lobby_Core.s_GSF.gamePassed[myGameSort] == false)
             {
                 Lobby_Core.s_GSF.gamePassed[myGameSort] = true;
