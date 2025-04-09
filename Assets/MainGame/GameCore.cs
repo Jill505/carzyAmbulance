@@ -677,7 +677,7 @@ public class GameCore : MonoBehaviour
 
 
             starNumber = 0;
-            gameEndText.text = "病人半路中道崩殂";
+            gameEndText.text = "病人半路中道崩殂\n在大廳試試簡單模式?";
             //跳到這裡
         }
         else
