@@ -683,7 +683,7 @@ public class GameCore : MonoBehaviour
         //Debug.Log("from GameCore.cs, the message called");
 
         //carShake(4, 1.4f, 0.15f, false);
-        carShake(3f, 0.15f, 0.15f, false);
+        carShake(3f, 0.13f, 0.15f, false);
         hp -= damage;
         comboCount = 0;
 
