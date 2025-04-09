@@ -78,7 +78,7 @@ public class Lobby_Core : MonoBehaviour
     }
     public void loadSortPlus()
     {
-        if (loadingSort+1 < gameInfo.Length)
+        if (loadingSort+1 < gameInfo.Length-1)
         {
             //allow 
             buttonPl.interactable = true;

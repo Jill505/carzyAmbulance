@@ -1861,8 +1861,6 @@ MonoBehaviour:
     description: 
   - name: "\u3010\u75C5\u865F-512\u3011"
     description: 
-  - name: "\u3010\u75C5\u865F-301\u3011"
-    description: 
   bgmClip: {fileID: 8300000, guid: 579c69f5daa0e2149859ff531b912dfc, type: 3}
 --- !u!4 &838028833
 Transform:
@@ -3630,7 +3628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 863, y: 0}
+  m_AnchoredPosition: {x: 1950, y: 0}
   m_SizeDelta: {x: 2.8868, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1622130028
