@@ -1260,6 +1260,7 @@ public class GameCore : MonoBehaviour
                     Lobby_Core.SaveGameFile();
                 }
 
+                Time.timeScale = 1f;
                 SceneManager.LoadScene(8);
 
             }
